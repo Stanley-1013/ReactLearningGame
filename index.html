@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React 學習遊戲 - 模組化闖關學習</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="一個互動式的 React 教學遊戲，通過闖關方式學習 React 基礎知識，支援離線使用和手機安裝。" />
+    <meta name="keywords" content="React, 學習, 教學, 遊戲, JavaScript, 前端開發, PWA" />
+    <meta name="author" content="Stanley-1013" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="React 學習遊戲" />
+    <meta property="og:description" content="模組化的 React 教學闖關遊戲，支援離線學習" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com" />
+    <meta property="og:image" content="/icons/icon-512.png" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="React 學習遊戲" />
+    <meta name="twitter:description" content="模組化的 React 教學闖關遊戲" />
+    <meta name="twitter:image" content="/icons/icon-512.png" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#61dafb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="React 學習遊戲" />
+    
+    <!-- Icons and Manifest -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- PWA Install Prompt -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="React 學習遊戲" />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/src/data/modules.json" as="fetch" crossorigin="anonymous" />
+    
+    <!-- Google Fonts (Optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Critical CSS Inline -->
+    <style>
+      /* 關鍵 CSS 內聯以提升首屏載入速度 */
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      
+      /* 載入動畫 */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1rem;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+      
+      /* 隱藏載入畫面 */
+      .loading-screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 載入畫面 -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">載入 React 學習遊戲...</div>
+    </div>
+    
+    <!-- React App 掛載點 -->
+    <div id="root"></div>
+    
+    <!-- No Script 訊息 -->
+    <noscript>
+      <div style="text-align: center; padding: 2rem; background: #f8f9fa; color: #333;">
+        <h2>JavaScript 已被停用</h2>
+        <p>此應用程式需要 JavaScript 才能正常運作。</p>
+        <p>請啟用 JavaScript 並重新載入頁面。</p>
+      </div>
+    </noscript>
+    
+    <!-- PWA Install Button (隱藏，由 JavaScript 控制) -->
+    <div id="pwa-install-prompt" style="display: none;">
+      <div style="position: fixed; bottom: 20px; right: 20px; background: #61dafb; color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;">
+        <p style="margin: 0 0 0.5rem 0; font-weight: 600;">安裝應用程式</p>
+        <p style="margin: 0 0 1rem 0; font-size: 0.9rem;">將此學習遊戲安裝到你的裝置</p>
+        <button id="pwa-install-btn" style="background: white; color: #61dafb; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-weight: 600;">安裝</button>
+        <button id="pwa-dismiss-btn" style="background: transparent; color: white; border: 1px solid white; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; margin-left: 0.5rem;">稍後</button>
+      </div>
+    </div>
+    
+    <!-- React App Script -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- 載入完成後隱藏載入畫面的腳本 -->
+    <script>
+      // 隱藏載入畫面
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+            setTimeout(function() {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+        }, 500);
+      });
+      
+      // PWA 安裝提示
+      let deferredPrompt;
+      
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // 防止 Chrome 67 及更早版本自動顯示安裝提示
+        e.preventDefault();
+        // 儲存事件以便稍後觸發
+        deferredPrompt = e;
+        
+        // 顯示自訂安裝按鈕
+        const installPrompt = document.getElementById('pwa-install-prompt');
+        if (installPrompt) {
+          installPrompt.style.display = 'block';
+        }
+      });
+      
+      // 處理安裝按鈕點擊
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'pwa-install-btn') {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('使用者接受了安裝提示');
+              } else {
+                console.log('使用者拒絕了安裝提示');
+              }
+              deferredPrompt = null;
+              document.getElementById('pwa-install-prompt').style.display = 'none';
+            });
+          }
+        }
+        
+        if (e.target && e.target.id === 'pwa-dismiss-btn') {
+          document.getElementById('pwa-install-prompt').style.display = 'none';
+        }
+      });
+      
+      // 監聽安裝事件
+      window.addEventListener('appinstalled', (evt) => {
+        console.log('PWA 已安裝');
+        document.getElementById('pwa-install-prompt').style.display = 'none';
+      });
+      
+      // Service Worker 註冊 (由 vite-plugin-pwa 自動處理)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          console.log('Service Worker 支援已檢測');
+        });
+      }
+    </script>
+  </body>
+</html>

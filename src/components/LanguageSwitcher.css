@@ -1,0 +1,377 @@
+/* LanguageSwitcher 元件樣式 */
+
+/* 基礎容器 */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
+  position: relative;
+}
+
+/* 尺寸變體 */
+.language-switcher.small {
+  font-size: 0.8rem;
+}
+
+.language-switcher.medium {
+  font-size: 0.9rem;
+}
+
+.language-switcher.large {
+  font-size: 1rem;
+}
+
+/* === 下拉選單版本 === */
+.language-switcher.dropdown {
+  position: relative;
+}
+
+.language-select {
+  appearance: none;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  min-width: 120px;
+}
+
+.language-select:hover {
+  border-color: #3498db;
+  background: #f8fcff;
+}
+
+.language-select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #7f8c8d;
+  font-size: 0.7em;
+  transition: transform 0.2s ease;
+}
+
+.language-select:focus + .select-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* === 按鈕組版本 === */
+.language-switcher.buttons {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.switcher-label {
+  color: #7f8c8d;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.language-buttons {
+  display: flex;
+  gap: 0.25rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.25rem;
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: inherit;
+  font-family: inherit;
+  color: #2c3e50;
+}
+
+.language-btn:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+}
+
+.language-btn.active {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #3498db;
+  font-weight: 600;
+}
+
+.language-btn .flag {
+  font-size: 1.2em;
+}
+
+.language-btn .name {
+  white-space: nowrap;
+}
+
+/* === 切換開關版本 === */
+.language-switcher.toggle {
+  background: #f8f9fa;
+  border-radius: 25px;
+  padding: 0.25rem;
+}
+
+.language-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: inherit;
+  font-family: inherit;
+  color: #2c3e50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.language-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.language-toggle-btn .current-flag {
+  font-size: 1.2em;
+}
+
+.language-toggle-btn .current-name {
+  font-weight: 500;
+}
+
+.language-toggle-btn .toggle-icon {
+  color: #7f8c8d;
+  margin-left: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.language-toggle-btn:hover .toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* === 圓形圖示版本 === */
+.language-switcher.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.language-icon-btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2em;
+  outline: none;
+}
+
+.language-icon-btn:hover {
+  border-color: #3498db;
+  background: #f8fcff;
+  transform: scale(1.1);
+}
+
+.language-icon-btn:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.language-icon-btn:active {
+  transform: scale(0.95);
+}
+
+/* === 小尺寸調整 === */
+.language-switcher.small .language-select {
+  padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+  min-width: 100px;
+}
+
+.language-switcher.small .language-btn {
+  padding: 0.4rem 0.6rem;
+  gap: 0.4rem;
+}
+
+.language-switcher.small .language-toggle-btn {
+  padding: 0.4rem 0.8rem;
+  gap: 0.4rem;
+}
+
+.language-switcher.small.icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* === 大尺寸調整 === */
+.language-switcher.large .language-select {
+  padding: 0.6rem 2.2rem 0.6rem 0.9rem;
+  min-width: 140px;
+}
+
+.language-switcher.large .language-btn {
+  padding: 0.6rem 0.9rem;
+  gap: 0.6rem;
+}
+
+.language-switcher.large .language-toggle-btn {
+  padding: 0.6rem 1.2rem;
+  gap: 0.6rem;
+}
+
+.language-switcher.large.icon {
+  width: 48px;
+  height: 48px;
+}
+
+/* === 響應式設計 === */
+@media (max-width: 768px) {
+  .language-switcher.buttons .switcher-label {
+    display: none;
+  }
+  
+  .language-switcher.buttons .language-btn .name {
+    display: none;
+  }
+  
+  .language-switcher.toggle .current-name {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-switcher.dropdown {
+    font-size: 0.8rem;
+  }
+  
+  .language-select {
+    min-width: 80px;
+    padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+  }
+}
+
+/* === 動畫效果 === */
+@keyframes languageSwitch {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.language-switcher.switching {
+  animation: languageSwitch 0.3s ease-out;
+}
+
+/* === 無障礙功能 === */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* 高對比度支援 */
+@media (prefers-contrast: high) {
+  .language-select,
+  .language-btn,
+  .language-toggle-btn,
+  .language-icon-btn {
+    border-width: 2px;
+  }
+  
+  .language-btn.active {
+    border: 2px solid currentColor;
+  }
+}
+
+/* 減少動畫偏好支援 */
+@media (prefers-reduced-motion: reduce) {
+  .language-select,
+  .language-btn,
+  .language-toggle-btn,
+  .language-icon-btn,
+  .select-arrow,
+  .toggle-icon {
+    transition: none;
+  }
+  
+  .language-switcher.switching {
+    animation: none;
+  }
+}
+
+/* 深色主題支援 */
+@media (prefers-color-scheme: dark) {
+  .language-select {
+    background: #2c3e50;
+    color: white;
+    border-color: #34495e;
+  }
+  
+  .language-select:hover {
+    background: #34495e;
+    border-color: #3498db;
+  }
+  
+  .language-buttons {
+    background: #2c3e50;
+  }
+  
+  .language-btn {
+    color: #ecf0f1;
+  }
+  
+  .language-btn:hover {
+    background: #34495e;
+  }
+  
+  .language-btn.active {
+    background: #3498db;
+    color: white;
+  }
+  
+  .language-toggle-btn,
+  .language-icon-btn {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-color: #34495e;
+  }
+  
+  .language-toggle-btn:hover,
+  .language-icon-btn:hover {
+    background: #34495e;
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "modules": [
+    {
+      "id": 1,
+      "title": "What is React?",
+      "description": "Learn the basic concepts and core features of React",
+      "questions": [
+        {
+          "id": "1-1",
+          "content": "React is a JavaScript library developed by Facebook for building user interfaces (UI). It allows developers to build web applications in a component-based way, where each component can be reused, making code more modular and maintainable. React uses a virtual DOM to improve performance by only updating the parts that have actually changed.",
+          "codeExample": "// A simple React component\nfunction Welcome() {\n  return <h1>Hello, React!</h1>;\n}\n\n// Using the component in your app\n<Welcome />",
+          "quiz": {
+            "question": "What is React primarily used for?",
+            "options": ["Building user interfaces", "Database management", "Server management", "Code compilation"],
+            "answer": "Building user interfaces"
+          },
+          "media": {
+            "image": "/src/assets/images/react-logo.png",
+            "audio": "/src/assets/audio/intro-bgm.mp3"
+          }
+        },
+        {
+          "id": "1-2",
+          "content": "React's core philosophy is component-based development. Each component is an independent, reusable piece of code with its own state and lifecycle. This architecture makes large application development more maintainable and scalable.",
+          "codeExample": "// Basic React component structure\nfunction UserProfile({ name, age }) {\n  return (\n    <div className=\"user-profile\">\n      <h2>{name}</h2>\n      <p>Age: {age}</p>\n    </div>\n  );\n}\n\n// Using the component\n<UserProfile name=\"John\" age={25} />",
+          "quiz": {
+            "question": "What is the main advantage of React's component-based development?",
+            "options": ["Improves code reusability", "Reduces file size", "Increases network speed", "Decreases memory usage"],
+            "answer": "Improves code reusability"
+          },
+          "media": {
+            "image": "/src/assets/images/react-components.png",
+            "audio": "/src/assets/audio/components-intro.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Introduction to JSX",
+      "content": "JSX is a syntax extension for JavaScript that allows us to write HTML-like syntax within JavaScript. JSX makes React component writing more intuitive because it combines JavaScript's logical capabilities with HTML's structural expression. Browsers cannot directly execute JSX, so it needs to be converted to standard JavaScript through tools like Babel.",
+      "codeExample": "// JSX syntax example\nconst element = <h1>Hello, World!</h1>;\n\n// Using JavaScript expressions in JSX\nconst name = 'React';\nconst greeting = <h1>Hello, {name}!</h1>;\n\n// JSX can contain multiple elements\nconst app = (\n  <div>\n    <h1>Welcome to React</h1>\n    <p>This is a JSX example</p>\n  </div>\n);",
+      "quiz": {
+        "question": "What is JSX?",
+        "options": ["A syntax extension for JavaScript", "A new programming language", "A CSS framework", "A database language"],
+        "answer": "A syntax extension for JavaScript"
+      },
+      "media": {
+        "image": "/src/assets/images/jsx-example.png",
+        "audio": "/src/assets/audio/jsx-explanation.mp3"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Components Basics",
+      "content": "Components are the core concept of React, like reusable code building blocks. Components can be functions or classes, responsible for returning JSX to describe what the screen should look like. Components allow us to split complex UIs into multiple small, manageable parts, each with its own responsibilities and state.",
+      "codeExample": "// Function component (recommended)\nfunction Button() {\n  return <button>Click me</button>;\n}\n\n// Component with props\nfunction Greeting(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}\n\n// Using components\nfunction App() {\n  return (\n    <div>\n      <Greeting name=\"Alice\" />\n      <Button />\n    </div>\n  );\n}",
+      "quiz": {
+        "question": "What is the main purpose of React components?",
+        "options": ["Creating reusable UI elements", "Handling network requests", "Managing databases", "Compiling CSS"],
+        "answer": "Creating reusable UI elements"
+      },
+      "media": {
+        "image": "/src/assets/images/components-diagram.png",
+        "audio": "/src/assets/audio/components-intro.mp3"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Props Data Passing",
+      "content": "Props (properties) are the way to pass data between components, just like function parameters. Parent components can pass data to child components through props, making components more flexible and reusable. Props are read-only, child components cannot modify the received props, which ensures unidirectional data flow and predictability.",
+      "codeExample": "// Component that receives props\nfunction UserCard(props) {\n  return (\n    <div className=\"user-card\">\n      <h2>{props.name}</h2>\n      <p>Age: {props.age}</p>\n      <p>Job: {props.job}</p>\n    </div>\n  );\n}\n\n// Using the component and passing props\nfunction App() {\n  return (\n    <div>\n      <UserCard name=\"Alice\" age={25} job=\"Engineer\" />\n      <UserCard name=\"Bob\" age={30} job=\"Designer\" />\n    </div>\n  );\n}",
+      "quiz": {
+        "question": "What is the characteristic of Props?",
+        "options": ["Read-only, cannot be modified", "Can be modified by child components", "Can only pass strings", "Can only be used in class components"],
+        "answer": "Read-only, cannot be modified"
+      },
+      "media": {
+        "image": "/src/assets/images/props-flow.png",
+        "audio": "/src/assets/audio/props-explanation.mp3"
+      }
+    },
+    {
+      "id": 5,
+      "title": "State Management",
+      "content": "State is the internal state data of a component. When state changes, React automatically re-renders the component. In function components, we use the useState Hook to manage state. State makes components dynamic, able to respond to user interactions and other events. Unlike props, state is private to the component and can be modified by the component itself.",
+      "codeExample": "import { useState } from 'react';\n\nfunction Counter() {\n  // Declare a state variable called count\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>You clicked {count} times</p>\n      <button onClick={() => setCount(count + 1)}>\n        Click +1\n      </button>\n      <button onClick={() => setCount(0)}>\n        Reset\n      </button>\n    </div>\n  );\n}",
+      "quiz": {
+        "question": "What does the useState Hook return?",
+        "options": ["An array containing the state value and update function", "Only the state value", "Only the update function", "An object"],
+        "answer": "An array containing the state value and update function"
+      },
+      "media": {
+        "image": "/src/assets/images/state-diagram.png",
+        "audio": "/src/assets/audio/state-management.mp3"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Event Handling",
+      "content": "Event handling in React is similar to HTML, but uses SyntheticEvent, which is React's wrapper around native DOM events. Event handler functions usually start with 'on', such as onClick, onChange, etc. React events are cross-browser compatible and support event delegation to improve performance.",
+      "codeExample": "function Button() {\n  // Event handler function\n  const handleClick = (event) => {\n    event.preventDefault();\n    alert('Button was clicked!');\n  };\n\n  const handleMouseOver = () => {\n    console.log('Mouse entered button');\n  };\n\n  return (\n    <button \n      onClick={handleClick}\n      onMouseOver={handleMouseOver}\n    >\n      Click me\n    </button>\n  );\n}",
+      "quiz": {
+        "question": "What is React's event object called?",
+        "options": ["SyntheticEvent", "NativeEvent", "ReactEvent", "DOMEvent"],
+        "answer": "SyntheticEvent"
+      },
+      "media": {
+        "image": "/src/assets/images/event-handling.png",
+        "audio": "/src/assets/audio/events-explanation.mp3"
+      }
+    },
+    {
+      "id": 7,
+      "title": "Conditional Rendering",
+      "content": "Conditional rendering allows us to decide what content to render based on different conditions. Common conditional rendering methods in React include: if statements, ternary operators (? :), logical AND operator (&&), etc. This enables us to create dynamic user interfaces that display different content based on application state.",
+      "codeExample": "function Greeting({ isLoggedIn, username }) {\n  // Using if statement\n  if (isLoggedIn) {\n    return <h1>Welcome back, {username}!</h1>;\n  }\n  return <h1>Please log in</h1>;\n}\n\nfunction App() {\n  const [isLoggedIn, setIsLoggedIn] = useState(false);\n  \n  return (\n    <div>\n      {/* Using ternary operator */}\n      {isLoggedIn ? (\n        <p>You are logged in</p>\n      ) : (\n        <p>You are not logged in</p>\n      )}\n      \n      {/* Using logical AND */}\n      {isLoggedIn && <button>Logout</button>}\n    </div>\n  );\n}",
+      "quiz": {
+        "question": "Which of the following is NOT a common conditional rendering method in React?",
+        "options": ["switch statement", "ternary operator", "logical AND operator", "if statement"],
+        "answer": "switch statement"
+      },
+      "media": {
+        "image": "/src/assets/images/conditional-rendering.png",
+        "audio": "/src/assets/audio/conditional-explanation.mp3"
+      }
+    },
+    {
+      "id": 8,
+      "title": "List Rendering and Keys",
+      "content": "When rendering lists in React, we usually use JavaScript's map() method to iterate through arrays and return JSX elements. Each list item needs a unique key attribute, which helps React identify which items have changed, been added, or removed, thereby optimizing rendering performance. Keys should be stable, predictable, and unique among siblings.",
+      "codeExample": "function TodoList({ todos }) {\n  return (\n    <ul>\n      {todos.map((todo) => (\n        <li key={todo.id}>\n          <span>{todo.text}</span>\n          <span>{todo.completed ? '✓' : '○'}</span>\n        </li>\n      ))}\n    </ul>\n  );\n}\n\n// Usage example\nfunction App() {\n  const todos = [\n    { id: 1, text: 'Learn React', completed: true },\n    { id: 2, text: 'Practice JSX', completed: false },\n    { id: 3, text: 'Build first App', completed: false }\n  ];\n  \n  return <TodoList todos={todos} />;\n}",
+      "quiz": {
+        "question": "Why do list items need key attributes?",
+        "options": ["To help React optimize rendering performance", "To make CSS styles apply correctly", "To avoid JavaScript errors", "To support accessibility features"],
+        "answer": "To help React optimize rendering performance"
+      },
+      "media": {
+        "image": "/src/assets/images/list-rendering.png",
+        "audio": "/src/assets/audio/lists-and-keys.mp3"
+      }
+    },
+    {
+      "id": 9,
+      "title": "useEffect Hook",
+      "content": "useEffect is a Hook for handling side effects, such as data fetching, subscriptions, or manually changing the DOM. It's equivalent to the combination of componentDidMount, componentDidUpdate, and componentWillUnmount in class components. useEffect runs after every render, but you can control when it executes using the dependency array.",
+      "codeExample": "import { useState, useEffect } from 'react';\n\nfunction Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  useEffect(() => {\n    // Set up timer (side effect)\n    const interval = setInterval(() => {\n      setSeconds(prev => prev + 1);\n    }, 1000);\n\n    // Cleanup function (runs on component unmount)\n    return () => {\n      clearInterval(interval);\n    };\n  }, []); // Empty dependency array means run only once on mount\n\n  return <div>Timer: {seconds} seconds</div>;\n}",
+      "quiz": {
+        "question": "When is the useEffect cleanup function executed?",
+        "options": ["When component unmounts or before next effect runs", "Only when component mounts", "Every time state updates", "Only when errors occur"],
+        "answer": "When component unmounts or before next effect runs"
+      },
+      "media": {
+        "image": "/src/assets/images/useeffect-lifecycle.png",
+        "audio": "/src/assets/audio/useeffect-explanation.mp3"
+      }
+    },
+    {
+      "id": 10,
+      "title": "Form Handling and Controlled Components",
+      "content": "In React, form elements can be controlled or uncontrolled components. Controlled components have their values controlled by React state, with every input change triggering a state update. This approach allows us to validate input in real-time, format data, or dynamically update other parts of the UI based on input. Controlled components are the recommended way to handle forms in React.",
+      "codeExample": "import { useState } from 'react';\n\nfunction ContactForm() {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    message: ''\n  });\n\n  const handleChange = (e) => {\n    const { name, value } = e.target;\n    setFormData(prev => ({\n      ...prev,\n      [name]: value\n    }));\n  };\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    console.log('Form data:', formData);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        name=\"name\"\n        value={formData.name}\n        onChange={handleChange}\n        placeholder=\"Name\"\n      />\n      <input\n        name=\"email\"\n        value={formData.email}\n        onChange={handleChange}\n        placeholder=\"Email\"\n      />\n      <button type=\"submit\">Submit</button>\n    </form>\n  );\n}",
+      "quiz": {
+        "question": "What is the characteristic of controlled components?",
+        "options": ["Values are controlled by React state", "Values are controlled by DOM", "No event handling needed", "Cannot validate input"],
+        "answer": "Values are controlled by React state"
+      },
+      "media": {
+        "image": "/src/assets/images/controlled-components.png",
+        "audio": "/src/assets/audio/forms-explanation.mp3"
+      }
+    }
+  ]
+}

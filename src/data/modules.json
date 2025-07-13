@@ -1,0 +1,256 @@
+{
+  "modules": [
+    {
+      "id": 1,
+      "title": "React 是什麼？",
+      "description": "學習 React 的基本概念和核心特色",
+      "questions": [
+        {
+          "id": "1-1",
+          "content": "React 是由 Facebook 開發的 JavaScript 函式庫，專門用來建立使用者介面 (UI)。它讓開發者能夠用組件化的方式來建構網頁應用程式，每個組件都可以重複使用，讓程式碼更加模組化和易於維護。React 使用虛擬 DOM 來提升效能，只更新實際變更的部分。",
+          "codeExample": "// 一個簡單的 React 組件\nfunction Welcome() {\n  return <h1>Hello, React!</h1>;\n}\n\n// 在應用程式中使用\n<Welcome />",
+          "quiz": {
+            "question": "React 主要是用來做什麼的？",
+            "options": ["建立使用者介面", "處理資料庫", "管理伺服器", "編譯程式碼"],
+            "answer": "建立使用者介面"
+          },
+          "media": {
+            "image": "/src/assets/images/react-logo.png",
+            "audio": "/src/assets/audio/intro-bgm.mp3"
+          }
+        },
+        {
+          "id": "1-2",
+          "content": "React 的核心思想是組件化開發。每個組件都是獨立的、可重複使用的程式碼片段，具有自己的狀態和生命週期。這種架構讓大型應用程式的開發變得更加可維護和擴展。",
+          "codeExample": "// React 組件的基本結構\nfunction UserProfile({ name, age }) {\n  return (\n    <div className=\"user-profile\">\n      <h2>{name}</h2>\n      <p>年齡: {age}</p>\n    </div>\n  );\n}\n\n// 使用組件\n<UserProfile name=\"小明\" age={25} />",
+          "quiz": {
+            "question": "React 組件化開發的主要優點是什麼？",
+            "options": ["提高程式碼的重複使用性", "減少檔案大小", "提升網路速度", "降低記憶體使用"],
+            "answer": "提高程式碼的重複使用性"
+          },
+          "media": {
+            "image": "/src/assets/images/react-components.png",
+            "audio": "/src/assets/audio/components-intro.mp3"
+          }
+        },
+        {
+          "id": "1-3",
+          "content": "虛擬 DOM (Virtual DOM) 是 React 的核心技術之一。它是真實 DOM 的 JavaScript 表示，React 透過比較虛擬 DOM 的差異來最小化實際的 DOM 操作，大幅提升應用程式的效能。",
+          "codeExample": "// React 如何處理狀態更新\nfunction Counter() {\n  const [count, setCount] = useState(0);\n  \n  // 當狀態改變時，React 會重新渲染組件\n  return (\n    <div>\n      <p>計數: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        +1\n      </button>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "虛擬 DOM 的主要作用是什麼？",
+            "options": ["優化效能，減少 DOM 操作", "儲存使用者資料", "處理網路請求", "管理路由"],
+            "answer": "優化效能，減少 DOM 操作"
+          },
+          "media": {
+            "image": "/src/assets/images/virtual-dom.png",
+            "audio": "/src/assets/audio/virtual-dom.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "JSX 語法介紹",
+      "description": "掌握 JSX 語法的基本使用方式",
+      "questions": [
+        {
+          "id": "2-1",
+          "content": "JSX 是 JavaScript 的語法擴充，讓我們可以在 JavaScript 中寫類似 HTML 的語法。JSX 讓 React 組件的撰寫更加直觀，因為它結合了 JavaScript 的邏輯能力和 HTML 的結構化表達。瀏覽器無法直接執行 JSX，所以需要透過 Babel 等工具轉換成標準的 JavaScript。",
+          "codeExample": "// JSX 語法範例\nconst element = <h1>Hello, World!</h1>;\n\n// 在 JSX 中使用 JavaScript 表達式\nconst name = 'React';\nconst greeting = <h1>Hello, {name}!</h1>;",
+          "quiz": {
+            "question": "JSX 是什麼？",
+            "options": ["JavaScript 的語法擴充", "一種新的程式語言", "CSS 框架", "資料庫語言"],
+            "answer": "JavaScript 的語法擴充"
+          },
+          "media": {
+            "image": "/src/assets/images/jsx-example.png",
+            "audio": "/src/assets/audio/jsx-explanation.mp3"
+          }
+        },
+        {
+          "id": "2-2",
+          "content": "在 JSX 中，我們使用大括號 {} 來嵌入 JavaScript 表達式。這讓我們可以動態地顯示資料、執行函數、或進行條件渲染。",
+          "codeExample": "// JSX 中的 JavaScript 表達式\nfunction WelcomeMessage({ username, isLoggedIn }) {\n  return (\n    <div>\n      {isLoggedIn ? (\n        <h1>歡迎回來, {username}！</h1>\n      ) : (\n        <h1>請先登入</h1>\n      )}\n      <p>2 + 3 = {2 + 3}</p>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "在 JSX 中如何嵌入 JavaScript 表達式？",
+            "options": ["使用大括號 {}", "使用小括號 ()", "使用方括號 []", "使用雙引號 \"\""],
+            "answer": "使用大括號 {}"
+          },
+          "media": {
+            "image": "/src/assets/images/jsx-expressions.png",
+            "audio": "/src/assets/audio/jsx-expressions.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "組件 (Components) 基礎",
+      "description": "理解 React 組件的基本概念和用法",
+      "questions": [
+        {
+          "id": "3-1",
+          "content": "組件是 React 的核心概念，它就像是可重複使用的程式碼積木。組件可以是函式或類別，負責回傳 JSX 來描述畫面應該長什麼樣子。",
+          "codeExample": "// 函式組件範例\nfunction Button() {\n  return <button>點擊我</button>;\n}\n\n// 使用組件\nfunction App() {\n  return (\n    <div>\n      <Button />\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "React 組件的主要用途是什麼？",
+            "options": ["建立可重複使用的 UI 元素", "處理網路請求", "管理資料庫", "編譯 CSS"],
+            "answer": "建立可重複使用的 UI 元素"
+          },
+          "media": {
+            "image": "/src/assets/images/components-diagram.png",
+            "audio": "/src/assets/audio/components-intro.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Props 屬性傳遞",
+      "description": "學習如何在組件間傳遞資料",
+      "questions": [
+        {
+          "id": "4-1",
+          "content": "Props (properties) 是組件之間傳遞資料的方式，就像函式的參數一樣。父組件可以透過 props 將資料傳遞給子組件。",
+          "codeExample": "// 定義接收 props 的組件\nfunction UserCard(props) {\n  return (\n    <div>\n      <h2>{props.name}</h2>\n      <p>年齡: {props.age}</p>\n    </div>\n  );\n}\n\n// 傳遞 props\n<UserCard name=\"Alice\" age={25} />",
+          "quiz": {
+            "question": "Props 的特性是什麼？",
+            "options": ["唯讀的，不能被修改", "可以被子組件修改", "只能傳遞字串", "只能在類別組件中使用"],
+            "answer": "唯讀的，不能被修改"
+          },
+          "media": {
+            "image": "/src/assets/images/props-flow.png",
+            "audio": "/src/assets/audio/props-explanation.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "State 狀態管理",
+      "description": "掌握組件內部狀態的管理方式",
+      "questions": [
+        {
+          "id": "5-1",
+          "content": "State 是組件內部的狀態資料，當 state 改變時，React 會自動重新渲染組件。在函式組件中，我們使用 useState Hook 來管理狀態。",
+          "codeExample": "import { useState } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>你點擊了 {count} 次</p>\n      <button onClick={() => setCount(count + 1)}>\n        點擊 +1\n      </button>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "useState Hook 回傳什麼？",
+            "options": ["一個陣列，包含狀態值和更新函式", "只有狀態值", "只有更新函式", "一個物件"],
+            "answer": "一個陣列，包含狀態值和更新函式"
+          },
+          "media": {
+            "image": "/src/assets/images/state-diagram.png",
+            "audio": "/src/assets/audio/state-management.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "事件處理",
+      "description": "學習在 React 中處理使用者互動事件",
+      "questions": [
+        {
+          "id": "6-1",
+          "content": "React 中的事件處理與 HTML 類似，但使用的是 SyntheticEvent，這是 React 對原生 DOM 事件的封裝。",
+          "codeExample": "function Button() {\n  const handleClick = (event) => {\n    event.preventDefault();\n    alert('按鈕被點擊了！');\n  };\n\n  return (\n    <button onClick={handleClick}>\n      點擊我\n    </button>\n  );\n}",
+          "quiz": {
+            "question": "React 中的事件物件叫做什麼？",
+            "options": ["SyntheticEvent", "NativeEvent", "ReactEvent", "DOMEvent"],
+            "answer": "SyntheticEvent"
+          },
+          "media": {
+            "image": "/src/assets/images/event-handling.png",
+            "audio": "/src/assets/audio/events-explanation.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "條件渲染",
+      "description": "學習根據條件動態顯示不同內容",
+      "questions": [
+        {
+          "id": "7-1",
+          "content": "條件渲染讓我們可以根據不同的條件來決定要渲染什麼內容。React 中常用的方式包括三元運算子和邏輯 AND 運算子。",
+          "codeExample": "function Greeting({ isLoggedIn, username }) {\n  return (\n    <div>\n      {isLoggedIn ? (\n        <h1>歡迎回來, {username}!</h1>\n      ) : (\n        <h1>請先登入</h1>\n      )}\n      {isLoggedIn && <button>登出</button>}\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "下列哪個不是 React 中常用的條件渲染方式？",
+            "options": ["switch 語句", "三元運算子", "邏輯 AND 運算子", "if 語句"],
+            "answer": "switch 語句"
+          },
+          "media": {
+            "image": "/src/assets/images/conditional-rendering.png",
+            "audio": "/src/assets/audio/conditional-explanation.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "列表渲染與 Key",
+      "description": "學習如何渲染列表並理解 Key 的重要性",
+      "questions": [
+        {
+          "id": "8-1",
+          "content": "在 React 中渲染列表時，我們使用 map() 方法來遍歷陣列。每個列表項目都需要一個唯一的 key 屬性來幫助 React 優化渲染效能。",
+          "codeExample": "function TodoList({ todos }) {\n  return (\n    <ul>\n      {todos.map((todo) => (\n        <li key={todo.id}>\n          {todo.text}\n        </li>\n      ))}\n    </ul>\n  );\n}",
+          "quiz": {
+            "question": "為什麼列表項目需要 key 屬性？",
+            "options": ["幫助 React 優化渲染效能", "讓 CSS 樣式正確套用", "避免 JavaScript 錯誤", "支援無障礙功能"],
+            "answer": "幫助 React 優化渲染效能"
+          },
+          "media": {
+            "image": "/src/assets/images/list-rendering.png",
+            "audio": "/src/assets/audio/lists-and-keys.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "useEffect Hook",
+      "description": "學習處理副作用和生命週期",
+      "questions": [
+        {
+          "id": "9-1",
+          "content": "useEffect 是處理副作用的 Hook，如資料獲取、訂閱、或手動更改 DOM。它可以在組件渲染後執行特定的操作。",
+          "codeExample": "import { useState, useEffect } from 'react';\n\nfunction Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setSeconds(prev => prev + 1);\n    }, 1000);\n\n    return () => clearInterval(interval);\n  }, []);\n\n  return <div>計時器: {seconds} 秒</div>;\n}",
+          "quiz": {
+            "question": "useEffect 的清理函式何時會被執行？",
+            "options": ["組件卸載時或下次 effect 執行前", "只在組件掛載時", "每次狀態更新時", "只在發生錯誤時"],
+            "answer": "組件卸載時或下次 effect 執行前"
+          },
+          "media": {
+            "image": "/src/assets/images/useeffect-lifecycle.png",
+            "audio": "/src/assets/audio/useeffect-explanation.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "表單處理與受控組件",
+      "description": "學習在 React 中處理表單和使用者輸入",
+      "questions": [
+        {
+          "id": "10-1",
+          "content": "在 React 中，受控組件的值由 React state 控制。每次輸入變更都會觸發 state 更新，這讓我們可以即時驗證輸入或動態更新 UI。",
+          "codeExample": "import { useState } from 'react';\n\nfunction ContactForm() {\n  const [name, setName] = useState('');\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    console.log('提交:', name);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        value={name}\n        onChange={(e) => setName(e.target.value)}\n        placeholder=\"姓名\"\n      />\n      <button type=\"submit\">送出</button>\n    </form>\n  );\n}",
+          "quiz": {
+            "question": "受控組件的特徵是什麼？",
+            "options": ["值由 React state 控制", "值由 DOM 控制", "不需要事件處理", "不能驗證輸入"],
+            "answer": "值由 React state 控制"
+          },
+          "media": {
+            "image": "/src/assets/images/controlled-components.png",
+            "audio": "/src/assets/audio/forms-explanation.mp3"
+          }
+        }
+      ]
+    }
+  ]
+}

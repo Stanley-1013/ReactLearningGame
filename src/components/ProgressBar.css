@@ -1,0 +1,274 @@
+/* ProgressBar 元件樣式 */
+.progress-bar-container {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* 進度條尺寸變體 */
+.progress-bar-container.small {
+  margin: 0.5rem 0;
+}
+
+.progress-bar-container.small .progress-bar-track {
+  height: 8px;
+}
+
+.progress-bar-container.small .progress-text {
+  font-size: 0.8rem;
+}
+
+.progress-bar-container.medium .progress-bar-track {
+  height: 12px;
+}
+
+.progress-bar-container.large .progress-bar-track {
+  height: 16px;
+}
+
+.progress-bar-container.large .progress-text {
+  font-size: 1.2rem;
+}
+
+/* 進度條包裝器 */
+.progress-bar-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* 進度條軌道 */
+.progress-bar-track {
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(90deg, #f0f2f5 0%, #e9ecef 100%);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 進度條填充 */
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  min-width: 0;
+  background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+  box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+}
+
+.progress-bar-fill.animated {
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 進度條光澤效果 */
+.progress-bar-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shine 2s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 進度文字 */
+.progress-text {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.progress-percentage {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #2c3e50;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 狀態資訊 */
+.progress-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.status-icon {
+  font-size: 1.2rem;
+}
+
+/* 狀態樣式變體 */
+.progress-status.not-started {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #6c757d;
+  border: 2px solid #dee2e6;
+}
+
+.progress-status.beginner {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  color: #856404;
+  border: 2px solid #ffeaa7;
+}
+
+.progress-status.learning {
+  background: linear-gradient(135deg, #cff4fc 0%, #b6f7ff 100%);
+  color: #055160;
+  border: 2px solid #b6f7ff;
+}
+
+.progress-status.progressing {
+  background: linear-gradient(135deg, #e2e3ff 0%, #c7d2fe 100%);
+  color: #3730a3;
+  border: 2px solid #c7d2fe;
+}
+
+.progress-status.almost-done {
+  background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);
+  color: #92400e;
+  border: 2px solid #fbbf24;
+}
+
+.progress-status.completed {
+  background: linear-gradient(135deg, #bbf7d0 0%, #34d399 100%);
+  color: #064e3b;
+  border: 2px solid #34d399;
+  animation: celebration 2s ease-in-out;
+}
+
+/* 完成慶祝動畫 */
+@keyframes celebration {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* 響應式設計 - 平板 */
+@media (max-width: 768px) {
+  .progress-status {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .status-icon {
+    font-size: 1rem;
+  }
+  
+  .progress-percentage {
+    font-size: 0.9rem;
+  }
+}
+
+/* 響應式設計 - 手機 */
+@media (max-width: 480px) {
+  .progress-bar-container {
+    margin: 0.8rem 0;
+  }
+  
+  .progress-status {
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .status-icon {
+    font-size: 1.5rem;
+  }
+  
+  .progress-percentage {
+    font-size: 0.85rem;
+  }
+}
+
+/* 深色主題支援 */
+@media (prefers-color-scheme: dark) {
+  .progress-bar-track {
+    background: linear-gradient(90deg, #2d3748 0%, #1a202c 100%);
+  }
+  
+  .progress-percentage {
+    color: #f7fafc;
+  }
+  
+  .progress-status.not-started {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    color: #cbd5e0;
+    border-color: #4a5568;
+  }
+}
+
+/* 高對比度支援 */
+@media (prefers-contrast: high) {
+  .progress-bar-track {
+    border: 2px solid #000;
+  }
+  
+  .progress-bar-fill {
+    border: 1px solid #000;
+  }
+  
+  .progress-status {
+    border-width: 3px;
+  }
+}
+
+/* 減少動畫偏好支援 */
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-fill.animated {
+    transition: none;
+  }
+  
+  .progress-bar-shine {
+    animation: none;
+  }
+  
+  .progress-status.completed {
+    animation: none;
+  }
+}
+
+/* 未來可加入的樣式擴充 */
+
+/* 圓形進度條變體 (預留) */
+.progress-bar-container.circular {
+  /* 圓形進度條樣式 */
+}
+
+/* 階梯式進度條變體 (預留) */
+.progress-bar-container.stepped {
+  /* 有步驟標記的進度條樣式 */
+}
+
+/* 彩虹漸層主題 (預留) */
+.progress-bar-container.rainbow {
+  /* 彩虹色進度條樣式 */
+}
+
+/* 霓虹燈效果主題 (預留) */
+.progress-bar-container.neon {
+  /* 霓虹燈風格進度條樣式 */
+}

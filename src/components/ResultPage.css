@@ -1,0 +1,420 @@
+/* ResultPage 專用樣式 */
+.result-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* 頁面標題 */
+.result-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.result-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.result-header p {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+}
+
+/* 進度概覽卡片 */
+.progress-overview-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  margin-bottom: 3rem;
+  color: white;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+}
+
+.overview-content {
+  text-align: center;
+}
+
+/* 進度統計 */
+.progress-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-divider {
+  font-size: 2rem;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+/* 主要進度條區域 */
+.main-progress {
+  margin: 2rem 0;
+}
+
+/* 完成訊息 */
+.completion-message {
+  margin-top: 1.5rem;
+}
+
+.success-message {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.encouragement-message {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* 關卡進度區域 */
+.modules-progress {
+  margin-bottom: 3rem;
+}
+
+.modules-progress h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* 關卡進度卡片 */
+.module-progress-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.module-progress-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.module-progress-card.completed {
+  border-left: 4px solid #27ae60;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fff8 100%);
+}
+
+.module-progress-card.unlocked {
+  border-left: 4px solid #3498db;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fcff 100%);
+}
+
+.module-progress-card.locked {
+  border-left: 4px solid #bdc3c7;
+  background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+  opacity: 0.7;
+}
+
+.module-status-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+}
+
+.module-info {
+  flex: 1;
+}
+
+.module-info h3 {
+  color: #2c3e50;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.module-info p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.module-action {
+  min-width: 80px;
+}
+
+/* 成就系統 */
+.achievements-section {
+  margin-bottom: 3rem;
+}
+
+.achievements-section h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.achievement-card {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(251, 177, 160, 0.3);
+  transition: all 0.3s ease;
+  animation: achievementAppear 0.6s ease-out;
+}
+
+.achievement-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(251, 177, 160, 0.4);
+}
+
+@keyframes achievementAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.achievement-icon {
+  font-size: 2rem;
+  width: 50px;
+  text-align: center;
+}
+
+.achievement-info h3 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.achievement-info p {
+  color: #5d4e75;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* 操作按鈕區域 */
+.result-actions {
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 180px;
+}
+
+/* 開發者選項 */
+.developer-actions {
+  border-top: 1px solid #ecf0f1;
+  padding-top: 1rem;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+}
+
+/* 小尺寸按鈕 */
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  min-width: auto;
+}
+
+/* 統計圖表預留區域 */
+.stats-charts {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #dee2e6;
+}
+
+.chart-placeholder {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* 響應式設計 - 平板 */
+@media (max-width: 768px) {
+  .result-page {
+    padding: 1rem;
+  }
+  
+  .result-header h1 {
+    font-size: 2rem;
+  }
+  
+  .progress-overview-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .progress-stats {
+    gap: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .modules-grid,
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-buttons .btn {
+    min-width: 250px;
+  }
+}
+
+/* 響應式設計 - 手機 */
+@media (max-width: 480px) {
+  .result-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .result-header p {
+    font-size: 1rem;
+  }
+  
+  .progress-overview-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .progress-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .stat-divider {
+    transform: rotate(90deg);
+    font-size: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .module-progress-card,
+  .achievement-card {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .module-info,
+  .achievement-info {
+    text-align: center;
+  }
+  
+  .action-buttons .btn {
+    min-width: 200px;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* 動畫和過渡效果 */
+.result-page {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 進度卡片依序出現動畫 */
+.module-progress-card {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.module-progress-card:nth-child(1) { animation-delay: 0.1s; }
+.module-progress-card:nth-child(2) { animation-delay: 0.2s; }
+.module-progress-card:nth-child(3) { animation-delay: 0.3s; }
+.module-progress-card:nth-child(4) { animation-delay: 0.4s; }
+.module-progress-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
