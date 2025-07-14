@@ -2,9 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useModules } from '../hooks/useModules';
-import { useThemes } from '../hooks/useThemes';
 import ProgressBar from './ProgressBar';
-import ThemeSelector from './ThemeSelector';
 import { FormButton } from './FormComponents';
 import './HomePage.css';
 
@@ -21,42 +19,27 @@ import './HomePage.css';
 function HomePage() {
   const { isLanguage } = useLanguage();
   const { modules: staticModules, isLoading: modulesLoading } = useModules();
-  const { getActiveModules, hasThemeModules, currentTheme, isLoading: themesLoading } = useThemes();
   const [unlockedModules, setUnlockedModules] = useState(new Set());
   const [completedModules, setCompletedModules] = useState(new Set());
-  const [showThemeSelector, setShowThemeSelector] = useState(false);
 
   /**
-   * 決定當前應使用的模組資料
-   * 優先使用主題專用模組，否則使用靜態模組
-   * 但確保不顯示空的模組列表
+   * 使用靜態模組資料（實習學習計畫固定內容）
    */
   const activeModules = useMemo(() => {
-    const themeModules = getActiveModules();
-    
-    // 如果有主題專用模組且不為空，使用主題模組
-    if (themeModules && themeModules.length > 0) {
-      console.log('🎨 HomePage 使用主題專用模組:', themeModules.length, '個');
-      return themeModules;
-    }
-    
-    // 如果靜態模組可用且不為空，使用靜態模組
     if (staticModules && staticModules.length > 0) {
-      console.log('📂 HomePage 使用靜態模組:', staticModules.length, '個');
+      console.log('📂 HomePage 使用實習學習計畫模組:', staticModules.length, '個');
       return staticModules;
     }
     
-    // 如果都沒有資料，返回空陣列但記錄警告
     console.log('⚠️ HomePage 沒有可用的模組資料，等待載入中...');
     return [];
-  }, [getActiveModules, staticModules]);
+  }, [staticModules]);
 
   /**
-   * 合併載入狀態 - 檢查是否正在載入或沒有可用模組
+   * 載入狀態 - 檢查是否正在載入或沒有可用模組
    */
-  const isLoadingOrEmpty = modulesLoading || themesLoading;
   const hasNoModules = activeModules.length === 0;
-  const isLoading = isLoadingOrEmpty;
+  const isLoading = modulesLoading;
   
   /**
    * 取得總模組數量（基於當前使用的模組）
@@ -126,45 +109,6 @@ function HomePage() {
     return isLanguage('en-US') ? enText : zhText;
   };
 
-  /**
-   * 處理主題變更
-   */
-  const handleThemeChange = (theme, moduleData) => {
-    console.log('✅ 首頁收到主題切換通知:', theme.name);
-    console.log('📦 新的模組資料:', moduleData);
-    
-    // 顯示成功通知
-    if (theme && theme.name) {
-      console.log(`🎨 主題已切換至: ${theme.name}`);
-      console.log(`📊 模組將自動更新為主題專用內容 (${moduleData?.modules?.length || 0} 個模組)`);
-    }
-    
-    // 重置完成狀態，因為新主題可能有不同的模組結構
-    if (moduleData?.modules) {
-      const newModuleIds = Array.from({ length: moduleData.modules.length }, (_, i) => i + 1);
-      setUnlockedModules(new Set(newModuleIds));
-      
-      // 清除之前主題的完成狀態，開始新主題
-      setCompletedModules(new Set());
-      
-      // 更新 localStorage 中的進度資料
-      const updatedProgress = {
-        unlocked: newModuleIds,
-        completed: [],
-        currentTheme: theme.id,
-        themeChangedAt: new Date().toISOString()
-      };
-      localStorage.setItem('reactGameProgress', JSON.stringify(updatedProgress));
-      
-      console.log(`🔄 重置進度：解鎖 ${newModuleIds.length} 個新模組，完成狀態已清除`);
-    }
-    
-    // 自動隱藏主題選擇器
-    setShowThemeSelector(false);
-    
-    // activeModules 會自動透過 useMemo 重新計算並使用新的主題模組
-    // React 會自動重新渲染，顯示新的主題內容
-  };
 
   if (isLoading) {
     return (
@@ -177,29 +121,10 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      {/* 主題選擇器 */}
-      {showThemeSelector && (
-        <section className="theme-section">
-          <ThemeSelector 
-            onThemeChange={handleThemeChange}
-            compact={false}
-          />
-        </section>
-      )}
-
       {/* 頁面標題和進度概覽 */}
       <section className="progress-section">
         <div className="section-header">
-          <h2>{getText('學習進度', 'Learning Progress')}</h2>
-          
-          {/* 主題選擇按鈕 */}
-          <button 
-            className="theme-toggle-btn"
-            onClick={() => setShowThemeSelector(!showThemeSelector)}
-            title={getText('選擇學習主題', 'Select Learning Theme')}
-          >
-            🎨 {getText('切換主題', 'Switch Theme')}
-          </button>
+          <h2>{getText('React 實習生學習計畫', 'React Intern Learning Plan')}</h2>
         </div>
         
         <div className="progress-overview">
@@ -235,13 +160,7 @@ function HomePage() {
         
         {hasNoModules && !isLoading ? (
           <div className="empty-modules">
-            <p>{getText('目前沒有可用的關卡，請嘗試切換主題', 'No lessons available, try switching themes')}</p>
-            <button 
-              className="btn btn-primary"
-              onClick={() => setShowThemeSelector(true)}
-            >
-              🎨 {getText('選擇主題', 'Select Theme')}
-            </button>
+            <p>{getText('載入實習學習計畫中...', 'Loading intern learning plan...')}</p>
           </div>
         ) : (
           <div className="modules-grid">

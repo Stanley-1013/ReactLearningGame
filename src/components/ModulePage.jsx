@@ -26,6 +26,8 @@ function ModulePage() {
   const [isCompleted, setIsCompleted] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0); // 用於強制重新隨機選題
+  const [completedQuestions, setCompletedQuestions] = useState(new Set()); // 追蹤已完成的題目
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // 當前題目索引
   const prevModuleIdRef = useRef(null); // 追蹤上一次的模組 ID
   const totalModules = getTotalModules();
 
@@ -38,7 +40,7 @@ function ModulePage() {
   };
 
   /**
-   * 使用 useMemo 進行隨機選題，只在需要時重新選擇
+   * 使用 useMemo 進行順序選題，根據當前題目索引選擇
    */
   const currentModule = useMemo(() => {
     if (isLoading || !modules.length) {
@@ -52,34 +54,31 @@ function ModulePage() {
       return null;
     }
 
-    // 使用穩定的隨機種子來避免無限重新計算
-    // 基於 moduleId 和 refreshKey 生成穩定的隨機索引
-    const seed = (moduleId * 1000) + refreshKey;
-    const randomIndex = seed % foundModule.questions.length;
-    const randomQuestion = foundModule.questions[randomIndex];
+    // 使用當前題目索引選擇題目
+    const currentQuestion = foundModule.questions[currentQuestionIndex] || foundModule.questions[0];
 
-    // 為選項生成穩定的洗牌結果，使用種子確保每次結果相同
-    const shuffleSeed = (moduleId * 10000) + (refreshKey * 100) + randomIndex;
-    const shuffledOptions = randomQuestion.quiz?.options ? 
-      shuffleArrayWithSeed([...randomQuestion.quiz.options], shuffleSeed) : [];
+    // 為選項生成穩定的洗牌結果
+    const shuffleSeed = (moduleId * 10000) + (currentQuestionIndex * 100);
+    const shuffledOptions = currentQuestion.quiz?.options ? 
+      shuffleArrayWithSeed([...currentQuestion.quiz.options], shuffleSeed) : [];
 
     // 返回包含選中題目的模組物件
     return {
       ...foundModule,
       // 保留原有格式相容性，將選中的題目內容提升到模組層級
-      content: randomQuestion.content,
-      codeExample: randomQuestion.codeExample,
+      content: currentQuestion.content,
+      codeExample: currentQuestion.codeExample,
       quiz: {
-        ...randomQuestion.quiz,
+        ...currentQuestion.quiz,
         shuffledOptions // 將洗牌後的選項加入到 quiz 物件中
       },
-      media: randomQuestion.media,
+      media: currentQuestion.media,
       // 新增欄位
-      currentQuestion: randomQuestion,
+      currentQuestion: currentQuestion,
       totalQuestions: foundModule.questions.length,
-      questionIndex: foundModule.questions.findIndex(q => q.id === randomQuestion.id) + 1
+      questionIndex: currentQuestionIndex + 1
     };
-  }, [id, getModuleById, modules.length, isLoading, refreshKey]);
+  }, [id, getModuleById, modules.length, isLoading, currentQuestionIndex]);
 
   /**
    * 重置所有答題狀態（用於切換關卡時）
@@ -90,6 +89,8 @@ function ModulePage() {
     setShowResult(false);
     setIsCorrect(false);
     setAudioPlaying(false);
+    setCurrentQuestionIndex(0);
+    setCompletedQuestions(new Set());
   }, []); // 空依賴陣列，因為只操作 setState
 
   /**
@@ -101,15 +102,32 @@ function ModulePage() {
     if (savedProgress) {
       try {
         const progress = JSON.parse(savedProgress);
-        setIsCompleted(progress.completed?.includes(moduleId) || false);
+        // 檢查模組是否完成所有題目
+        const moduleProgress = progress.moduleProgress?.[moduleId];
+        if (moduleProgress) {
+          const foundModule = getModuleById(moduleId);
+          if (foundModule && foundModule.questions) {
+            const totalQuestions = foundModule.questions.length;
+            const completedQuestions = Object.keys(moduleProgress.completedQuestions || {}).length;
+            const allCompleted = completedQuestions === totalQuestions;
+            setIsCompleted(allCompleted);
+            // 恢復已完成的題目狀態
+            setCompletedQuestions(new Set(Object.keys(moduleProgress.completedQuestions || {})));
+            return;
+          }
+        }
+        setIsCompleted(false);
+        setCompletedQuestions(new Set());
       } catch (error) {
         console.error('讀取進度失敗:', error);
         setIsCompleted(false);
+        setCompletedQuestions(new Set());
       }
     } else {
       setIsCompleted(false);
+      setCompletedQuestions(new Set());
     }
-  }, []); // 空依賴陣列，因為只操作 localStorage 和 setState
+  }, [getModuleById]); // 添加 getModuleById 到依賴陣列
 
   /**
    * 載入關卡資料 - 只處理導航邏輯，不設定 module 狀態
@@ -174,30 +192,44 @@ function ModulePage() {
       return;
     }
 
-    const correct = selectedAnswer === module.quiz.answer;
+    const correct = selectedAnswer === currentModule.quiz.answer;
     setIsCorrect(correct);
     setShowResult(true);
 
-    if (correct && !isCompleted) {
-      // 答對且未完成過，更新進度
-      updateProgress();
+    if (correct) {
+      // 答對時標記當前題目為完成
+      const currentQuestionId = currentModule.currentQuestion.id;
+      const newCompletedQuestions = new Set(completedQuestions);
+      newCompletedQuestions.add(currentQuestionId);
+      setCompletedQuestions(newCompletedQuestions);
+      
+      // 更新進度
+      updateProgress(currentQuestionId, newCompletedQuestions);
     }
   };
 
   /**
    * 更新 LocalStorage 中的進度
-   * 標記當前關卡為已完成（所有關卡都已解鎖）
+   * 記錄題目完成狀態，檢查模組是否全部完成
    */
-  const updateProgress = () => {
+  const updateProgress = (questionId, completedQuestionsSet) => {
     const savedProgress = localStorage.getItem('reactGameProgress');
     const allModuleIds = Array.from({ length: totalModules }, (_, i) => i + 1);
-    let progress = { unlocked: allModuleIds, completed: [] };
+    let progress = { 
+      unlocked: allModuleIds, 
+      completed: [], 
+      moduleProgress: {} 
+    };
     
     if (savedProgress) {
       try {
         progress = JSON.parse(savedProgress);
         // 確保所有關卡都解鎖
         progress.unlocked = allModuleIds;
+        // 確保 moduleProgress 存在
+        if (!progress.moduleProgress) {
+          progress.moduleProgress = {};
+        }
       } catch (error) {
         console.error('讀取進度失敗:', error);
       }
@@ -205,14 +237,29 @@ function ModulePage() {
 
     const currentModuleId = parseInt(id);
     
-    // 標記當前關卡為已完成
-    if (!progress.completed.includes(currentModuleId)) {
-      progress.completed.push(currentModuleId);
+    // 初始化模組進度
+    if (!progress.moduleProgress[currentModuleId]) {
+      progress.moduleProgress[currentModuleId] = {
+        completedQuestions: {}
+      };
     }
     
-    // 儲存進度（不需要解鎖邏輯，因為所有關卡都已解鎖）
+    // 標記題目為完成
+    progress.moduleProgress[currentModuleId].completedQuestions[questionId] = true;
+    
+    // 檢查模組是否全部完成
+    const totalQuestions = currentModule.totalQuestions;
+    const completedCount = Object.keys(progress.moduleProgress[currentModuleId].completedQuestions).length;
+    const allQuestionsCompleted = completedCount === totalQuestions;
+    
+    // 如果所有題目都完成，標記模組為完成
+    if (allQuestionsCompleted && !progress.completed.includes(currentModuleId)) {
+      progress.completed.push(currentModuleId);
+      setIsCompleted(true);
+    }
+    
+    // 儲存進度
     localStorage.setItem('reactGameProgress', JSON.stringify(progress));
-    setIsCompleted(true);
   };
 
   /**
@@ -245,10 +292,32 @@ function ModulePage() {
   /**
    * 重新隨機選題（刷新當前關卡）
    */
-  const refreshCurrentModule = () => {
-    setRefreshKey(prev => prev + 1);
-    // 重置測驗狀態，因為題目會變化
-    resetQuizState();
+  /**
+   * 選擇特定題目
+   */
+  const selectQuestion = (questionIndex) => {
+    setCurrentQuestionIndex(questionIndex);
+    setSelectedAnswer('');
+    setShowResult(false);
+    setIsCorrect(false);
+  };
+
+  /**
+   * 下一題
+   */
+  const nextQuestion = () => {
+    if (currentQuestionIndex < currentModule.totalQuestions - 1) {
+      selectQuestion(currentQuestionIndex + 1);
+    }
+  };
+
+  /**
+   * 上一題
+   */
+  const prevQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      selectQuestion(currentQuestionIndex - 1);
+    }
   };
 
   if (isLoading || !module) {
@@ -288,23 +357,58 @@ function ModulePage() {
           )}
         </div>
         
-        {/* 題目資訊和控制 */}
+        {/* 題目選擇器 */}
         <div className="module-controls">
           {module.totalQuestions > 1 && (
-            <div className="question-info">
+            <div className="question-selector">
               <span className="question-indicator">
                 {getText(
                   `題目 ${module.questionIndex} / ${module.totalQuestions}`,
                   `Question ${module.questionIndex} / ${module.totalQuestions}`
                 )}
               </span>
-              <button 
-                className="btn btn-secondary btn-small refresh-btn"
-                onClick={refreshCurrentModule}
-                title={getText('重新隨機選題', 'Refresh random question')}
-              >
-                🔄 {getText('換題', 'New Question')}
-              </button>
+              
+              {/* 題目選擇下拉選單 */}
+              <div className="question-dropdown">
+                <select 
+                  value={currentQuestionIndex} 
+                  onChange={(e) => selectQuestion(parseInt(e.target.value))}
+                  className="question-select"
+                >
+                  {Array.from({ length: module.totalQuestions }, (_, i) => {
+                    const questionId = module.questions[i]?.id;
+                    const isCompleted = completedQuestions.has(questionId);
+                    return (
+                      <option key={i} value={i}>
+                        {getText(
+                          `題目 ${i + 1}${isCompleted ? ' ✓' : ''}`,
+                          `Question ${i + 1}${isCompleted ? ' ✓' : ''}`
+                        )}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+
+              {/* 題目導航按鈕 */}
+              <div className="question-nav">
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={prevQuestion}
+                  disabled={currentQuestionIndex === 0}
+                  title={getText('上一題', 'Previous question')}
+                >
+                  ←
+                </button>
+                <button 
+                  className="btn btn-secondary btn-small"
+                  onClick={nextQuestion}
+                  disabled={currentQuestionIndex === module.totalQuestions - 1}
+                  title={getText('下一題', 'Next question')}
+                >
+                  →
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -414,8 +518,8 @@ function ModulePage() {
                 <p>
                   {isCorrect 
                     ? getText(
-                        '恭喜完成這個關卡！下一關已解鎖。',
-                        'Congratulations! You completed this lesson. Next lesson unlocked.'
+                        `題目完成！${isCompleted ? '本關卡已全部完成！' : ''}`,
+                        `Question completed! ${isCompleted ? 'All questions in this lesson completed!' : ''}`
                       )
                     : getText(
                         `正確答案是：${module.quiz.answer}`,
@@ -429,7 +533,15 @@ function ModulePage() {
                       {getText('重新作答', 'Retry Quiz')}
                     </button>
                   )}
-                  {isCorrect && parseInt(id) < totalModules && (
+                  {isCorrect && currentQuestionIndex < module.totalQuestions - 1 && (
+                    <button 
+                      className="btn btn-primary"
+                      onClick={nextQuestion}
+                    >
+                      {getText('下一題 →', 'Next Question →')}
+                    </button>
+                  )}
+                  {isCorrect && isCompleted && parseInt(id) < totalModules && (
                     <Link 
                       to={`/module/${parseInt(id) + 1}`} 
                       className="btn btn-primary"

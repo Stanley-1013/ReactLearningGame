@@ -1,0 +1,414 @@
+/* AssessmentCriteria 組件樣式 */
+.assessment-criteria {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.assessment-criteria-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* 標題區域 */
+.assessment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+.assessment-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.assessment-title h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.assessment-type {
+  font-size: 0.9rem;
+  color: #666;
+  background: #f8f9fa;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.assessment-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* 按鈕樣式 */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-small {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+/* 進度區域 */
+.assessment-progress {
+  margin-bottom: 1.5rem;
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #495057;
+  font-weight: 500;
+}
+
+.progress-count {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1890ff 0%, #40a9ff 100%);
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+/* 評估報告 */
+.assessment-report {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.assessment-report h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.report-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.summary-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* 考核標準列表 */
+.criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.criteria-item {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.criteria-item:hover {
+  background: #f5f5f5;
+}
+
+.criteria-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.criteria-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.criteria-index {
+  font-weight: 600;
+  color: #1890ff;
+  min-width: 2rem;
+}
+
+.criteria-description {
+  flex: 1;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+/* 評分區域 */
+.criteria-assessment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.score-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.score-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.score-option {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  background: #f8f9fa;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.score-option:hover {
+  border-color: #1890ff;
+  background: #e6f7ff;
+}
+
+.score-option.selected {
+  border-color: transparent;
+  transform: scale(1.1);
+}
+
+/* 評分反饋 */
+.score-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.score-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.score-timestamp {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* 底部說明 */
+.assessment-footer {
+  padding-top: 1rem;
+  border-top: 1px solid #e1e5e9;
+}
+
+.score-legend h5 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-color {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 2px;
+}
+
+.legend-text {
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+/* 響應式設計 */
+@media (max-width: 1024px) {
+  .assessment-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .assessment-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .assessment-actions {
+    align-self: stretch;
+    justify-content: flex-start;
+  }
+  
+  .report-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .assessment-criteria {
+    padding: 1rem;
+  }
+  
+  .criteria-content {
+    gap: 0.75rem;
+  }
+  
+  .criteria-text {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .criteria-index {
+    min-width: auto;
+  }
+  
+  .score-options {
+    flex-wrap: wrap;
+  }
+  
+  .score-option {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+  
+  .legend-items {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .assessment-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .criteria-item {
+    padding: 0.75rem;
+  }
+  
+  .score-selector {
+    gap: 0.25rem;
+  }
+  
+  .score-options {
+    gap: 0.25rem;
+  }
+  
+  .score-option {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .summary-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .legend-text {
+    font-size: 0.8rem;
+  }
+}

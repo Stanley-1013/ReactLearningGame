@@ -55,6 +55,9 @@ function ChallengePage() {
   const [draggedItem, setDraggedItem] = useState(null);
   const [showHints, setShowHints] = useState(false);
   const [showAIControls, setShowAIControls] = useState(false);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(DIFFICULTY_LEVELS.BEGINNER);
+  const [selectedQuestionType, setSelectedQuestionType] = useState('all');
+  const [showQuestionSelector, setShowQuestionSelector] = useState(false);
 
   /**
    * 取得本地化文字
@@ -69,6 +72,50 @@ function ChallengePage() {
   useEffect(() => {
     fetchChallenge();
   }, []);
+
+  /**
+   * 處理挑戰選擇變更
+   */
+  const handleChallengeChange = (value) => {
+    const [difficulty, questionId] = value.split('-');
+    setSelectedDifficulty(difficulty);
+    // 根據選擇的難度和題目ID獲取對應的挑戰
+    fetchSpecificChallenge(difficulty, questionId);
+  };
+
+  /**
+   * 獲取特定挑戰題目
+   */
+  const fetchSpecificChallenge = async (difficulty, questionId) => {
+    try {
+      // 這裡可以根據難度和題目ID從題目庫中獲取對應的題目
+      // 暫時使用原有的fetchChallenge方法
+      await fetchChallenge(difficulty);
+    } catch (error) {
+      console.error('獲取挑戰題目失敗:', error);
+    }
+  };
+
+  /**
+   * 處理題目類型選擇變更
+   */
+  const handleQuestionTypeChange = (type) => {
+    setSelectedQuestionType(type);
+    // 重新獲取對應類型的題目
+    fetchChallenge(selectedDifficulty, type);
+  };
+
+  /**
+   * 取得難度文字
+   */
+  const getDifficultyText = (level) => {
+    const difficultyMap = {
+      [DIFFICULTY_LEVELS.BEGINNER]: getText('初級', 'Beginner'),
+      [DIFFICULTY_LEVELS.INTERMEDIATE]: getText('中級', 'Intermediate'),
+      [DIFFICULTY_LEVELS.ADVANCED]: getText('進階', 'Advanced')
+    };
+    return difficultyMap[level] || level;
+  };
 
   /**
    * 當確認對話框顯示時，滾動到頂部確保用戶能看到
@@ -209,29 +256,55 @@ function ChallengePage() {
             {isAIMode && <span className="ai-badge">🤖 AI</span>}
           </h1>
           <div className="challenge-controls">
+            {/* 挑戰題目選擇器 */}
+            <div className="challenge-selector">
+              <select 
+                value={`${selectedDifficulty}-${challenge?.id || 'current'}`}
+                onChange={(e) => handleChallengeChange(e.target.value)}
+                className="challenge-select"
+              >
+                <optgroup label={getText('初級挑戰', 'Beginner Challenges')}>
+                  <option value={`${DIFFICULTY_LEVELS.BEGINNER}-1`}>
+                    {getText('初級 - React 基礎概念', 'Beginner - React Basics')}
+                  </option>
+                  <option value={`${DIFFICULTY_LEVELS.BEGINNER}-2`}>
+                    {getText('初級 - JSX 語法練習', 'Beginner - JSX Syntax')}
+                  </option>
+                  <option value={`${DIFFICULTY_LEVELS.BEGINNER}-3`}>
+                    {getText('初級 - Props 傳遞', 'Beginner - Props Passing')}
+                  </option>
+                </optgroup>
+                <optgroup label={getText('中級挑戰', 'Intermediate Challenges')}>
+                  <option value={`${DIFFICULTY_LEVELS.INTERMEDIATE}-1`}>
+                    {getText('中級 - State 管理', 'Intermediate - State Management')}
+                  </option>
+                  <option value={`${DIFFICULTY_LEVELS.INTERMEDIATE}-2`}>
+                    {getText('中級 - 事件處理', 'Intermediate - Event Handling')}
+                  </option>
+                  <option value={`${DIFFICULTY_LEVELS.INTERMEDIATE}-3`}>
+                    {getText('中級 - 條件渲染', 'Intermediate - Conditional Rendering')}
+                  </option>
+                </optgroup>
+                <optgroup label={getText('進階挑戰', 'Advanced Challenges')}>
+                  <option value={`${DIFFICULTY_LEVELS.ADVANCED}-1`}>
+                    {getText('進階 - Hooks 應用', 'Advanced - Hooks Usage')}
+                  </option>
+                  <option value={`${DIFFICULTY_LEVELS.ADVANCED}-2`}>
+                    {getText('進階 - 性能優化', 'Advanced - Performance Optimization')}
+                  </option>
+                  <option value={`${DIFFICULTY_LEVELS.ADVANCED}-3`}>
+                    {getText('進階 - 複雜狀態管理', 'Advanced - Complex State Management')}
+                  </option>
+                </optgroup>
+              </select>
+            </div>
+            
             <button 
               className="btn btn-outline new-challenge-btn"
-              onClick={fetchChallenge}
-              title={getText('獲取新的挑戰題目', 'Get a new challenge')}
+              onClick={() => fetchChallenge(selectedDifficulty)}
+              title={getText('重新載入當前題目', 'Reload current challenge')}
             >
-              🎲 {getText('換一題', 'New Challenge')}
-            </button>
-            
-            {/* AI 控制按鈕 */}
-            <button 
-              className={`btn btn-outline ai-toggle-btn ${isAIMode ? 'active' : ''}`}
-              onClick={toggleAIMode}
-              title={getText('切換 AI 生成模式', 'Toggle AI Generation Mode')}
-            >
-              🤖 {getText('AI 模式', 'AI Mode')}
-            </button>
-            
-            <button 
-              className="btn btn-outline ai-settings-btn"
-              onClick={() => setShowAIControls(!showAIControls)}
-              title={getText('AI 設定', 'AI Settings')}
-            >
-              ⚙️
+              🔄 {getText('重新載入', 'Reload')}
             </button>
           </div>
         </div>
