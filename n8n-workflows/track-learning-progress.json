@@ -1,0 +1,146 @@
+{
+  "name": "React 學習遊戲 - 進度追蹤 API",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "track-learning-progress",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "webhook-trigger-progress",
+      "name": "進度追蹤觸發器",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [200, 300],
+      "webhookId": "track-learning-progress"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 處理進度追蹤請求\nconst requestBody = $input.item(0).json.body;\n\nconsole.log('收到進度追蹤請求:', requestBody);\n\n// 從請求中提取進度資料\nconst progressData = {\n  timestamp: requestBody.timestamp || new Date().toISOString(),\n  source: requestBody.source || 'react-learning-game',\n  action: requestBody.action || 'track_progress',\n  userId: requestBody.data?.user_id || 'anonymous',\n  moduleId: requestData.data?.module_id,\n  themeId: requestBody.data?.theme_id,\n  completed: requestBody.data?.completed || false,\n  score: requestBody.data?.score || 0,\n  timeSpent: requestBody.data?.time_spent || 0,\n  language: requestBody.data?.language_code || 'zh-TW'\n};\n\n// 這裡可以將進度資料儲存到資料庫、發送到 Slack、寄送 Email 等\n// 例如：\n// - 連接到 Google Sheets 記錄進度\n// - 發送到 Slack 頻道通知\n// - 儲存到 Airtable 或其他資料庫\n// - 觸發 Email 通知\n\nconsole.log('進度已記錄:', progressData);\n\n// 計算一些統計資料\nconst stats = {\n  totalModulesCompleted: progressData.completed ? 1 : 0,\n  averageScore: progressData.score,\n  totalTimeSpent: progressData.timeSpent\n};\n\n// 回傳成功回應\nreturn {\n  success: true,\n  message: '進度追蹤成功',\n  data: {\n    recorded: progressData,\n    stats: stats\n  },\n  timestamp: new Date().toISOString()\n};"
+      },
+      "id": "process-progress",
+      "name": "處理進度資料",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Methods", 
+                "value": "POST, GET, OPTIONS"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type, Authorization"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond-progress",
+      "name": "回應進度請求",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [600, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "notification-condition",
+              "leftValue": "={{ $node['處理進度資料'].json.data.recorded.completed }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equal"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-completion",
+      "name": "檢查是否完成",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [400, 500]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 當用戶完成模組時的額外處理\nconst progressData = $node['處理進度資料'].json.data.recorded;\n\n// 可以在這裡添加：\n// 1. 發送恭喜訊息到 Slack\n// 2. 寄送完成證書\n// 3. 解鎖新的學習內容\n// 4. 更新用戶等級或徽章\n\nconsole.log(`🎉 用戶完成了模組 ${progressData.moduleId}！分數：${progressData.score}`);\n\nreturn {\n  celebration: true,\n  message: `恭喜完成 ${progressData.themeId} 的模組 ${progressData.moduleId}！`,\n  score: progressData.score,\n  nextActions: [\n    '繼續挑戰下一個模組',\n    '分享你的成果',\n    '查看學習統計'\n  ]\n};"
+      },
+      "id": "celebrate-completion",
+      "name": "慶祝完成",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [600, 600]
+    }
+  ],
+  "connections": {
+    "進度追蹤觸發器": {
+      "main": [
+        [
+          {
+            "node": "處理進度資料",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "處理進度資料": {
+      "main": [
+        [
+          {
+            "node": "回應進度請求",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "檢查是否完成",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "檢查是否完成": {
+      "main": [
+        [
+          {
+            "node": "慶祝完成",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "versionId": "1"
+}

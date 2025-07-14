@@ -1,0 +1,91 @@
+{
+  "name": "React 學習遊戲 - 主題管理 API",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "get-learning-themes",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook 觸發器",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [200, 300],
+      "webhookId": "get-learning-themes"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 驗證並處理 React 應用發送的請求\nconst requestBody = $input.item(0).json.body;\n\nconsole.log('收到主題請求:', requestBody);\n\n// 從請求中提取參數\nconst action = requestBody.action || 'get_themes';\nconst language = requestBody.data?.language_code || 'zh-TW';\nconst selectedThemeId = requestBody.data?.selected_theme_id || 'react-basics';\nconst topicCategory = requestBody.data?.topic_category || 'react-basics';\n\n// 根據主題 ID 生成對應的模組資料\nfunction generateModulesForTheme(themeId, language) {\n  const isEnglish = language === 'en-US';\n  \n  switch (themeId) {\n    case 'advanced-hooks':\n      return [\n        {\n          id: 1,\n          title: isEnglish ? 'useState Hook' : 'useState Hook',\n          description: isEnglish ? 'Learn to manage state with useState' : '學習使用 useState 管理狀態',\n          questions: [{\n            id: '1-1',\n            content: isEnglish \n              ? 'useState is the most basic hook for managing component state. It returns an array with two elements: the current state value and a function to update it.'\n              : 'useState 是管理組件狀態最基本的 Hook。它返回一個陣列，包含兩個元素：當前狀態值和更新狀態的函數。',\n            codeExample: `import React, { useState } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n  \n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}`,\n            quiz: {\n              question: isEnglish \n                ? 'What does useState return?'\n                : 'useState 返回什麼？',\n              options: [\n                isEnglish ? 'A single value' : '單一值',\n                isEnglish ? 'An array with current state and setter' : '包含當前狀態和設定函數的陣列',\n                isEnglish ? 'An object' : '一個物件',\n                isEnglish ? 'A function' : '一個函數'\n              ],\n              answer: isEnglish ? 'An array with current state and setter' : '包含當前狀態和設定函數的陣列'\n            }\n          }]\n        },\n        {\n          id: 2,\n          title: isEnglish ? 'useEffect Hook' : 'useEffect Hook',\n          description: isEnglish ? 'Handle side effects with useEffect' : '使用 useEffect 處理副作用',\n          questions: [{\n            id: '2-1',\n            content: isEnglish\n              ? 'useEffect allows you to perform side effects in functional components. It runs after the render is committed to the screen.'\n              : 'useEffect 允許你在函數組件中執行副作用。它在渲染提交到螢幕後運行。',\n            codeExample: `import React, { useState, useEffect } from 'react';\n\nfunction Timer() {\n  const [seconds, setSeconds] = useState(0);\n  \n  useEffect(() => {\n    const interval = setInterval(() => {\n      setSeconds(s => s + 1);\n    }, 1000);\n    \n    return () => clearInterval(interval);\n  }, []);\n  \n  return <div>Timer: {seconds}s</div>;\n}`,\n            quiz: {\n              question: isEnglish\n                ? 'When does useEffect run?'\n                : 'useEffect 什麼時候執行？',\n              options: [\n                isEnglish ? 'Before render' : '渲染之前',\n                isEnglish ? 'After render is committed' : '渲染提交後',\n                isEnglish ? 'During render' : '渲染期間',\n                isEnglish ? 'Only on mount' : '只在掛載時'\n              ],\n              answer: isEnglish ? 'After render is committed' : '渲染提交後'\n            }\n          }]\n        },\n        {\n          id: 3,\n          title: isEnglish ? 'Custom Hooks' : '自定義 Hook',\n          description: isEnglish ? 'Create reusable custom hooks' : '建立可重複使用的自定義 Hook',\n          questions: [{\n            id: '3-1',\n            content: isEnglish\n              ? 'Custom hooks are JavaScript functions that start with \"use\" and can call other hooks. They let you extract component logic into reusable functions.'\n              : '自定義 Hook 是以 \"use\" 開頭的 JavaScript 函數，可以呼叫其他 Hook。它們讓你將組件邏輯提取到可重複使用的函數中。',\n            codeExample: `import { useState, useEffect } from 'react';\n\nfunction useCounter(initialValue = 0) {\n  const [count, setCount] = useState(initialValue);\n  \n  const increment = () => setCount(c => c + 1);\n  const decrement = () => setCount(c => c - 1);\n  const reset = () => setCount(initialValue);\n  \n  return { count, increment, decrement, reset };\n}\n\nfunction App() {\n  const { count, increment, decrement, reset } = useCounter(10);\n  \n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={increment}>+</button>\n      <button onClick={decrement}>-</button>\n      <button onClick={reset}>Reset</button>\n    </div>\n  );\n}`,\n            quiz: {\n              question: isEnglish\n                ? 'What must custom hook names start with?'\n                : '自定義 Hook 的名稱必須以什麼開頭？',\n              options: [\n                isEnglish ? 'hook' : 'hook',\n                isEnglish ? 'use' : 'use',\n                isEnglish ? 'custom' : 'custom',\n                isEnglish ? 'my' : 'my'\n              ],\n              answer: 'use'\n            }\n          }]\n        }\n      ];\n      \n    case 'react-ecosystem':\n      return [\n        {\n          id: 1,\n          title: isEnglish ? 'React Router' : 'React Router',\n          description: isEnglish ? 'Navigation and routing in React' : 'React 中的導航和路由',\n          questions: [{\n            id: '1-1',\n            content: isEnglish\n              ? 'React Router enables navigation among views in a React application, allowing you to build single-page applications with multiple views.'\n              : 'React Router 在 React 應用程式中實現視圖間的導航，讓你能夠建立具有多個視圖的單頁應用程式。',\n            codeExample: `import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <nav>\n        <Link to=\"/\">Home</Link>\n        <Link to=\"/about\">About</Link>\n      </nav>\n      \n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/about\" element={<About />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}`,\n            quiz: {\n              question: isEnglish\n                ? 'Which component wraps your entire app for routing?'\n                : '哪個組件用來包裝整個應用程式以實現路由？',\n              options: [\n                'Router',\n                'BrowserRouter',\n                'Routes',\n                'Route'\n              ],\n              answer: 'BrowserRouter'\n            }\n          }]\n        }\n      ];\n      \n    default: // react-basics\n      return [\n        {\n          id: 1,\n          title: isEnglish ? 'React Components' : 'React 元件',\n          description: isEnglish ? 'Understanding React components and JSX' : '理解 React 元件和 JSX',\n          questions: [{\n            id: '1-1',\n            content: isEnglish\n              ? 'React components are the building blocks of React applications. They let you split the UI into independent, reusable pieces.'\n              : 'React 元件是 React 應用程式的建構單位。它們讓你將 UI 分割成獨立、可重複使用的片段。',\n            codeExample: `function Welcome(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}\n\nfunction App() {\n  return (\n    <div>\n      <Welcome name=\"Alice\" />\n      <Welcome name=\"Bob\" />\n    </div>\n  );\n}`,\n            quiz: {\n              question: isEnglish\n                ? 'What do React components return?'\n                : 'React 元件返回什麼？',\n              options: [\n                isEnglish ? 'HTML' : 'HTML',\n                isEnglish ? 'JSX' : 'JSX',\n                isEnglish ? 'CSS' : 'CSS',\n                isEnglish ? 'JavaScript' : 'JavaScript'\n              ],\n              answer: 'JSX'\n            }\n          }]\n        }\n      ];\n  }\n}\n\nconst modules = generateModulesForTheme(selectedThemeId, language);\n\n// 回傳符合 React 應用期望的格式\nreturn {\n  success: true,\n  theme: {\n    id: selectedThemeId,\n    category: topicCategory,\n    language: language\n  },\n  modules: modules,\n  timestamp: new Date().toISOString(),\n  source: 'n8n-workflow'\n};"
+      },
+      "id": "process-request",
+      "name": "處理主題請求",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Access-Control-Allow-Origin", 
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Methods",
+                "value": "POST, GET, OPTIONS"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type, Authorization"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond-to-webhook",
+      "name": "回應請求",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [600, 300]
+    }
+  ],
+  "connections": {
+    "Webhook 觸發器": {
+      "main": [
+        [
+          {
+            "node": "處理主題請求",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "處理主題請求": {
+      "main": [
+        [
+          {
+            "node": "回應請求",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "versionId": "1"
+}
