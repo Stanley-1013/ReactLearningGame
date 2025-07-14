@@ -1,0 +1,346 @@
+/* 表單區塊樣式 */
+
+.form-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.form-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.form-section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+}
+
+.form-section-description {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 表單網格 */
+.forms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* 表單卡片 */
+.form-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.form-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.form-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.form-card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.form-card-description {
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+/* 功能特色列表 */
+.form-card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-item {
+  font-size: 0.9rem;
+  color: #28a745;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 提交歷史 */
+.submission-history {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.submission-history h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #2c3e50;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.history-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.history-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.history-type {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+
+.history-time {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.history-status {
+  color: #28a745;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* 聯絡資訊 */
+.contact-info {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.contact-info h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.contact-info p {
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.contact-methods {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.contact-icon {
+  font-size: 1.25rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .form-section {
+    padding: 1rem;
+  }
+  
+  .form-section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .form-section-description {
+    font-size: 1rem;
+  }
+  
+  .forms-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-card {
+    padding: 1.25rem;
+  }
+  
+  .form-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .contact-methods {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-info {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-section {
+    padding: 0.75rem;
+  }
+  
+  .form-section-header {
+    margin-bottom: 2rem;
+  }
+  
+  .form-section-header h2 {
+    font-size: 1.75rem;
+  }
+  
+  .form-card {
+    padding: 1rem;
+  }
+  
+  .submission-history {
+    padding: 1rem;
+  }
+  
+  .history-item {
+    padding: 0.5rem;
+    gap: 0.75rem;
+  }
+  
+  .history-content {
+    gap: 0.15rem;
+  }
+  
+  .contact-info {
+    padding: 1.25rem;
+  }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+  .form-section-header h2 {
+    color: #ecf0f1;
+  }
+  
+  .form-section-description {
+    color: #bdc3c7;
+  }
+  
+  .form-card {
+    background: #34495e;
+    border-color: #4a6275;
+  }
+  
+  .form-card-header h3 {
+    color: #ecf0f1;
+  }
+  
+  .form-card-description {
+    color: #bdc3c7;
+  }
+  
+  .submission-history {
+    background: #2c3e50;
+  }
+  
+  .submission-history h3 {
+    color: #ecf0f1;
+  }
+  
+  .history-item {
+    background: #34495e;
+    border-color: #4a6275;
+  }
+  
+  .history-type {
+    color: #ecf0f1;
+  }
+  
+  .history-time {
+    color: #bdc3c7;
+  }
+}
+
+/* 動畫效果 */
+.form-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 延遲動畫 */
+.form-card:nth-child(1) { animation-delay: 0.1s; }
+.form-card:nth-child(2) { animation-delay: 0.2s; }
+.form-card:nth-child(3) { animation-delay: 0.3s; }
+.form-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* 減少動畫支援 */
+@media (prefers-reduced-motion: reduce) {
+  .form-card {
+    animation: none;
+  }
+  
+  .form-card:hover {
+    transform: none;
+  }
+}

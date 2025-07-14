@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { apiCall, API_ENDPOINTS, DEV_CONFIG } from '../config/apiConfig';
 import { shuffleArray, validateDragAnswer } from '../utils/arrayUtils';
+import { generateAIQuestion, aiQuestionGenerator } from '../services/aiQuestionGenerator';
+import { DIFFICULTY_LEVELS, QUESTION_TYPES } from '../services/n8nService';
 
 /**
  * 挑戰關卡 Hook
@@ -31,10 +33,18 @@ export function useChallenge() {
   // 新增：追蹤當前題目 ID 避免重複
   const [currentChallengeId, setCurrentChallengeId] = useState(null);
   const [usedChallengeIds, setUsedChallengeIds] = useState(new Set());
+  
+  // AI 題目生成相關狀態
+  const [isAIMode, setIsAIMode] = useState(false);
+  const [aiGenerationParams, setAIGenerationParams] = useState({
+    topic_category: 'react-basics',
+    difficulty_level: DIFFICULTY_LEVELS.INTERMEDIATE,
+    question_type: QUESTION_TYPES.CODE_BLOCKS
+  });
 
   /**
-   * 從 API 獲取挑戰題目
-   * TODO: 這裡可以替換成 n8n webhook
+   * 從 API 或 AI 獲取挑戰題目
+   * 支援本地模擬、n8n webhook 和 AI 生成三種模式
    */
   const fetchChallenge = async () => {
     setIsLoading(true);
@@ -43,33 +53,12 @@ export function useChallenge() {
     try {
       let challengeData;
       
-      // 檢查是否應該使用 Mock API
-      const shouldUseMockAPI = DEV_CONFIG.useMockApi && !DEV_CONFIG.useLocalData;
-      
-      if (shouldUseMockAPI) {
-        // 嘗試調用 Mock API
-        try {
-          challengeData = await apiCall(API_ENDPOINTS.challenge.getChallenge, {
-            method: 'GET'
-          });
-          console.log('✅ Mock API 調用成功');
-        } catch (apiError) {
-          console.warn('⚠️ Mock API 調用失敗，降級到本地資料:', apiError.message);
-          challengeData = getMockChallengeData();
-        }
-      } else if (!DEV_CONFIG.useLocalData) {
-        // 生產模式：從 n8n webhook 獲取
-        challengeData = await apiCall(API_ENDPOINTS.challenge.getChallenge, {
-          method: 'POST',
-          body: JSON.stringify({
-            language: isLanguage('en-US') ? 'en' : 'zh',
-            difficulty: 'intermediate',
-            topic: 'react-components'
-          })
-        });
+      // AI 模式：使用 AI 生成題目
+      if (isAIMode) {
+        challengeData = await fetchAIGeneratedChallenge();
       } else {
-        // 直接使用本地模擬資料
-        challengeData = getMockChallengeData();
+        // 原有邏輯：API 或本地資料
+        challengeData = await fetchTraditionalChallenge();
       }
       
       if (challengeData && (challengeData.codeBlocks || challengeData.id)) {
@@ -113,6 +102,98 @@ export function useChallenge() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  /**
+   * 使用 AI 生成挑戰題目
+   */
+  const fetchAIGeneratedChallenge = async () => {
+    try {
+      const userContext = {
+        language_code: isLanguage('en-US') ? 'en-US' : 'zh-TW',
+        progress: getUserProgress(),
+        current_session: getCurrentSessionData()
+      };
+
+      const generationParams = {
+        ...aiGenerationParams,
+        ...userContext
+      };
+
+      console.log('🤖 正在使用 AI 生成題目...', generationParams);
+      
+      const aiQuestion = await generateAIQuestion(generationParams);
+      
+      console.log('✅ AI 題目生成成功:', aiQuestion.id);
+      
+      return aiQuestion;
+      
+    } catch (error) {
+      console.warn('🚨 AI 題目生成失敗，降級到本地資料:', error.message);
+      return getMockChallengeData();
+    }
+  };
+
+  /**
+   * 傳統方式獲取題目（API 或本地）
+   */
+  const fetchTraditionalChallenge = async () => {
+    // 檢查是否應該使用 Mock API
+    const shouldUseMockAPI = DEV_CONFIG.useMockApi && !DEV_CONFIG.useLocalData;
+    
+    if (shouldUseMockAPI) {
+      // 嘗試調用 Mock API
+      try {
+        const challengeData = await apiCall(API_ENDPOINTS.challenge.getChallenge, {
+          method: 'GET'
+        });
+        console.log('✅ Mock API 調用成功');
+        return challengeData;
+      } catch (apiError) {
+        console.warn('⚠️ Mock API 調用失敗，降級到本地資料:', apiError.message);
+        return getMockChallengeData();
+      }
+    } else if (!DEV_CONFIG.useLocalData) {
+      // 生產模式：從 n8n webhook 獲取
+      return await apiCall(API_ENDPOINTS.challenge.getChallenge, {
+        method: 'POST',
+        body: JSON.stringify({
+          language: isLanguage('en-US') ? 'en' : 'zh',
+          difficulty: aiGenerationParams.difficulty_level,
+          topic: aiGenerationParams.topic_category
+        })
+      });
+    } else {
+      // 直接使用本地模擬資料
+      return getMockChallengeData();
+    }
+  };
+
+  /**
+   * 獲取用戶進度資料
+   */
+  const getUserProgress = () => {
+    try {
+      const progress = localStorage.getItem('reactGameProgress');
+      return progress ? JSON.parse(progress) : {};
+    } catch (error) {
+      console.warn('獲取用戶進度失敗:', error);
+      return {};
+    }
+  };
+
+  /**
+   * 獲取當前會話資料
+   */
+  const getCurrentSessionData = () => {
+    const sessionStart = sessionStorage.getItem('challengeSessionStart') || Date.now();
+    const sessionChallenges = sessionStorage.getItem('sessionChallenges');
+    
+    return {
+      session_start: sessionStart,
+      challenges_attempted: sessionChallenges ? JSON.parse(sessionChallenges).length : 0,
+      current_mode: isAIMode ? 'ai' : 'traditional'
+    };
   };
 
   /**
@@ -548,6 +629,47 @@ export function useChallenge() {
     setShowAnswerConfirm(false);
   };
 
+  /**
+   * 切換 AI 模式
+   */
+  const toggleAIMode = () => {
+    setIsAIMode(prev => !prev);
+    console.log(`🤖 AI 模式已${!isAIMode ? '開啟' : '關閉'}`);
+  };
+
+  /**
+   * 更新 AI 生成參數
+   */
+  const updateAIGenerationParams = (newParams) => {
+    setAIGenerationParams(prev => ({
+      ...prev,
+      ...newParams
+    }));
+    console.log('🔧 AI 生成參數已更新:', newParams);
+  };
+
+  /**
+   * 生成新的 AI 題目（手動觸發）
+   */
+  const generateNewAIQuestion = async () => {
+    if (!isAIMode) {
+      setIsAIMode(true);
+    }
+    await fetchChallenge();
+  };
+
+  /**
+   * 獲取 AI 模式狀態資訊
+   */
+  const getAIModeInfo = () => {
+    return {
+      isEnabled: isAIMode,
+      currentParams: aiGenerationParams,
+      canGenerate: !isLoading,
+      generationHistory: aiQuestionGenerator.getRecentQuestions(5)
+    };
+  };
+
   return {
     // 狀態
     challenge,
@@ -563,6 +685,10 @@ export function useChallenge() {
     hasViewedAnswer,
     showHintConfirm,
     showAnswerConfirm,
+    
+    // AI 相關狀態
+    isAIMode,
+    aiGenerationParams,
     
     // 方法
     fetchChallenge,
@@ -580,7 +706,13 @@ export function useChallenge() {
     requestAnswer,
     confirmAnswer,
     cancelAnswer,
-    generateSmartHint
+    generateSmartHint,
+    
+    // AI 相關方法
+    toggleAIMode,
+    updateAIGenerationParams,
+    generateNewAIQuestion,
+    getAIModeInfo
   };
 }
 

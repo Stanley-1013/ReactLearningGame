@@ -21,6 +21,7 @@
     "preview": "vite preview",
     "mock-server": "node mock-server.js",
     "test-api": "node scripts/test-api.js",
+    "test-n8n": "node scripts/test-n8n-connection.js",
     "start-dev": "concurrently \"npm run mock-server\" \"npm run dev\"",
     "test-full": "npm run mock-server & sleep 2 && npm run test-api"
   },

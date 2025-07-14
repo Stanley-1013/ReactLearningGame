@@ -12,6 +12,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useChallenge } from '../hooks/useChallenge';
+import { DIFFICULTY_LEVELS, QUESTION_TYPES } from '../services/n8nService';
+import { FormButton } from './FormComponents';
 import './ChallengePage.css';
 
 function ChallengePage() {
@@ -28,6 +30,8 @@ function ChallengePage() {
     hasViewedAnswer,
     showHintConfirm,
     showAnswerConfirm,
+    isAIMode,
+    aiGenerationParams,
     fetchChallenge,
     submitAnswer,
     resetChallenge,
@@ -41,11 +45,16 @@ function ChallengePage() {
     requestAnswer,
     confirmAnswer,
     cancelAnswer,
-    generateSmartHint
+    generateSmartHint,
+    toggleAIMode,
+    updateAIGenerationParams,
+    generateNewAIQuestion,
+    getAIModeInfo
   } = useChallenge();
 
   const [draggedItem, setDraggedItem] = useState(null);
   const [showHints, setShowHints] = useState(false);
+  const [showAIControls, setShowAIControls] = useState(false);
 
   /**
    * 取得本地化文字
@@ -197,19 +206,140 @@ function ChallengePage() {
         <div className="challenge-header">
           <h1 className="challenge-title">
             {getText('🎯 挑戰關卡', '🎯 Challenge Mode')}
+            {isAIMode && <span className="ai-badge">🤖 AI</span>}
           </h1>
-          <button 
-            className="btn btn-outline new-challenge-btn"
-            onClick={fetchChallenge}
-            title={getText('獲取新的挑戰題目', 'Get a new challenge')}
-          >
-            🎲 {getText('換一題', 'New Challenge')}
-          </button>
+          <div className="challenge-controls">
+            <button 
+              className="btn btn-outline new-challenge-btn"
+              onClick={fetchChallenge}
+              title={getText('獲取新的挑戰題目', 'Get a new challenge')}
+            >
+              🎲 {getText('換一題', 'New Challenge')}
+            </button>
+            
+            {/* AI 控制按鈕 */}
+            <button 
+              className={`btn btn-outline ai-toggle-btn ${isAIMode ? 'active' : ''}`}
+              onClick={toggleAIMode}
+              title={getText('切換 AI 生成模式', 'Toggle AI Generation Mode')}
+            >
+              🤖 {getText('AI 模式', 'AI Mode')}
+            </button>
+            
+            <button 
+              className="btn btn-outline ai-settings-btn"
+              onClick={() => setShowAIControls(!showAIControls)}
+              title={getText('AI 設定', 'AI Settings')}
+            >
+              ⚙️
+            </button>
+          </div>
         </div>
         <Link to="/result" className="btn btn-secondary">
           {getText('查看進度', 'View Progress')}
         </Link>
       </nav>
+
+      {/* AI 控制面板 */}
+      {showAIControls && (
+        <section className="ai-control-panel">
+          <div className="ai-panel-header">
+            <h3>🤖 {getText('AI 題目生成設定', 'AI Question Generation Settings')}</h3>
+            <button 
+              className="panel-close-btn"
+              onClick={() => setShowAIControls(false)}
+            >
+              ✕
+            </button>
+          </div>
+          
+          <div className="ai-settings-grid">
+            {/* 難度設定 */}
+            <div className="setting-group">
+              <label>{getText('難度等級', 'Difficulty Level')}</label>
+              <select 
+                value={aiGenerationParams.difficulty_level}
+                onChange={(e) => updateAIGenerationParams({ difficulty_level: e.target.value })}
+                className="setting-select"
+              >
+                <option value={DIFFICULTY_LEVELS.BEGINNER}>
+                  {getText('初學者', 'Beginner')}
+                </option>
+                <option value={DIFFICULTY_LEVELS.INTERMEDIATE}>
+                  {getText('中級', 'Intermediate')}
+                </option>
+                <option value={DIFFICULTY_LEVELS.ADVANCED}>
+                  {getText('進階', 'Advanced')}
+                </option>
+              </select>
+            </div>
+            
+            {/* 主題類別 */}
+            <div className="setting-group">
+              <label>{getText('主題類別', 'Topic Category')}</label>
+              <select 
+                value={aiGenerationParams.topic_category}
+                onChange={(e) => updateAIGenerationParams({ topic_category: e.target.value })}
+                className="setting-select"
+              >
+                <option value="react-basics">{getText('React 基礎', 'React Basics')}</option>
+                <option value="hooks">{getText('Hooks', 'Hooks')}</option>
+                <option value="state-management">{getText('狀態管理', 'State Management')}</option>
+                <option value="components">{getText('組件', 'Components')}</option>
+                <option value="lifecycle">{getText('生命週期', 'Lifecycle')}</option>
+              </select>
+            </div>
+            
+            {/* 題目類型 */}
+            <div className="setting-group">
+              <label>{getText('題目類型', 'Question Type')}</label>
+              <select 
+                value={aiGenerationParams.question_type}
+                onChange={(e) => updateAIGenerationParams({ question_type: e.target.value })}
+                className="setting-select"
+              >
+                <option value={QUESTION_TYPES.CODE_BLOCKS}>
+                  {getText('程式碼排序', 'Code Blocks')}
+                </option>
+                <option value={QUESTION_TYPES.MULTIPLE_CHOICE}>
+                  {getText('選擇題', 'Multiple Choice')}
+                </option>
+                <option value={QUESTION_TYPES.TRUE_FALSE}>
+                  {getText('是非題', 'True/False')}
+                </option>
+              </select>
+            </div>
+            
+            {/* 生成按鈕 */}
+            <div className="setting-group full-width">
+              <button 
+                className="btn btn-primary generate-ai-btn"
+                onClick={generateNewAIQuestion}
+                disabled={isLoading}
+              >
+                🚀 {getText('生成 AI 題目', 'Generate AI Question')}
+              </button>
+            </div>
+          </div>
+          
+          {/* AI 模式狀態顯示 */}
+          <div className="ai-status">
+            <div className="status-item">
+              <span className="status-label">{getText('當前模式', 'Current Mode')}:</span>
+              <span className={`status-value ${isAIMode ? 'ai-active' : ''}`}>
+                {isAIMode ? getText('AI 生成', 'AI Generated') : getText('預設題目', 'Default Questions')}
+              </span>
+            </div>
+            
+            {challenge?.source && (
+              <div className="status-item">
+                <span className="status-label">{getText('題目來源', 'Question Source')}:</span>
+                <span className="status-value">{challenge.source}</span>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* 挑戰說明 */}
       <section className="challenge-prompt">
@@ -501,6 +631,23 @@ function ChallengePage() {
           </div>
         </div>
       )}
+
+      {/* 錯誤回報按鈕 */}
+      <FormButton 
+        formType="bug_report" 
+        variant="floating" 
+        position="bottom-left"
+        customData={{
+          page: 'challenge',
+          challengeId: challenge?.id,
+          isAIMode: isAIMode,
+          currentDifficulty: aiGenerationParams.difficulty_level,
+          hasError: !!error,
+          errorMessage: error || '',
+          userAnswer: userAnswer.join(','),
+          challengeCompleted: isCompleted
+        }}
+      />
     </div>
   );
 }

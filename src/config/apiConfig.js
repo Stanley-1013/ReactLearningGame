@@ -16,16 +16,17 @@ const IS_DEVELOPMENT = import.meta.env.VITE_ENVIRONMENT === 'development';
 const USE_MOCK_API = import.meta.env.VITE_USE_MOCK_API === 'true' || IS_DEVELOPMENT;
 
 /**
- * API 端點配置
- * TODO: 這些端點可以替換成 n8n webhook URLs
+ * API 端點配置 - 支援 n8n webhook 整合
+ * 新增主題管理和 AI 題目生成端點
  */
 export const API_ENDPOINTS = {
   // 基礎關卡相關 API
   modules: {
     getAll: `${API_BASE_URL}/modules`, // 目前使用本地 JSON
     getById: (id) => `${API_BASE_URL}/modules/${id}`,
-    // TODO: 未來可連接 n8n workflow 從 Airtable/Google Sheets 獲取
-    n8nGetModules: `${N8N_BASE_URL}/get-modules`
+    // n8n 主題和模組管理
+    n8nGetModules: `${N8N_BASE_URL}/get-learning-themes`,
+    n8nSwitchTheme: `${N8N_BASE_URL}/switch-learning-theme`
   },
 
   // 挑戰關卡相關 API  
@@ -35,23 +36,36 @@ export const API_ENDPOINTS = {
     submitAnswer: USE_MOCK_API ? `${API_BASE_URL}/challenge/submit` : `${N8N_BASE_URL}/submit-challenge-answer`,
     // 備用端點
     getChallengeLocal: `${API_BASE_URL}/challenge`,
-    n8nGetChallenge: `${N8N_BASE_URL}/get-challenge`
+    // AI 題目生成相關
+    n8nGetChallenge: `${N8N_BASE_URL}/generate-ai-questions`,
+    n8nGenerateQuestion: `${N8N_BASE_URL}/generate-ai-questions`,
+    n8nBatchGenerate: `${N8N_BASE_URL}/batch-generate-questions`
+  },
+
+  // 主題管理相關 API（新增）
+  themes: {
+    getAvailable: `${N8N_BASE_URL}/get-available-themes`,
+    switchTheme: `${N8N_BASE_URL}/switch-theme`, 
+    getUserThemes: `${N8N_BASE_URL}/get-user-themes`,
+    saveThemePreference: `${N8N_BASE_URL}/save-theme-preference`
   },
 
   // 進度追蹤相關 API
   progress: {
-    // TODO: 可透過 n8n 發送進度到 Slack/Email/數據庫
-    updateProgress: `${N8N_BASE_URL}/update-progress`,
+    // 可透過 n8n 發送進度到 Slack/Email/數據庫
+    updateProgress: `${N8N_BASE_URL}/track-learning-progress`,
     getProgress: `${N8N_BASE_URL}/get-progress`,
     // 可觸發通知的 n8n workflow
-    notifyCompletion: `${N8N_BASE_URL}/notify-completion`
+    notifyCompletion: `${N8N_BASE_URL}/notify-completion`,
+    syncUserData: `${N8N_BASE_URL}/sync-user-data`
   },
 
   // 統計和分析 API
   analytics: {
-    // TODO: 發送學習統計到 n8n 進行數據分析
+    // 發送學習統計到 n8n 進行數據分析
     trackEvent: `${N8N_BASE_URL}/track-event`,
-    getAnalytics: `${N8N_BASE_URL}/get-analytics`
+    getAnalytics: `${N8N_BASE_URL}/get-analytics`,
+    generateReport: `${N8N_BASE_URL}/generate-learning-report`
   }
 };
 

@@ -20,7 +20,6 @@ function ModulePage() {
   const navigate = useNavigate();
   const { isLanguage } = useLanguage();
   const { modules, getModuleById, getTotalModules, isLoading } = useModules();
-  const [module, setModule] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -83,21 +82,56 @@ function ModulePage() {
   }, [id, getModuleById, modules.length, isLoading, refreshKey]);
 
   /**
-   * 載入關卡資料和檢查完成狀態
+   * 重置所有答題狀態（用於切換關卡時）
+   * 必須在使用它的 useEffect 之前定義
+   */
+  const resetQuizState = useCallback(() => {
+    setSelectedAnswer('');
+    setShowResult(false);
+    setIsCorrect(false);
+    setAudioPlaying(false);
+  }, []); // 空依賴陣列，因為只操作 setState
+
+  /**
+   * 檢查關卡完成狀態 - 使用 useCallback 避免依賴問題
+   * 必須在所有使用它的 useEffect 之前定義
+   */
+  const checkCompletionStatus = useCallback((moduleId) => {
+    const savedProgress = localStorage.getItem('reactGameProgress');
+    if (savedProgress) {
+      try {
+        const progress = JSON.parse(savedProgress);
+        setIsCompleted(progress.completed?.includes(moduleId) || false);
+      } catch (error) {
+        console.error('讀取進度失敗:', error);
+        setIsCompleted(false);
+      }
+    } else {
+      setIsCompleted(false);
+    }
+  }, []); // 空依賴陣列，因為只操作 localStorage 和 setState
+
+  /**
+   * 載入關卡資料 - 只處理導航邏輯，不設定 module 狀態
    */
   useEffect(() => {
-    if (!currentModule) {
-      if (!isLoading && modules.length > 0) {
-        // 找不到關卡，返回首頁
-        navigate('/');
-      }
-      return;
+    if (!currentModule && !isLoading && modules.length > 0) {
+      // 找不到關卡，返回首頁
+      navigate('/');
     }
-    
-    setModule(currentModule);
-    // 檢查是否已完成
-    checkCompletionStatus(parseInt(id));
-  }, [currentModule, navigate, id, isLoading, modules.length]);
+  }, [currentModule, navigate, isLoading, modules.length]);
+
+  // 直接使用 currentModule，不需要額外的 state
+  const module = currentModule;
+
+  /**
+   * 檢查完成狀態 - 單獨的 useEffect，只依賴 id 變化
+   */
+  useEffect(() => {
+    if (id) {
+      checkCompletionStatus(parseInt(id));
+    }
+  }, [id, checkCompletionStatus]); // 現在 checkCompletionStatus 已經在之前定義
 
   /**
    * 處理模組 ID 變化時的狀態重置
@@ -112,7 +146,7 @@ function ModulePage() {
     
     // 更新前一次的模組 ID
     prevModuleIdRef.current = currentModuleId;
-  }, [id]);
+  }, [id, resetQuizState]); // 添加 resetQuizState 到依賴陣列
 
   /**
    * 處理路由變化時的滾動
@@ -121,21 +155,6 @@ function ModulePage() {
     // 只在路由 ID 變化時滾動到頂部
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [id]);
-
-  /**
-   * 檢查關卡完成狀態
-   */
-  const checkCompletionStatus = (moduleId) => {
-    const savedProgress = localStorage.getItem('reactGameProgress');
-    if (savedProgress) {
-      try {
-        const progress = JSON.parse(savedProgress);
-        setIsCompleted(progress.completed?.includes(moduleId) || false);
-      } catch (error) {
-        console.error('讀取進度失敗:', error);
-      }
-    }
-  };
 
   /**
    * 處理答案選擇
@@ -221,16 +240,6 @@ function ModulePage() {
     setSelectedAnswer('');
     setShowResult(false);
     setIsCorrect(false);
-  };
-
-  /**
-   * 重置所有答題狀態（用於切換關卡時）
-   */
-  const resetQuizState = () => {
-    setSelectedAnswer('');
-    setShowResult(false);
-    setIsCorrect(false);
-    setAudioPlaying(false);
   };
 
   /**
