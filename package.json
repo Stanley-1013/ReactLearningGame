@@ -1,7 +1,7 @@
 {
   "name": "react-learning-game",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "一個模組化的 React 教學闖關遊戲，支援 PWA 和手機 App 打包",
   "keywords": [
