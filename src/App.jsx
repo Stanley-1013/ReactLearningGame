@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import HomePage from './components/HomePage';
 import ModulePage from './components/ModulePage';
@@ -53,7 +53,7 @@ function AppFooter() {
 function App() {
   return (
     <LanguageProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="app">
           {/* 應用程式標題區 */}
           <AppHeader />
@@ -78,7 +78,7 @@ function App() {
           {/* 應用程式底部 */}
           <AppFooter />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </LanguageProvider>
   );
 }
