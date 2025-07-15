@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/ReactLearningGame/', // GitHub Pages 子路徑部署
   plugins: [
     react(),
     // PWA 配置 - 支援離線使用和應用程式安裝
