@@ -18,8 +18,8 @@ export default defineConfig({
         theme_color: '#61dafb',
         background_color: '#282c34',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        scope: '/ReactLearningGame/',
+        start_url: '/ReactLearningGame/',
         icons: [
           {
             src: 'icons/icon-192.png',
