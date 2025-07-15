@@ -23,9 +23,16 @@
     "test-api": "node scripts/test-api.js",
     "test-n8n": "node scripts/test-n8n-connection.js",
     "start-dev": "concurrently \"npm run mock-server\" \"npm run dev\"",
-    "test-full": "npm run mock-server & sleep 2 && npm run test-api"
+    "test-full": "npm run mock-server & sleep 2 && npm run test-api",
+    "cap:sync": "npx cap sync",
+    "cap:build": "npm run build && npx cap sync",
+    "android:build": "npm run cap:build && npx cap build android",
+    "android:run": "npm run cap:build && npx cap run android"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/cli": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "react": "^18.2.0",

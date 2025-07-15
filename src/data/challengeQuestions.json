@@ -1,0 +1,325 @@
+{
+  "beginner": [
+    {
+      "id": "beginner-1",
+      "title": "React 基礎概念",
+      "description": "測試對 React 基本概念的理解",
+      "difficulty": "beginner",
+      "assessmentCriteria": [
+        "理解 React 組件的概念",
+        "掌握 JSX 基本語法",
+        "了解虛擬 DOM 的作用"
+      ],
+      "questions": [
+        {
+          "id": "b1-q1",
+          "title": "React 組件定義",
+          "description": "將下列程式碼片段排列成正確的 React 函式組件",
+          "type": "drag_drop",
+          "blocks": [
+            "function Welcome(props) {",
+            "  return <h1>Hello, {props.name}!</h1>;",
+            "}",
+            "export default Welcome;"
+          ],
+          "correctAnswer": [0, 1, 2, 3],
+          "explanation": "React 函式組件的基本結構包含函式定義、JSX 返回值和導出語句"
+        },
+        {
+          "id": "b1-q2",
+          "title": "JSX 語法理解",
+          "description": "下列哪個是正確的 JSX 語法？",
+          "type": "multiple_choice",
+          "options": [
+            "<div>Hello World</div>",
+            "<div>Hello World<div>",
+            "<div>Hello World</div><div>Another</div>",
+            "<>Hello World</>"
+          ],
+          "correctAnswer": 0,
+          "explanation": "JSX 元素必須正確閉合，選項1和4都是正確的，但選項1更常見"
+        },
+        {
+          "id": "b1-q3",
+          "title": "Props 傳遞基礎",
+          "description": "完成下列程式碼，使組件能接收和使用 props",
+          "type": "code_completion",
+          "template": "function Greeting(____) {\n  return <h1>Hello, {____}!</h1>;\n}",
+          "correctAnswer": ["props", "props.name"],
+          "explanation": "函式組件通過參數接收 props，並使用 props.屬性名 來存取"
+        }
+      ]
+    },
+    {
+      "id": "beginner-2", 
+      "title": "JSX 語法練習",
+      "description": "深入練習 JSX 語法和表達式",
+      "difficulty": "beginner",
+      "assessmentCriteria": [
+        "熟練使用 JSX 語法",
+        "理解 JavaScript 表達式在 JSX 中的使用",
+        "掌握條件渲染基礎"
+      ],
+      "questions": [
+        {
+          "id": "b2-q1",
+          "title": "JSX 表達式",
+          "description": "排列程式碼片段，創建一個顯示當前時間的組件",
+          "type": "drag_drop",
+          "blocks": [
+            "function TimeDisplay() {",
+            "  const now = new Date();",
+            "  return <p>現在時間：{now.toLocaleTimeString()}</p>;",
+            "}"
+          ],
+          "correctAnswer": [0, 1, 2, 3],
+          "explanation": "JSX 中使用 {} 包裹 JavaScript 表達式"
+        },
+        {
+          "id": "b2-q2",
+          "title": "條件渲染",
+          "description": "選擇正確的條件渲染語法",
+          "type": "multiple_choice",
+          "options": [
+            "{isLoggedIn && <WelcomeMessage />}",
+            "{isLoggedIn ? <WelcomeMessage /> : null}",
+            "{isLoggedIn && <WelcomeMessage />} || <LoginForm />",
+            "A 和 B 都正確"
+          ],
+          "correctAnswer": 3,
+          "explanation": "在 JSX 中，&& 和三元運算符都可以用於條件渲染"
+        }
+      ]
+    },
+    {
+      "id": "beginner-3",
+      "title": "Props 傳遞",
+      "description": "學習組件間的資料傳遞",
+      "difficulty": "beginner", 
+      "assessmentCriteria": [
+        "理解 Props 的概念和用途",
+        "能正確傳遞和接收 Props",
+        "了解 Props 的單向資料流"
+      ],
+      "questions": [
+        {
+          "id": "b3-q1",
+          "title": "Props 基本傳遞",
+          "description": "排列程式碼，實現父組件向子組件傳遞資料",
+          "type": "drag_drop",
+          "blocks": [
+            "function App() {",
+            "  return <UserCard name=\"Alice\" age={25} />;",
+            "}",
+            "function UserCard(props) {",
+            "  return <div>姓名：{props.name}，年齡：{props.age}</div>;",
+            "}"
+          ],
+          "correctAnswer": [0, 1, 2, 3, 4, 5],
+          "explanation": "Props 透過 JSX 屬性傳遞，子組件通過 props 參數接收"
+        }
+      ]
+    }
+  ],
+  "intermediate": [
+    {
+      "id": "intermediate-1",
+      "title": "State 管理",
+      "description": "掌握 React 狀態管理基礎",
+      "difficulty": "intermediate",
+      "assessmentCriteria": [
+        "理解 State 的概念",
+        "熟練使用 useState Hook",
+        "掌握狀態更新的正確方式"
+      ],
+      "questions": [
+        {
+          "id": "i1-q1",
+          "title": "useState 基本使用",
+          "description": "排列程式碼，創建一個計數器組件",
+          "type": "drag_drop",
+          "blocks": [
+            "import { useState } from 'react';",
+            "function Counter() {",
+            "  const [count, setCount] = useState(0);",
+            "  return (",
+            "    <div>",
+            "      <p>計數：{count}</p>",
+            "      <button onClick={() => setCount(count + 1)}>增加</button>",
+            "    </div>",
+            "  );",
+            "}"
+          ],
+          "correctAnswer": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+          "explanation": "useState 返回狀態值和更新函式，使用解構賦值接收"
+        },
+        {
+          "id": "i1-q2",
+          "title": "狀態更新方式",
+          "description": "選擇正確的狀態更新方法",
+          "type": "multiple_choice",
+          "options": [
+            "setCount(count + 1)",
+            "setCount(prevCount => prevCount + 1)", 
+            "count = count + 1",
+            "A 和 B 都正確"
+          ],
+          "correctAnswer": 3,
+          "explanation": "直接更新和函式式更新都是有效的，但函式式更新在某些情況下更安全"
+        }
+      ]
+    },
+    {
+      "id": "intermediate-2",
+      "title": "事件處理",
+      "description": "學習 React 中的事件處理機制",
+      "difficulty": "intermediate",
+      "assessmentCriteria": [
+        "理解 React 事件系統",
+        "能正確綁定事件處理函式",
+        "掌握事件對象的使用"
+      ],
+      "questions": [
+        {
+          "id": "i2-q1",
+          "title": "事件處理函式",
+          "description": "排列程式碼，實現一個輸入框組件",
+          "type": "drag_drop",
+          "blocks": [
+            "function InputField() {",
+            "  const [value, setValue] = useState('');",
+            "  const handleChange = (e) => {",
+            "    setValue(e.target.value);",
+            "  };",
+            "  return <input value={value} onChange={handleChange} />;",
+            "}"
+          ],
+          "correctAnswer": [0, 1, 2, 3, 4, 5, 6],
+          "explanation": "事件處理函式接收事件對象作為參數，通過 e.target.value 獲取輸入值"
+        }
+      ]
+    },
+    {
+      "id": "intermediate-3",
+      "title": "條件渲染",
+      "description": "掌握複雜的條件渲染技巧",
+      "difficulty": "intermediate",
+      "assessmentCriteria": [
+        "熟練使用各種條件渲染方式",
+        "理解短路運算在 JSX 中的應用",
+        "能處理複雜的渲染邏輯"
+      ],
+      "questions": [
+        {
+          "id": "i3-q1",
+          "title": "複雜條件渲染",
+          "description": "選擇最佳的條件渲染實現",
+          "type": "multiple_choice",
+          "options": [
+            "if (condition) return <ComponentA />; else return <ComponentB />;",
+            "return condition ? <ComponentA /> : <ComponentB />;",
+            "return <div>{condition && <ComponentA />}{!condition && <ComponentB />}</div>;",
+            "以上都正確"
+          ],
+          "correctAnswer": 3,
+          "explanation": "不同的條件渲染方式適用於不同場景，都是有效的實現方式"
+        }
+      ]
+    }
+  ],
+  "advanced": [
+    {
+      "id": "advanced-1",
+      "title": "Hooks 應用",
+      "description": "深入學習 React Hooks 的進階用法",
+      "difficulty": "advanced",
+      "assessmentCriteria": [
+        "熟練使用 useEffect Hook",
+        "理解 Hook 的執行時機",
+        "能處理副作用和清理工作"
+      ],
+      "questions": [
+        {
+          "id": "a1-q1",
+          "title": "useEffect 完整使用",
+          "description": "排列程式碼，實現一個資料獲取組件",
+          "type": "drag_drop",
+          "blocks": [
+            "import { useState, useEffect } from 'react';",
+            "function DataComponent() {",
+            "  const [data, setData] = useState(null);",
+            "  useEffect(() => {",
+            "    fetchData().then(setData);",
+            "    return () => {",
+            "      // 清理工作",
+            "    };",
+            "  }, []);",
+            "  return <div>{data ? data.name : 'Loading...'}</div>;",
+            "}"
+          ],
+          "correctAnswer": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          "explanation": "useEffect 用於處理副作用，返回函式用於清理，依賴陣列控制執行時機"
+        }
+      ]
+    },
+    {
+      "id": "advanced-2",
+      "title": "性能優化",
+      "description": "學習 React 性能優化技巧",
+      "difficulty": "advanced",
+      "assessmentCriteria": [
+        "理解 React 性能優化原理",
+        "熟練使用 memo 和 useMemo",
+        "能識別和解決性能問題"
+      ],
+      "questions": [
+        {
+          "id": "a2-q1",
+          "title": "React.memo 使用",
+          "description": "選擇正確的性能優化方法",
+          "type": "multiple_choice",
+          "options": [
+            "const MemoComponent = React.memo(Component);",
+            "const MemoComponent = useMemo(() => <Component />, []);",
+            "const MemoComponent = useCallback(Component, []);",
+            "A 是正確的"
+          ],
+          "correctAnswer": 3,
+          "explanation": "React.memo 用於組件記憶化，避免不必要的重新渲染"
+        }
+      ]
+    },
+    {
+      "id": "advanced-3",
+      "title": "複雜狀態管理",
+      "description": "掌握複雜應用的狀態管理",
+      "difficulty": "advanced",
+      "assessmentCriteria": [
+        "理解狀態提升的概念",
+        "熟練使用 Context API",
+        "能設計合理的狀態結構"
+      ],
+      "questions": [
+        {
+          "id": "a3-q1",
+          "title": "Context API 使用",
+          "description": "排列程式碼，實現全域狀態管理",
+          "type": "drag_drop",
+          "blocks": [
+            "const ThemeContext = createContext();",
+            "function ThemeProvider({ children }) {",
+            "  const [theme, setTheme] = useState('light');",
+            "  return (",
+            "    <ThemeContext.Provider value={{ theme, setTheme }}>",
+            "      {children}",
+            "    </ThemeContext.Provider>",
+            "  );",
+            "}"
+          ],
+          "correctAnswer": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+          "explanation": "Context API 提供跨組件的狀態共享，避免 prop drilling"
+        }
+      ]
+    }
+  ]
+}
