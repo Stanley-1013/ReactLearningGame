@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/ReactLearningGame/', // GitHub Pages 子路徑部署
   plugins: [
     react(),
     // PWA 配置 - 支援離線使用和應用程式安裝
@@ -17,8 +18,8 @@ export default defineConfig({
         theme_color: '#61dafb',
         background_color: '#282c34',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        scope: '/ReactLearningGame/',
+        start_url: '/ReactLearningGame/',
         icons: [
           {
             src: 'icons/icon-192.png',
