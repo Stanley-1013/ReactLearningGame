@@ -557,7 +557,7 @@ export const themeService = {
    */
   async loadLocalModules() {
     try {
-      const response = await fetch('/src/data/modules.json');
+      const response = await fetch(import.meta.env.BASE_URL + 'modules.json');
       if (response.ok) {
         const localData = await response.json();
         console.log('✅ 成功載入本地 modules.json 資料');
