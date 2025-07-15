@@ -31,36 +31,8 @@ root.render(
   </React.StrictMode>
 );
 
-// 註冊 Service Worker (由 vite-plugin-pwa 處理)
-if ('serviceWorker' in navigator && !isDevelopment) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('✅ Service Worker 註冊成功:', registration.scope);
-        
-        // 檢查更新
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          if (newWorker) {
-            newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // 有新版本可用
-                console.log('🔄 發現新版本，請重新載入頁面');
-                
-                // 可以顯示更新提示給使用者
-                if (confirm('發現新版本！是否要重新載入以使用最新版本？')) {
-                  window.location.reload();
-                }
-              }
-            });
-          }
-        });
-      })
-      .catch((error) => {
-        console.log('❌ Service Worker 註冊失敗:', error);
-      });
-  });
-}
+// Service Worker 由 vite-plugin-pwa 自動處理
+// 不需要手動註冊，避免與 PWA 插件衝突
 
 // 錯誤邊界處理
 window.addEventListener('error', (event) => {
