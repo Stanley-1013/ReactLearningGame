@@ -27,12 +27,20 @@
     "cap:sync": "npx cap sync",
     "cap:build": "npm run build && npx cap sync",
     "android:build": "npm run cap:build && npx cap build android",
-    "android:run": "npm run cap:build && npx cap run android"
+    "android:run": "npm run cap:build && npx cap run android",
+    "ios:build": "npm run cap:build && npx cap sync ios",
+    "ios:run": "npm run cap:build && npx cap run ios",
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "npm run build && electron .",
+    "windows:build": "npm run build && electron-builder --win",
+    "windows:build-portable": "npm run build && electron-builder --win portable",
+    "dist": "npm run build && electron-builder --win --mac --linux"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.2",
     "@capacitor/cli": "^7.4.2",
     "@capacitor/core": "^7.4.2",
+    "@capacitor/ios": "^7.4.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "react": "^18.2.0",
@@ -44,11 +52,74 @@
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
     "concurrently": "^8.2.2",
+    "electron": "^37.2.1",
+    "electron-builder": "^26.0.12",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "vite": "^4.4.5",
-    "vite-plugin-pwa": "^0.16.4"
+    "vite-plugin-pwa": "^0.16.4",
+    "wait-on": "^8.0.3"
+  },
+  "main": "electron-main.cjs",
+  "homepage": "./",
+  "build": {
+    "appId": "com.reactlearning.game",
+    "productName": "React Learning Game",
+    "directories": {
+      "output": "electron-dist"
+    },
+    "files": [
+      "dist/**/*",
+      "electron-main.cjs",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "dist/icons/icon-512.png"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "dist/icons/icon-512.png"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "dist/icons/icon-512.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   }
 }
