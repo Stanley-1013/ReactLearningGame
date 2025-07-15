@@ -202,8 +202,8 @@
             "explanation": "Vite 提供了快速的開發體驗、熱重載功能和優化的打包工具，是現代 React 開發的首選。"
           },
           "media": {
-            "image": "/src/assets/images/vite-setup.png",
-            "audio": "/src/assets/audio/setup-guide.mp3"
+            "image": "/assets/images/vite-setup.png",
+            "audio": "/assets/audio/setup-guide.mp3"
           }
         },
         {
@@ -218,8 +218,8 @@
             "explanation": "箭頭函式會自動回傳運算式的結果，等同於使用 return 語句的傳統函式。"
           },
           "media": {
-            "image": "/src/assets/images/es6-syntax.png",
-            "audio": "/src/assets/audio/es6-explanation.mp3"
+            "image": "/assets/images/es6-syntax.png",
+            "audio": "/assets/audio/es6-explanation.mp3"
           }
         },
         {
@@ -234,8 +234,8 @@
             "explanation": "可以在同一個 import 語句中同時匯入預設匯出和具名匯出，用逗號分隔。"
           },
           "media": {
-            "image": "/src/assets/images/modules-system.png",
-            "audio": "/src/assets/audio/modules-explanation.mp3"
+            "image": "/assets/images/modules-system.png",
+            "audio": "/assets/audio/modules-explanation.mp3"
           }
         },
         {
@@ -250,8 +250,8 @@
             "explanation": "const 和 let 有更好的作用域控制，避免了 var 的提升問題，是現代 JavaScript 的推薦做法。"
           },
           "media": {
-            "image": "/src/assets/images/js-best-practices.png",
-            "audio": "/src/assets/audio/best-practices.mp3"
+            "image": "/assets/images/js-best-practices.png",
+            "audio": "/assets/audio/best-practices.mp3"
           }
         }
       ]
@@ -358,8 +358,8 @@
             "explanation": "React 是一個用於建立使用者介面的 JavaScript 函式庫，它的核心作用是管理和渲染 UI 組件。"
           },
           "media": {
-            "image": "/src/assets/images/react-logo.png",
-            "audio": "/src/assets/audio/intro-bgm.mp3"
+            "image": "/assets/images/react-logo.png",
+            "audio": "/assets/audio/intro-bgm.mp3"
           }
         },
         {
@@ -374,8 +374,8 @@
             "explanation": "因為 class 是 JavaScript 的保留字，所以在 JSX 中使用 className 來設定 CSS 類別。"
           },
           "media": {
-            "image": "/src/assets/images/jsx-example.png",
-            "audio": "/src/assets/audio/jsx-explanation.mp3"
+            "image": "/assets/images/jsx-example.png",
+            "audio": "/assets/audio/jsx-explanation.mp3"
           }
         },
         {
@@ -390,8 +390,8 @@
             "explanation": "虛擬 DOM 通過 diff 算法比較新舊狀態，只更新實際變更的 DOM 節點，大幅提高效能。"
           },
           "media": {
-            "image": "/src/assets/images/virtual-dom.png",
-            "audio": "/src/assets/audio/virtual-dom.mp3"
+            "image": "/assets/images/virtual-dom.png",
+            "audio": "/assets/audio/virtual-dom.mp3"
           }
         },
         {
@@ -406,8 +406,8 @@
             "explanation": "單一職責原則要求每個組件只做一件事，這樣可以讓組件更容易理解、測試和維護。"
           },
           "media": {
-            "image": "/src/assets/images/component-design.png",
-            "audio": "/src/assets/audio/component-design.mp3"
+            "image": "/assets/images/component-design.png",
+            "audio": "/assets/audio/component-design.mp3"
           }
         }
       ]
@@ -514,8 +514,8 @@
             "answer": "唯讀的，不能被修改"
           },
           "media": {
-            "image": "/src/assets/images/props-flow.png",
-            "audio": "/src/assets/audio/props-explanation.mp3"
+            "image": "/assets/images/props-flow.png",
+            "audio": "/assets/audio/props-explanation.mp3"
           }
         },
         {
@@ -528,8 +528,8 @@
             "answer": "一個陣列，包含狀態值和更新函式"
           },
           "media": {
-            "image": "/src/assets/images/state-diagram.png",
-            "audio": "/src/assets/audio/state-management.mp3"
+            "image": "/assets/images/state-diagram.png",
+            "audio": "/assets/audio/state-management.mp3"
           }
         }
       ]
@@ -636,8 +636,8 @@
             "answer": "組件卸載時或下次 effect 執行前"
           },
           "media": {
-            "image": "/src/assets/images/useeffect-lifecycle.png",
-            "audio": "/src/assets/audio/useeffect-explanation.mp3"
+            "image": "/assets/images/useeffect-lifecycle.png",
+            "audio": "/assets/audio/useeffect-explanation.mp3"
           }
         },
         {
@@ -650,8 +650,8 @@
             "answer": "loading, data, error"
           },
           "media": {
-            "image": "/src/assets/images/api-fetch.png",
-            "audio": "/src/assets/audio/api-guide.mp3"
+            "image": "/assets/images/api-fetch.png",
+            "audio": "/assets/audio/api-guide.mp3"
           }
         }
       ]
@@ -756,8 +756,8 @@
             "answer": "幫助 React 優化渲染效能"
           },
           "media": {
-            "image": "/src/assets/images/list-rendering.png",
-            "audio": "/src/assets/audio/lists-and-keys.mp3"
+            "image": "/assets/images/list-rendering.png",
+            "audio": "/assets/audio/lists-and-keys.mp3"
           }
         },
         {
@@ -770,8 +770,8 @@
             "answer": "值由 React state 控制"
           },
           "media": {
-            "image": "/src/assets/images/controlled-components.png",
-            "audio": "/src/assets/audio/forms-explanation.mp3"
+            "image": "/assets/images/controlled-components.png",
+            "audio": "/assets/audio/forms-explanation.mp3"
           }
         }
       ]
@@ -844,8 +844,8 @@
             "answer": "將共享狀態移動到公共父組件"
           },
           "media": {
-            "image": "/src/assets/images/components-diagram.png",
-            "audio": "/src/assets/audio/components-intro.mp3"
+            "image": "/assets/images/components-diagram.png",
+            "audio": "/assets/audio/components-intro.mp3"
           }
         }
       ]
@@ -953,8 +953,8 @@
             "explanation": "SPA 通過避免整頁重新載入，提供更快的頁面切換和更流暢的用戶體驗，這是其主要優勢。"
           },
           "media": {
-            "image": "/src/assets/images/react-router-spa.png",
-            "audio": "/src/assets/audio/spa-explanation.mp3"
+            "image": "/assets/images/react-router-spa.png",
+            "audio": "/assets/audio/spa-explanation.mp3"
           }
         },
         {
@@ -969,8 +969,8 @@
             "explanation": "Route 組件用於定義單個路由規則，指定路徑和對應的組件。"
           },
           "media": {
-            "image": "/src/assets/images/react-router-components.png",
-            "audio": "/src/assets/audio/router-components.mp3"
+            "image": "/assets/images/react-router-components.png",
+            "audio": "/assets/audio/router-components.mp3"
           }
         },
         {
@@ -985,8 +985,8 @@
             "explanation": "useParams() Hook 用於獲取動態路由參數，返回一個包含所有路由參數的物件。"
           },
           "media": {
-            "image": "/src/assets/images/dynamic-routing.png",
-            "audio": "/src/assets/audio/dynamic-routing.mp3"
+            "image": "/assets/images/dynamic-routing.png",
+            "audio": "/assets/audio/dynamic-routing.mp3"
           }
         },
         {
@@ -1001,8 +1001,8 @@
             "explanation": "NavLink 提供了 isActive 屬性，可以根據當前路由狀態來顯示不同的樣式，這是與 Link 的主要差別。"
           },
           "media": {
-            "image": "/src/assets/images/navigation-patterns.png",
-            "audio": "/src/assets/audio/navigation-patterns.mp3"
+            "image": "/assets/images/navigation-patterns.png",
+            "audio": "/assets/audio/navigation-patterns.mp3"
           }
         }
       ]
@@ -1110,8 +1110,8 @@
             "explanation": "Context API 的主要目的是解決 Prop Drilling 問題，讓深層組件可以直接存取需要的資料，無需透過中間組件傳遞。"
           },
           "media": {
-            "image": "/src/assets/images/prop-drilling-context.png",
-            "audio": "/src/assets/audio/context-explanation.mp3"
+            "image": "/assets/images/prop-drilling-context.png",
+            "audio": "/assets/audio/context-explanation.mp3"
           }
         },
         {
@@ -1126,8 +1126,8 @@
             "explanation": "useContext Hook 用於在組件中消費 Context 資料，它接收一個 Context 物件並返回該 Context 的當前值。"
           },
           "media": {
-            "image": "/src/assets/images/context-api-flow.png",
-            "audio": "/src/assets/audio/context-usage.mp3"
+            "image": "/assets/images/context-api-flow.png",
+            "audio": "/assets/audio/context-usage.mp3"
           }
         },
         {
@@ -1142,8 +1142,8 @@
             "explanation": "根據 React 的規則，自定義 Hook 必須以 'use' 開頭，這樣 React 才能正確地應用 Hook 的規則。"
           },
           "media": {
-            "image": "/src/assets/images/custom-hooks.png",
-            "audio": "/src/assets/audio/custom-hooks.mp3"
+            "image": "/assets/images/custom-hooks.png",
+            "audio": "/assets/audio/custom-hooks.mp3"
           }
         },
         {
@@ -1158,8 +1158,8 @@
             "explanation": "分割 Context 可以讓組件只訂閱它們需要的狀態，避免因不相關狀態的改變而引起的不必要重新渲染。"
           },
           "media": {
-            "image": "/src/assets/images/context-optimization.png",
-            "audio": "/src/assets/audio/context-performance.mp3"
+            "image": "/assets/images/context-optimization.png",
+            "audio": "/assets/audio/context-performance.mp3"
           }
         }
       ]
@@ -1267,8 +1267,8 @@
             "explanation": "雖然個人喜好很重要，但選擇 UI 組件庫應該以專案需求、技術適合度、維護性等客觀因素為主。"
           },
           "media": {
-            "image": "/src/assets/images/ui-library-comparison.png",
-            "audio": "/src/assets/audio/ui-libraries.mp3"
+            "image": "/assets/images/ui-library-comparison.png",
+            "audio": "/assets/audio/ui-libraries.mp3"
           }
         },
         {
@@ -1283,8 +1283,8 @@
             "explanation": "ConfigProvider 用於為整個應用提供全域配置，包括主題、語言、組件預設屬性等。"
           },
           "media": {
-            "image": "/src/assets/images/antd-config.png",
-            "audio": "/src/assets/audio/antd-setup.mp3"
+            "image": "/assets/images/antd-config.png",
+            "audio": "/assets/audio/antd-setup.mp3"
           }
         },
         {
@@ -1299,8 +1299,8 @@
             "explanation": "Message 組件用於顯示全域的回饋訊息，如成功、警告、錯誤等提示。"
           },
           "media": {
-            "image": "/src/assets/images/antd-components.png",
-            "audio": "/src/assets/audio/antd-usage.mp3"
+            "image": "/assets/images/antd-components.png",
+            "audio": "/assets/audio/antd-usage.mp3"
           }
         },
         {
@@ -1315,8 +1315,8 @@
             "explanation": "攔截器允許在請求發送前和響應返回後執行通用邏輯，如添加認證標頭、錯誤處理等。"
           },
           "media": {
-            "image": "/src/assets/images/axios-interceptors.png",
-            "audio": "/src/assets/audio/api-encapsulation.mp3"
+            "image": "/assets/images/axios-interceptors.png",
+            "audio": "/assets/audio/api-encapsulation.mp3"
           }
         }
       ]
@@ -1424,8 +1424,8 @@
             "explanation": "根據 React 的規則，自定義 Hook 必須以 'use' 開頭，這樣 React 才能正確地應用 Hook 的規則。"
           },
           "media": {
-            "image": "/src/assets/images/react-project-structure.png",
-            "audio": "/src/assets/audio/project-architecture.mp3"
+            "image": "/assets/images/react-project-structure.png",
+            "audio": "/assets/audio/project-architecture.mp3"
           }
         }
       ]
@@ -1533,8 +1533,8 @@
             "explanation": "React.memo 會比較組件的 props，只有在 props 發生變化時才重新渲染組件，從而避免不必要的重新渲染。"
           },
           "media": {
-            "image": "/src/assets/images/react-performance.png",
-            "audio": "/src/assets/audio/performance-optimization.mp3"
+            "image": "/assets/images/react-performance.png",
+            "audio": "/assets/audio/performance-optimization.mp3"
           }
         }
       ]
@@ -1639,8 +1639,8 @@
             "answer": "npm run build"
           },
           "media": {
-            "image": "/src/assets/images/list-rendering.png",
-            "audio": "/src/assets/audio/lists-and-keys.mp3"
+            "image": "/assets/images/list-rendering.png",
+            "audio": "/assets/audio/lists-and-keys.mp3"
           }
         }
       ]

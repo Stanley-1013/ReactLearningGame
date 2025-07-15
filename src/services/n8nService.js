@@ -266,7 +266,7 @@ export const themeService = {
         difficulty: DIFFICULTY_LEVELS.BEGINNER,
         moduleCount: 10,
         estimatedTime: 120,
-        thumbnail: '/src/assets/images/theme-react-basics.png',
+        thumbnail: '/assets/images/theme-react-basics.png',
         tags: [isEn ? 'beginner' : '初學者', 'React', isEn ? 'components' : '組件'],
         isActive: true,
         available: true
@@ -279,7 +279,7 @@ export const themeService = {
         difficulty: DIFFICULTY_LEVELS.INTERMEDIATE,
         moduleCount: 8,
         estimatedTime: 180,
-        thumbnail: '/src/assets/images/theme-hooks.png',
+        thumbnail: '/assets/images/theme-hooks.png',
         tags: [isEn ? 'intermediate' : '中級', 'Hooks', 'useState', 'useEffect'],
         isActive: false,
         available: true
@@ -292,7 +292,7 @@ export const themeService = {
         difficulty: DIFFICULTY_LEVELS.ADVANCED,
         moduleCount: 12,
         estimatedTime: 240,
-        thumbnail: '/src/assets/images/theme-ecosystem.png',
+        thumbnail: '/assets/images/theme-ecosystem.png',
         tags: [isEn ? 'advanced' : '進階', 'Router', 'Redux', 'Testing'],
         isActive: false,
         available: true
