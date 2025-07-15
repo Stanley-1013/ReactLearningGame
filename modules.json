@@ -1,0 +1,1649 @@
+{
+  "courseInfo": {
+    "title": "React 實習生四週完整學習計畫",
+    "description": "從基礎到實戰的完整 React 學習旅程",
+    "totalWeeks": 4,
+    "totalModules": 12,
+    "estimatedHours": 80
+  },
+  "weeklyPlan": {
+    "week1": {
+      "title": "基礎核心與前端思維建立",
+      "description": "建立 React 開發環境，學習核心概念",
+      "modules": [1, 2, 3],
+      "estimatedHours": 20,
+      "learningObjectives": [
+        "搭建前端開發環境",
+        "掌握 ES6+ 核心語法",
+        "理解 React 組件化思想",
+        "學習 JSX 語法和 Props/State 基礎"
+      ],
+      "deliverables": [
+        "一個成功運行的 Hello, React! 項目",
+        "可複用的 ProfileCard 組件",
+        "互動式的 Counter 組件"
+      ],
+      "assessmentCriteria": [
+        "能獨立完成開發環境的安裝與配置",
+        "能清晰解釋 JSX、組件、Props 和 State",
+        "能夠獨立編寫符合要求的組件",
+        "理解單向數據流概念"
+      ]
+    },
+    "week2": {
+      "title": "核心進階與組件化思維",
+      "description": "學習副作用處理、列表渲染和組件拆分",
+      "modules": [4, 5, 6],
+      "estimatedHours": 20,
+      "learningObjectives": [
+        "掌握 useEffect Hook 的使用",
+        "學習 API 資料獲取和錯誤處理",
+        "熟練列表渲染和表單處理",
+        "理解組件化拆分和狀態提升"
+      ],
+      "deliverables": [
+        "從 API 獲取數據並顯示的組件",
+        "功能完整的 Todo List 應用",
+        "結構清晰的組件化架構"
+      ],
+      "assessmentCriteria": [
+        "能解釋 useEffect 的用途並成功從 API 獲取數據",
+        "熟練掌握列表渲染和受控表單的實現",
+        "能夠將複雜 UI 拆解成合理的組件結構",
+        "能解釋並正確實踐狀態提升"
+      ]
+    },
+    "week3": {
+      "title": "生態與狀態管理",
+      "description": "學習路由系統、全域狀態管理和 UI 組件庫",
+      "modules": [7, 8, 9],
+      "estimatedHours": 20,
+      "learningObjectives": [
+        "掌握 React Router 建立 SPA",
+        "理解 Context API 解決 Prop Drilling",
+        "學習使用 UI 組件庫",
+        "了解 API 封裝和請求管理"
+      ],
+      "deliverables": [
+        "多頁面 Todo 應用",
+        "使用 Context API 的狀態管理",
+        "整合 UI 組件庫的專業界面"
+      ],
+      "assessmentCriteria": [
+        "能使用 React Router 實現應用內的頁面導航",
+        "能選用合適的全域狀態管理工具",
+        "能夠將第三方 UI 庫集成到專案中",
+        "提交清晰的組件層級圖和頁面路由設計"
+      ]
+    },
+    "week4": {
+      "title": "實戰演練與最佳實踐",
+      "description": "綜合運用所學知識，完成完整專案",
+      "modules": [10, 11, 12],
+      "estimatedHours": 20,
+      "learningObjectives": [
+        "綜合運用前三週知識開發完整應用",
+        "學習自定義 Hook 和代碼優化",
+        "掌握性能優化技巧",
+        "了解部署流程和最佳實踐"
+      ],
+      "deliverables": [
+        "功能完整的個人專案",
+        "優化後的高品質代碼",
+        "成功部署的線上應用"
+      ],
+      "assessmentCriteria": [
+        "能夠獨立按時交付功能完整的線上專案",
+        "專案代碼庫整潔、格式統一",
+        "能夠識別並創建自定義 Hook",
+        "能解釋 React.memo 的作用並適當使用",
+        "能清晰展示專案成果並反思學習過程"
+      ]
+    }
+  },
+  "modules": [
+    {
+      "id": 1,
+      "weekNumber": 1,
+      "dayNumber": 1,
+      "title": "第一週 Day 1-2: 開發環境建置與 ES6+ 基礎",
+      "description": "建立完整的 React 開發環境，掌握現代 JavaScript 核心語法，為 React 學習打好基礎",
+      "estimatedTime": 120,
+      "difficulty": "beginner",
+      "tags": ["環境建置", "ES6+", "基礎", "Node.js", "Vite"],
+      "learningObjectives": [
+        "能夠獨立搭建 React 開發環境",
+        "熟練掌握 ES6+ 核心語法特性",
+        "理解現代 JavaScript 模組系統",
+        "能夠創建並運行第一個 React 應用"
+      ],
+      "dailyTasks": [
+        {
+          "id": "1-1",
+          "title": "安裝開發環境",
+          "description": "安裝 Node.js (v16+)、npm/yarn，配置 VS Code 開發環境及必要擴充套件",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "檢查 Node.js 版本：node --version",
+            "檢查 npm 版本：npm --version",
+            "VS Code 安裝 ES7+ React/Redux/React-Native snippets",
+            "VS Code 安裝 Prettier 和 ESLint 擴充套件"
+          ]
+        },
+        {
+          "id": "1-2", 
+          "title": "創建第一個 React 專案",
+          "description": "使用 Vite 創建 React 應用，了解專案結構，成功運行開發服務器",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "執行 npm create vite@latest my-react-app -- --template react",
+            "進入專案目錄並安裝依賴",
+            "成功運行 npm run dev",
+            "在瀏覽器中看到 React 應用"
+          ]
+        },
+        {
+          "id": "1-3",
+          "title": "ES6+ 語法深度練習",
+          "description": "深入學習箭頭函式、解構賦值、展開運算子、模板字串等語法",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "練習箭頭函式的不同寫法",
+            "掌握物件和陣列的解構賦值",
+            "使用展開運算子進行陣列和物件操作",
+            "實作 5 個以上的 ES6+ 語法範例"
+          ]
+        },
+        {
+          "id": "1-4",
+          "title": "模組系統實踐",
+          "description": "理解 ES6 模組系統，實際運用 import/export 語法",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "創建多個 JavaScript 模組文件",
+            "練習 default export 和 named export",
+            "理解模組載入機制",
+            "在 React 專案中實際使用模組"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "建立完整的 React 開發環境並實作 ES6+ 特性",
+        "description": "完成開發環境建置，創建 React 專案並結合 ES6+ 語法實作一個互動式的個人介紹頁面",
+        "template": "// 在 App.jsx 中創建你的第一個組件\nfunction App() {\n  // 使用 ES6+ 語法特性\n  const userInfo = {\n    name: '你的名字',\n    age: 22,\n    skills: ['JavaScript', 'React', 'HTML', 'CSS']\n  };\n\n  // 解構賦值\n  const { name, age, skills } = userInfo;\n\n  // 箭頭函式\n  const formatSkills = (skillList) => skillList.join(' | ');\n\n  return (\n    <div className=\"App\">\n      <h1>Hello, React!</h1>\n      <div className=\"profile\">\n        <h2>歡迎來到 {name} 的 React 學習之旅</h2>\n        <p>年齡: {age} 歲</p>\n        <p>技能: {formatSkills(skills)}</p>\n        <p>今天是: {new Date().toLocaleDateString()}</p>\n      </div>\n    </div>\n  );\n}\n\nexport default App;",
+        "expectedOutput": "成功運行的 React 應用程式，顯示個人介紹信息和當前日期",
+        "hints": [
+          "確保 Node.js 版本在 16 以上",
+          "使用 npm create vite@latest 創建專案",
+          "記得執行 npm install 安裝依賴",
+          "嘗試修改 userInfo 中的內容",
+          "觀察 ES6+ 語法如何讓代碼更簡潔"
+        ],
+        "additionalChallenges": [
+          "使用展開運算子為 skills 陣列添加新技能",
+          "實作一個簡單的點擊計數器",
+          "使用模板字串創建動態的歡迎訊息"
+        ]
+      },
+      "questions": [
+        {
+          "id": "1-1",
+          "title": "React 開發環境建置",
+          "content": "建立 React 開發環境需要先安裝 Node.js 和 npm（Node Package Manager）。Node.js 是 JavaScript 的運行環境，npm 是 JavaScript 的套件管理器。我們使用 Vite 來創建新的 React 專案，因為它提供了快速的開發體驗、熱重載功能和優化的打包工具。Vite 相比於傳統的 Create React App 有更快的啟動速度和更好的開發體驗。",
+          "codeExample": "# 檢查 Node.js 和 npm 版本\nnode --version\nnpm --version\n\n# 使用 Vite 創建 React 專案\nnpm create vite@latest my-react-app -- --template react\ncd my-react-app\nnpm install\nnpm run dev\n\n# 專案目錄結構\nmy-react-app/\n├── public/\n│   └── vite.svg\n├── src/\n│   ├── App.jsx\n│   ├── main.jsx\n│   └── index.css\n├── package.json\n└── vite.config.js",
+          "quiz": {
+            "question": "創建新的 React 專案時，推薦使用哪個工具？",
+            "options": ["Vite", "Webpack", "Parcel", "Rollup"],
+            "answer": "Vite",
+            "explanation": "Vite 提供了快速的開發體驗、熱重載功能和優化的打包工具，是現代 React 開發的首選。"
+          },
+          "media": {
+            "image": "/assets/images/vite-setup.png",
+            "audio": "/assets/audio/setup-guide.mp3"
+          }
+        },
+        {
+          "id": "1-2",
+          "title": "ES6+ 核心語法詳解",
+          "content": "ES6+（ECMAScript 2015+）引入了許多新的語法特性，大大提升了 JavaScript 的開發效率。箭頭函式提供了簡潔的函式語法，解構賦值讓我們能夠從陣列或物件中提取值，展開運算子則讓陣列和物件的操作更加靈活。這些現代 JavaScript 語法在 React 中非常常用，掌握它們是學習 React 的重要基礎。",
+          "codeExample": "// 箭頭函式的不同形式\nconst greet = (name) => `Hello, ${name}!`;\nconst add = (a, b) => a + b;\nconst getUser = () => ({ name: 'Alice', age: 25 });\n\n// 解構賦值\nconst user = { name: 'Alice', age: 25, email: 'alice@example.com' };\nconst { name, age, email } = user;\n\n// 陣列解構\nconst colors = ['red', 'green', 'blue'];\nconst [primary, secondary] = colors;\n\n// 展開運算子\nconst arr1 = [1, 2, 3];\nconst arr2 = [...arr1, 4, 5];\nconst obj1 = { a: 1, b: 2 };\nconst obj2 = { ...obj1, c: 3 };\n\n// 在 React 中的應用\nfunction UserProfile({ name, age, email, ...otherProps }) {\n  return (\n    <div {...otherProps}>\n      <h2>{name}</h2>\n      <p>年齡: {age}</p>\n      <p>信箱: {email}</p>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "箭頭函式 (a, b) => a + b 等同於哪種寫法？",
+            "options": ["function(a, b) { return a + b; }", "function(a, b) { a + b; }", "(a, b) { return a + b; }", "function => a + b"],
+            "answer": "function(a, b) { return a + b; }",
+            "explanation": "箭頭函式會自動回傳運算式的結果，等同於使用 return 語句的傳統函式。"
+          },
+          "media": {
+            "image": "/assets/images/es6-syntax.png",
+            "audio": "/assets/audio/es6-explanation.mp3"
+          }
+        },
+        {
+          "id": "1-3",
+          "title": "模組系統與 import/export",
+          "content": "ES6 模組系統讓我們能夠將代碼分割成多個檔案，提高代碼的可維護性和重用性。模組系統包含 export（匯出）和 import（匯入）兩個主要概念。export 用於從模組中匯出變數、函式或類別，import 用於從其他模組匯入這些內容。React 應用程式大量使用模組系統來組織組件和工具函式。",
+          "codeExample": "// utils.js - 匯出工具函式\nexport const formatDate = (date) => {\n  return date.toLocaleDateString();\n};\n\nexport const capitalize = (str) => {\n  return str.charAt(0).toUpperCase() + str.slice(1);\n};\n\n// 預設匯出\nconst API_URL = 'https://api.example.com';\nexport default API_URL;\n\n// UserCard.jsx - React 組件\nimport React from 'react';\nimport API_URL, { formatDate, capitalize } from './utils';\n\nfunction UserCard({ user }) {\n  return (\n    <div className=\"user-card\">\n      <h3>{capitalize(user.name)}</h3>\n      <p>註冊日期: {formatDate(user.createdAt)}</p>\n    </div>\n  );\n}\n\nexport default UserCard;\n\n// App.jsx - 使用組件\nimport UserCard from './UserCard';\n\nfunction App() {\n  const user = {\n    name: 'alice',\n    createdAt: new Date('2023-01-01')\n  };\n\n  return (\n    <div>\n      <UserCard user={user} />\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "在 ES6 模組中，如何同時匯入預設匯出和具名匯出？",
+            "options": ["import Default, { named } from './module'", "import { Default, named } from './module'", "import Default from './module' and { named }", "import Default + { named } from './module'"],
+            "answer": "import Default, { named } from './module'",
+            "explanation": "可以在同一個 import 語句中同時匯入預設匯出和具名匯出，用逗號分隔。"
+          },
+          "media": {
+            "image": "/assets/images/modules-system.png",
+            "audio": "/assets/audio/modules-explanation.mp3"
+          }
+        },
+        {
+          "id": "1-4",
+          "title": "現代 JavaScript 最佳實踐",
+          "content": "在現代 JavaScript 開發中，有許多最佳實踐可以讓代碼更加清晰、高效和易於維護。包括使用 const 和 let 替代 var、優先使用箭頭函式、善用解構賦值、使用模板字串、避免可變性等。這些實踐在 React 開發中尤其重要，因為 React 鼓勵函式式程式設計和不可變性。",
+          "codeExample": "// 使用 const 和 let\nconst API_URL = 'https://api.example.com'; // 不會變的值\nlet userCount = 0; // 可能會變的值\n\n// 模板字串\nconst message = `歡迎 ${user.name}，您是第 ${userCount} 位使用者`;\n\n// 預設參數\nconst greet = (name = 'Guest') => `Hello, ${name}!`;\n\n// 簡化物件字面量\nconst name = 'Alice';\nconst age = 25;\nconst user = { name, age }; // 等同於 { name: name, age: age }\n\n// 陣列方法鍊式呼叫\nconst numbers = [1, 2, 3, 4, 5];\nconst result = numbers\n  .filter(num => num > 2)\n  .map(num => num * 2)\n  .reduce((sum, num) => sum + num, 0);\n\n// 條件運算子\nconst status = user.isActive ? 'active' : 'inactive';\n\n// 邏輯運算子\nconst displayName = user.name || 'Anonymous';\nconst hasPermission = user.role && user.role.includes('admin');",
+          "quiz": {
+            "question": "下列哪個是現代 JavaScript 的最佳實踐？",
+            "options": ["優先使用 const 和 let", "總是使用 var 宣告變數", "避免使用箭頭函式", "不要使用解構賦值"],
+            "answer": "優先使用 const 和 let",
+            "explanation": "const 和 let 有更好的作用域控制，避免了 var 的提升問題，是現代 JavaScript 的推薦做法。"
+          },
+          "media": {
+            "image": "/assets/images/js-best-practices.png",
+            "audio": "/assets/audio/best-practices.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "weekNumber": 1,
+      "dayNumber": 3,
+      "title": "第一週 Day 3-4: React 核心概念與 JSX",
+      "description": "深入理解 React 組件化思想和 JSX 語法，學習如何創建可重用的組件，掌握虛擬 DOM 的工作原理",
+      "estimatedTime": 120,
+      "difficulty": "beginner",
+      "tags": ["React 基礎", "JSX", "組件", "虛擬 DOM"],
+      "learningObjectives": [
+        "理解 React 組件化開發的核心思想",
+        "掌握 JSX 語法規則和最佳實踐",
+        "學會在 JSX 中使用 JavaScript 表達式",
+        "能夠創建可重用的 React 組件",
+        "理解虛擬 DOM 的優勢和運作原理"
+      ],
+      "dailyTasks": [
+        {
+          "id": "2-1",
+          "title": "理解 React 組件概念",
+          "description": "學習組件化思想，創建第一個 React 組件，理解組件的基本結構和命名規範",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "理解什麼是 React 組件",
+            "學會函式組件和類別組件的差別",
+            "掌握組件命名規則（大寫開頭）",
+            "實作第一個組件"
+          ]
+        },
+        {
+          "id": "2-2",
+          "title": "掌握 JSX 語法規則",
+          "description": "學習 JSX 的基本語法、注意事項和轉換機制",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "理解 JSX 的本質和轉換機制",
+            "掌握 JSX 語法規則（className, htmlFor 等）",
+            "學會在 JSX 中使用 JavaScript 表達式",
+            "了解 JSX 的限制和陷阱"
+          ]
+        },
+        {
+          "id": "2-3",
+          "title": "練習 JSX 表達式和條件渲染",
+          "description": "在 JSX 中使用 JavaScript 表達式、條件渲染和循環渲染",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "使用 {} 嵌入 JavaScript 表達式",
+            "練習三元運算子進行條件渲染",
+            "使用 && 運算子進行條件顯示",
+            "使用 map() 方法渲染列表"
+          ]
+        },
+        {
+          "id": "2-4",
+          "title": "創建可重複使用的組件",
+          "description": "設計並實作多個小組件，理解組件的組合模式",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "創建多個小組件",
+            "理解組件的組合模式",
+            "實作組件巢套結構",
+            "理解組件的單一職責原則"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "創建組件化的使用者介面",
+        "description": "建立一個完整的使用者介面，包含多個可重用的 React 組件，展示 JSX 語法的各種特性",
+        "template": "// Header 組件\nfunction Header({ title, subtitle }) {\n  return (\n    <header className=\"header\">\n      <h1>{title}</h1>\n      {subtitle && <p className=\"subtitle\">{subtitle}</p>}\n    </header>\n  );\n}\n\n// UserCard 組件\nfunction UserCard({ user }) {\n  const { name, age, email, isActive } = user;\n  \n  return (\n    <div className={`user-card ${isActive ? 'active' : 'inactive'}`}>\n      <h3>{name}</h3>\n      <p>年齡: {age} 歲</p>\n      <p>信箱: {email}</p>\n      <span className=\"status\">\n        {isActive ? '線上' : '離線'}\n      </span>\n    </div>\n  );\n}\n\n// UserList 組件\nfunction UserList({ users }) {\n  return (\n    <div className=\"user-list\">\n      <h2>使用者列表</h2>\n      {users.length > 0 ? (\n        users.map(user => (\n          <UserCard key={user.id} user={user} />\n        ))\n      ) : (\n        <p>沒有使用者資料</p>\n      )}\n    </div>\n  );\n}\n\n// 主應用程式\nfunction App() {\n  const users = [\n    { id: 1, name: 'Alice', age: 25, email: 'alice@example.com', isActive: true },\n    { id: 2, name: 'Bob', age: 30, email: 'bob@example.com', isActive: false },\n    { id: 3, name: 'Charlie', age: 28, email: 'charlie@example.com', isActive: true }\n  ];\n\n  return (\n    <div className=\"app\">\n      <Header \n        title=\"React 組件化開發\" \n        subtitle=\"JSX 語法實練\" \n      />\n      <UserList users={users} />\n    </div>\n  );\n}",
+        "expectedOutput": "顯示組件化的使用者介面，包含標題和使用者列表",
+        "hints": [
+          "記住 JSX 中使用 className 而非 class",
+          "在 JSX 中使用 {} 來嵌入 JavaScript 表達式",
+          "組件名稱必須以大寫字母開頭",
+          "使用 map() 渲染列表時不要忘記 key 屬性",
+          "善用條件渲染來控制組件顯示"
+        ],
+        "additionalChallenges": [
+          "為 UserCard 組件添加照片顯示功能",
+          "實作一個簡單的搜尋功能",
+          "使用 CSS 模組或 styled-components 美化組件",
+          "添加更多互動元素（按鈕、表單等）"
+        ]
+      },
+      "questions": [
+        {
+          "id": "2-1",
+          "title": "React 核心概念深入理解",
+          "content": "React 是由 Facebook 開發的用於建立使用者介面的 JavaScript 函式庫。它的核心思想是組件化開發，每個組件都是獨立的、可重複使用的程式碼片段。React 使用虛擬 DOM 來優化效能，只更新實際變更的部分。組件化開發的優勢包括代碼重用、易於維護、測試友善等。在組件化架構下，一個大型應用程式可以被分解成多個小的、功能單一的組件。",
+          "codeExample": "// 一個簡單的 React 組件\nfunction Welcome() {\n  return <h1>Hello, React!</h1>;\n}\n\n// 帶有狀態的組件\nfunction Counter() {\n  const [count, setCount] = useState(0);\n  return (\n    <div>\n      <p>計數: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        增加\n      </button>\n    </div>\n  );\n}\n\n// 組件組合\nfunction App() {\n  return (\n    <div>\n      <Welcome />\n      <Counter />\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "React 主要是用來做什麼的？",
+            "options": ["建立使用者介面", "處理資料庫", "管理伺服器", "編譯程式碼"],
+            "answer": "建立使用者介面",
+            "explanation": "React 是一個用於建立使用者介面的 JavaScript 函式庫，它的核心作用是管理和渲染 UI 組件。"
+          },
+          "media": {
+            "image": "/assets/images/react-logo.png",
+            "audio": "/assets/audio/intro-bgm.mp3"
+          }
+        },
+        {
+          "id": "2-2",
+          "title": "JSX 語法深入探討",
+          "content": "JSX 是 JavaScript 的語法擴充，讓我們可以在 JavaScript 中寫類似 HTML 的語法。JSX 並不是標準的 HTML，而是由 Babel 等工具轉換成 JavaScript 函式呼叫。JSX 需要遵循特定規則：使用 className 而非 class、使用 camelCase 命名屬性、用 {} 包裹 JavaScript 表達式、每個組件必須返回一個根元素或使用 Fragment。",
+          "codeExample": "// JSX 語法規則\nfunction MyComponent() {\n  const title = '標題';\n  const isVisible = true;\n  \n  return (\n    <div className=\"container\">\n      <h1>{title}</h1>\n      <p>內容</p>\n      <button onClick={() => alert('clicked')}>\n        點擊我\n      </button>\n      {isVisible && <p>這段文字只在條件為真時顯示</p>}\n    </div>\n  );\n}\n\n// 使用 Fragment 避免額外的 DOM 節點\nfunction UserInfo({ user }) {\n  return (\n    <>\n      <h2>{user.name}</h2>\n      <p>{user.email}</p>\n      <p>年齡: {user.age}</p>\n    </>\n  );\n}\n\n// 條件渲染的多種方式\nfunction WelcomeMessage({ username, isLoggedIn }) {\n  return (\n    <div>\n      {/* 使用三元運算子 */}\n      {isLoggedIn ? (\n        <h1>歡迎回來, {username}！</h1>\n      ) : (\n        <h1>請先登入</h1>\n      )}\n      \n      {/* 使用 && 運算子 */}\n      {isLoggedIn && <button>登出</button>}\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "在 JSX 中，HTML 的 class 屬性要寫成什麼？",
+            "options": ["className", "class", "cssClass", "styleClass"],
+            "answer": "className",
+            "explanation": "因為 class 是 JavaScript 的保留字，所以在 JSX 中使用 className 來設定 CSS 類別。"
+          },
+          "media": {
+            "image": "/assets/images/jsx-example.png",
+            "audio": "/assets/audio/jsx-explanation.mp3"
+          }
+        },
+        {
+          "id": "2-3",
+          "title": "虛擬 DOM 的優勢和運作原理",
+          "content": "虛擬 DOM 是 React 的核心技術之一。它是真實 DOM 的 JavaScript 表示，存在於記憶體中。當組件狀態改變時，React 會先在虛擬 DOM 中進行更新，然後通過 diff 算法比較新舊虛擬 DOM 的差異，只更新實際變更的部分。這樣可以大幅減少 DOM 操作，提高效能。虛擬 DOM 的優勢包括：性能優化、跨瀏覽器相容性、可預測性、更好的程式化模式等。",
+          "codeExample": "// 虛擬 DOM 的運作原理\nfunction App() {\n  const [count, setCount] = useState(0);\n  const [name, setName] = useState('Alice');\n\n  // 當狀態改變時，React 會先在虛擬 DOM 中更新\n  const handleClick = () => {\n    setCount(count + 1);\n  };\n\n  return (\n    <div>\n      <h1>歡迎 {name}</h1>\n      <p>你點擊了 {count} 次</p>\n      <button onClick={handleClick}>點擊我</button>\n    </div>\n  );\n}\n\n// React 在幕後做的事情：\n// 1. 當 setCount 被呼叫時，React 會安排重新渲染\n// 2. 創建新的虛擬 DOM 樹\n// 3. 與舊的虛擬 DOM 樹進行比較（diff）\n// 4. 只更新實際變更的 DOM 節點（在這個例子中只有 <p> 元素的文字內容）",
+          "quiz": {
+            "question": "虛擬 DOM 的主要作用是什麼？",
+            "options": ["優化效能，減少 DOM 操作", "儲存使用者資料", "處理網路請求", "管理路由"],
+            "answer": "優化效能，減少 DOM 操作",
+            "explanation": "虛擬 DOM 通過 diff 算法比較新舊狀態，只更新實際變更的 DOM 節點，大幅提高效能。"
+          },
+          "media": {
+            "image": "/assets/images/virtual-dom.png",
+            "audio": "/assets/audio/virtual-dom.mp3"
+          }
+        },
+        {
+          "id": "2-4",
+          "title": "組件設計模式和最佳實踐",
+          "content": "在 React 中，好的組件設計遵循一些重要原則：單一職責原則（一個組件只做一件事）、可重用性（通過 props 接收不同數據）、可組合性（能與其他組件配合使用）、組件層級的合理設計等。命名規範包括：組件名稱大寫開頭、使用有意義的名稱、文件名與組件名一致等。",
+          "codeExample": "// 好的組件設計範例\n\n// 1. 單一職責原則 - 只負責顯示使用者信息\nfunction UserProfile({ user }) {\n  return (\n    <div className=\"user-profile\">\n      <img src={user.avatar} alt={user.name} />\n      <h2>{user.name}</h2>\n      <p>{user.email}</p>\n    </div>\n  );\n}\n\n// 2. 可重用性 - 通過 props 接收不同數據\nfunction Button({ text, onClick, variant = 'primary' }) {\n  return (\n    <button \n      className={`btn btn-${variant}`} \n      onClick={onClick}\n    >\n      {text}\n    </button>\n  );\n}\n\n// 3. 可組合性 - 能與其他組件配合使用\nfunction UserCard({ user, onEdit, onDelete }) {\n  return (\n    <div className=\"user-card\">\n      <UserProfile user={user} />\n      <div className=\"actions\">\n        <Button text=\"編輯\" onClick={() => onEdit(user.id)} />\n        <Button \n          text=\"刪除\" \n          variant=\"danger\" \n          onClick={() => onDelete(user.id)} \n        />\n      </div>\n    </div>\n  );\n}\n\n// 4. 組件層級的合理設計\nfunction UserList({ users, onEditUser, onDeleteUser }) {\n  return (\n    <div className=\"user-list\">\n      {users.map(user => (\n        <UserCard\n          key={user.id}\n          user={user}\n          onEdit={onEditUser}\n          onDelete={onDeleteUser}\n        />\n      ))}\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "好的 React 組件設計應該遵循什麼原則？",
+            "options": ["單一職責原則", "複雜功能原則", "不可重用原則", "全域狀態原則"],
+            "answer": "單一職責原則",
+            "explanation": "單一職責原則要求每個組件只做一件事，這樣可以讓組件更容易理解、測試和維護。"
+          },
+          "media": {
+            "image": "/assets/images/component-design.png",
+            "audio": "/assets/audio/component-design.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "weekNumber": 1,
+      "dayNumber": 5,
+      "title": "第一週 Day 5: Props 與 State 基礎",
+      "description": "學習組件間資料傳遞和狀態管理，掌握 React 的核心概念，學會創建互動式組件",
+      "estimatedTime": 120,
+      "difficulty": "beginner",
+      "tags": ["Props", "State", "Hook", "互動式組件"],
+      "learningObjectives": [
+        "理解 Props 的概念和使用方法",
+        "掌握 State 的基本原理和管理方式",
+        "學會使用 useState Hook",
+        "能夠創建互動式組件",
+        "理解單向數據流的概念"
+      ],
+      "dailyTasks": [
+        {
+          "id": "3-1",
+          "title": "理解 Props 概念",
+          "description": "學習如何在組件間傳遞資料，理解 Props 的特性和使用方法",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "理解 Props 就像函式參數",
+            "理解 Props 是唯讀的（不可修改）",
+            "學會使用解構賦值接收 Props",
+            "理解 PropTypes 和預設值的使用"
+          ]
+        },
+        {
+          "id": "3-2",
+          "title": "創建 ProfileCard 組件",
+          "description": "實作可接收多種 props 的使用者卡片組件，展示不同數據類型的傳遞",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "創建可接收多個 props 的組件",
+            "處理字串、數字、布林、物件等不同數據類型",
+            "實作條件渲染和預設值處理",
+            "在父組件中使用 ProfileCard"
+          ]
+        },
+        {
+          "id": "3-3",
+          "title": "學習 useState Hook",
+          "description": "掌握 React 狀態管理的基本方法，理解 Hook 的基本原理",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "理解 useState 的基本語法",
+            "掌握狀態更新的異步性質",
+            "學會使用函式式狀態更新",
+            "理解 useState 的重新渲染機制"
+          ]
+        },
+        {
+          "id": "3-4",
+          "title": "創建 Counter 組件",
+          "description": "實作具有狀態的互動式計數器，結合事件處理和狀態管理",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "實作基本的計數功能",
+            "添加增加、減少、重置功能",
+            "處理邊界情況（負數、上限等）",
+            "結合事件處理和狀態更新"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "建立互動式的用戶管理系統",
+        "description": "結合 Props 和 State 創建一個完整的用戶管理系統，包含用戶資料展示和互動式統計功能",
+        "template": "import { useState } from 'react';\n\n// ProfileCard 組件\nfunction ProfileCard({ user, onUpdateScore }) {\n  const { name, age, avatarUrl, occupation, score, skills = [] } = user;\n  \n  return (\n    <div className=\"profile-card\">\n      <img src={avatarUrl || '/default-avatar.png'} alt={`${name}'s avatar`} />\n      <div className=\"profile-info\">\n        <h2>{name}</h2>\n        <p>年齡: {age} 歲</p>\n        <p>職業: {occupation}</p>\n        <div className=\"skills\">\n          <h4>技能:</h4>\n          {skills.length > 0 ? (\n            <ul>\n              {skills.map((skill, index) => (\n                <li key={index}>{skill}</li>\n              ))}\n            </ul>\n          ) : (\n            <p>沒有技能資料</p>\n          )}\n        </div>\n        <div className=\"score\">\n          <p>分數: {score}</p>\n          <button onClick={() => onUpdateScore(user.id, score + 1)}>+1</button>\n          <button onClick={() => onUpdateScore(user.id, score - 1)}>-1</button>\n        </div>\n      </div>\n    </div>\n  );\n}\n\n// Counter 組件\nfunction Counter({ title = '計數器', initialValue = 0, step = 1 }) {\n  const [count, setCount] = useState(initialValue);\n  \n  const increment = () => setCount(prevCount => prevCount + step);\n  const decrement = () => setCount(prevCount => prevCount - step);\n  const reset = () => setCount(initialValue);\n  \n  return (\n    <div className=\"counter\">\n      <h3>{title}: {count}</h3>\n      <div className=\"counter-buttons\">\n        <button onClick={increment}>+{step}</button>\n        <button onClick={decrement}>-{step}</button>\n        <button onClick={reset}>重置</button>\n      </div>\n    </div>\n  );\n}\n\n// 主應用程式\nfunction App() {\n  const [users, setUsers] = useState([\n    {\n      id: 1,\n      name: 'Alice',\n      age: 25,\n      avatarUrl: '/alice-avatar.png',\n      occupation: '前端工程師',\n      score: 85,\n      skills: ['React', 'JavaScript', 'CSS']\n    },\n    {\n      id: 2,\n      name: 'Bob',\n      age: 30,\n      avatarUrl: '/bob-avatar.png',\n      occupation: '後端工程師',\n      score: 92,\n      skills: ['Node.js', 'Python', 'Database']\n    }\n  ]);\n\n  const handleUpdateScore = (userId, newScore) => {\n    setUsers(prevUsers => \n      prevUsers.map(user => \n        user.id === userId ? { ...user, score: newScore } : user\n      )\n    );\n  };\n\n  return (\n    <div className=\"app\">\n      <h1>用戶管理系統</h1>\n      \n      <div className=\"users-section\">\n        <h2>用戶列表</h2>\n        {users.map(user => (\n          <ProfileCard\n            key={user.id}\n            user={user}\n            onUpdateScore={handleUpdateScore}\n          />\n        ))}\n      </div>\n      \n      <div className=\"counters-section\">\n        <h2>統計計數器</h2>\n        <Counter title=\"網站訪問量\" initialValue={1000} step={10} />\n        <Counter title=\"用戶數量\" initialValue={users.length} />\n      </div>\n    </div>\n  );\n}",
+        "expectedOutput": "顯示完整的用戶管理系統，包含用戶資料卡片和可互動的計數器",
+        "hints": [
+          "Props 是唯讀的，不能在子組件中修改",
+          "使用 useState Hook 需要先 import",
+          "setState 函式會觸發組件重新渲染",
+          "使用函式式狀態更新避免關閉包問題",
+          "善用預設值讓組件更靈活",
+          "記得為列表項目設定唯一的 key"
+        ],
+        "additionalChallenges": [
+          "添加用戶新增和刪除功能",
+          "實作用戶資料編輯功能",
+          "添加更多類型的計數器（帶上限下限）",
+          "實作用戶資料的本地存儲功能",
+          "添加輸入驗證和錯誤處理"
+        ]
+      },
+      "questions": [
+        {
+          "id": "3-1",
+          "content": "Props (properties) 是組件之間傳遞資料的方式，就像函式的參數一樣。父組件可以透過 props 將資料傳遞給子組件。Props 是唯讀的，不能被子組件修改。",
+          "codeExample": "// ProfileCard 組件實作\nfunction ProfileCard({ name, age, avatarUrl, occupation }) {\n  return (\n    <div className=\"profile-card\">\n      <img src={avatarUrl} alt={`${name}'s avatar`} />\n      <div className=\"profile-info\">\n        <h2>{name}</h2>\n        <p>年齡: {age}</p>\n        <p>職業: {occupation}</p>\n      </div>\n    </div>\n  );\n}\n\n// 使用 ProfileCard 組件\nfunction App() {\n  return (\n    <div>\n      <ProfileCard \n        name=\"Alice\" \n        age={25} \n        avatarUrl=\"/avatar1.jpg\"\n        occupation=\"前端工程師\"\n      />\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "Props 的特性是什麼？",
+            "options": ["唯讀的，不能被修改", "可以被子組件修改", "只能傳遞字串", "只能在類別組件中使用"],
+            "answer": "唯讀的，不能被修改"
+          },
+          "media": {
+            "image": "/assets/images/props-flow.png",
+            "audio": "/assets/audio/props-explanation.mp3"
+          }
+        },
+        {
+          "id": "3-2",
+          "content": "State 是組件內部的狀態資料，當 state 改變時，React 會自動重新渲染組件。在函式組件中，我們使用 useState Hook 來管理狀態。",
+          "codeExample": "import { useState } from 'react';\n\n// Counter 組件實作\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  const increment = () => setCount(count + 1);\n  const decrement = () => setCount(count - 1);\n  const reset = () => setCount(0);\n\n  return (\n    <div className=\"counter\">\n      <h2>計數器: {count}</h2>\n      <div className=\"counter-buttons\">\n        <button onClick={increment}>+1</button>\n        <button onClick={decrement}>-1</button>\n        <button onClick={reset}>重置</button>\n      </div>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "useState Hook 回傳什麼？",
+            "options": ["一個陣列，包含狀態值和更新函式", "只有狀態值", "只有更新函式", "一個物件"],
+            "answer": "一個陣列，包含狀態值和更新函式"
+          },
+          "media": {
+            "image": "/assets/images/state-diagram.png",
+            "audio": "/assets/audio/state-management.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "weekNumber": 2,
+      "dayNumber": 1,
+      "title": "第二週 Day 1-2: useEffect 與 API 資料獲取",
+      "description": "學習處理副作用和從 API 獲取資料，掌握 React 組件的生命週期管理和非同步操作",
+      "estimatedTime": 120,
+      "difficulty": "intermediate",
+      "tags": ["useEffect", "API", "副作用", "非同步"],
+      "learningObjectives": [
+        "理解 useEffect 的作用和生命週期關係",
+        "掌握副作用的概念和處理方法",
+        "學會從 API 獲取資料的最佳實踐",
+        "掌握載入狀態和錯誤處理機制",
+        "理解 useEffect 的依賴陣列和清理機制"
+      ],
+      "dailyTasks": [
+        {
+          "id": "4-1",
+          "title": "理解 useEffect 概念",
+          "description": "學習副作用的概念和 useEffect 的用途，理解生命週期關係",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "理解什麼是副作用（Side Effects）",
+            "學會 useEffect 的基本語法和用法",
+            "理解 useEffect 的執行時機",
+            "理解依賴陣列的作用"
+          ]
+        },
+        {
+          "id": "4-2",
+          "title": "創建 Timer 組件",
+          "description": "使用 useEffect 實作計時器功能，學習清理機制",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "使用 setInterval 實作計時器",
+            "學會 useEffect 的清理機制",
+            "處理組件卸載時的資源清理",
+            "實作可控制的計時器功能"
+          ]
+        },
+        {
+          "id": "4-3",
+          "title": "學習 API 資料獲取",
+          "description": "使用 fetch 從 API 獲取並顯示資料，學習非同步操作",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "使用 fetch API 進行網路請求",
+            "在 useEffect 中處理非同步操作",
+            "處理 JSON 資料的解析和顯示",
+            "實作資料獲取的取消機制"
+          ]
+        },
+        {
+          "id": "4-4",
+          "title": "處理載入和錯誤狀態",
+          "description": "實作完整的資料載入、錯誤處理流程，提升用戶體驗",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "實作 loading 狀態的管理",
+            "處理不同類型的錯誤情況",
+            "實作重試機制和錯誤恢復",
+            "提供良好的用戶回馔"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "建立完整的資料管理系統",
+        "description": "結合 useEffect 和 API 資料獲取，創建一個完整的用戶管理系統，包含載入、錯誤處理、重試機制和實時更新",
+        "template": "import { useState, useEffect } from 'react';\n\n// 用戶管理系統\nfunction UserManagement() {\n  const [users, setUsers] = useState([]);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n  const [retryCount, setRetryCount] = useState(0);\n  const [selectedUser, setSelectedUser] = useState(null);\n\n  // 獲取用戶列表\n  const fetchUsers = async () => {\n    try {\n      setLoading(true);\n      setError(null);\n      const response = await fetch('https://jsonplaceholder.typicode.com/users');\n      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);\n      const userData = await response.json();\n      setUsers(userData);\n    } catch (err) {\n      setError(err.message);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  // 獲取用戶詳情\n  const fetchUserDetails = async (userId) => {\n    try {\n      setLoading(true);\n      const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);\n      if (!response.ok) throw new Error('Failed to fetch user details');\n      const userDetails = await response.json();\n      setSelectedUser(userDetails);\n    } catch (err) {\n      setError(err.message);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  // 初始化載入\n  useEffect(() => {\n    fetchUsers();\n  }, []);\n\n  // 重試機制\n  const handleRetry = () => {\n    setRetryCount(prev => prev + 1);\n    fetchUsers();\n  };\n\n  // 載入狀態\n  if (loading && users.length === 0) {\n    return (\n      <div className=\"loading\">\n        <div className=\"spinner\"></div>\n        <p>載入中...</p>\n      </div>\n    );\n  }\n\n  // 錯誤狀態\n  if (error) {\n    return (\n      <div className=\"error\">\n        <h3>發生錯誤</h3>\n        <p>{error}</p>\n        <button onClick={handleRetry}>重試 ({retryCount})</button>\n      </div>\n    );\n  }\n\n  return (\n    <div className=\"user-management\">\n      <h1>用戶管理系統</h1>\n      \n      <div className=\"actions\">\n        <button onClick={fetchUsers}>重新載入</button>\n        <p>總用戶數: {users.length}</p>\n      </div>\n\n      <div className=\"user-list\">\n        <h2>用戶列表</h2>\n        {users.map(user => (\n          <div key={user.id} className=\"user-card\">\n            <h3>{user.name}</h3>\n            <p>Email: {user.email}</p>\n            <p>Phone: {user.phone}</p>\n            <button onClick={() => fetchUserDetails(user.id)}>\n              查看詳情\n            </button>\n          </div>\n        ))}\n      </div>\n\n      {selectedUser && (\n        <div className=\"user-details\">\n          <h2>用戶詳情</h2>\n          <p>名稱: {selectedUser.name}</p>\n          <p>用戶名: {selectedUser.username}</p>\n          <p>Email: {selectedUser.email}</p>\n          <p>網站: {selectedUser.website}</p>\n          <p>公司: {selectedUser.company.name}</p>\n          <button onClick={() => setSelectedUser(null)}>關閉</button>\n        </div>\n      )}\n    </div>\n  );\n}\n\n// 計時器組件\nfunction Timer() {\n  const [time, setTime] = useState(0);\n  const [isRunning, setIsRunning] = useState(false);\n\n  useEffect(() => {\n    let interval;\n    if (isRunning) {\n      interval = setInterval(() => {\n        setTime(prevTime => prevTime + 1);\n      }, 1000);\n    }\n\n    return () => {\n      if (interval) clearInterval(interval);\n    };\n  }, [isRunning]);\n\n  const formatTime = (seconds) => {\n    const mins = Math.floor(seconds / 60);\n    const secs = seconds % 60;\n    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;\n  };\n\n  return (\n    <div className=\"timer\">\n      <h3>計時器</h3>\n      <div className=\"time-display\">{formatTime(time)}</div>\n      <div className=\"timer-controls\">\n        <button onClick={() => setIsRunning(!isRunning)}>\n          {isRunning ? '暫停' : '開始'}\n        </button>\n        <button onClick={() => { setTime(0); setIsRunning(false); }}>\n          重置\n        </button>\n      </div>\n    </div>\n  );\n}\n\n// 主應用程式\nfunction App() {\n  return (\n    <div className=\"app\">\n      <UserManagement />\n      <Timer />\n    </div>\n  );\n}",
+        "expectedOutput": "具有載入狀態、錯誤處理、重試機制和實時更新的完整用戶管理系統",
+        "hints": [
+          "useEffect 的依賴陣列為空時只在掛載時執行一次",
+          "記得處理 loading 和 error 狀態",
+          "使用 finally 確保 loading 狀態正確更新",
+          "使用清理函式防止記憶體洩漏",
+          "善用 async/await 處理非同步操作",
+          "提供良好的用戶回馔和錯誤資訊"
+        ],
+        "additionalChallenges": [
+          "實作資料緩存機制避免重複請求",
+          "添加資料築選和排序功能",
+          "實作無限滾動載入更多資料",
+          "添加離線狀態檢測和處理",
+          "實作資料同步和更新通知機制"
+        ]
+      },
+      "questions": [
+        {
+          "id": "4-1",
+          "content": "useEffect 是處理副作用的 Hook，如資料獲取、訂閱、定時器或手動更改 DOM。它在組件渲染後執行，可以透過依賴項陣列來控制何時執行。",
+          "codeExample": "import { useState, useEffect } from 'react';\n\n// 基本的 useEffect 使用\nfunction Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setSeconds(prevSeconds => prevSeconds + 1);\n    }, 1000);\n\n    // 清理函式\n    return () => clearInterval(interval);\n  }, []); // 空依賴陣列，只在掛載時執行一次\n\n  return <div>計時器: {seconds} 秒</div>;\n}",
+          "quiz": {
+            "question": "useEffect 的清理函式何時會被執行？",
+            "options": ["組件卸載時或下次 effect 執行前", "只在組件掛載時", "每次狀態更新時", "只在發生錯誤時"],
+            "answer": "組件卸載時或下次 effect 執行前"
+          },
+          "media": {
+            "image": "/assets/images/useeffect-lifecycle.png",
+            "audio": "/assets/audio/useeffect-explanation.mp3"
+          }
+        },
+        {
+          "id": "4-2",
+          "content": "從 API 獲取資料是 React 應用程式的常見需求。我們需要處理載入狀態、錯誤處理，並在組件卸載時清理請求。",
+          "codeExample": "// API 資料獲取範例\nfunction UserProfile({ userId }) {\n  const [user, setUser] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchUser = async () => {\n      try {\n        setLoading(true);\n        const response = await fetch(`/api/users/${userId}`);\n        if (!response.ok) throw new Error('Failed to fetch user');\n        const userData = await response.json();\n        setUser(userData);\n      } catch (err) {\n        setError(err.message);\n      } finally {\n        setLoading(false);\n      }\n    };\n\n    fetchUser();\n  }, [userId]);\n\n  if (loading) return <div>Loading...</div>;\n  if (error) return <div>Error: {error}</div>;\n  return <div><h2>{user.name}</h2></div>;\n}",
+          "quiz": {
+            "question": "處理 API 請求時，通常需要管理哪些狀態？",
+            "options": ["loading, data, error", "只有 data", "只有 loading", "data, success"],
+            "answer": "loading, data, error"
+          },
+          "media": {
+            "image": "/assets/images/api-fetch.png",
+            "audio": "/assets/audio/api-guide.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "weekNumber": 2,
+      "dayNumber": 3,
+      "title": "第二週 Day 3-4: 列表渲染與表單處理",
+      "description": "學習渲染動態列表和建立互動式表單，掌握受控組件模式和表單驗證技巧",
+      "estimatedTime": 120,
+      "difficulty": "intermediate",
+      "tags": ["列表渲染", "表單", "受控組件", "key 屬性"],
+      "learningObjectives": [
+        "掌握使用 map() 渲染動態列表",
+        "理解 key 屬性的重要性和最佳實踐",
+        "學會建立受控組件表單",
+        "掌握表單驗證和錯誤處理",
+        "實作完整的 CRUD 操作功能"
+      ],
+      "dailyTasks": [
+        {
+          "id": "5-1",
+          "title": "掌握 map() 列表渲染",
+          "description": "學習使用 map() 渲染動態列表，理解陣列轉換為 JSX 的機制",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "理解 map() 方法的運作原理",
+            "學會將陣列轉換為 JSX 元素",
+            "掌握條件渲染和空狀態處理",
+            "實作巢套列表的渲染"
+          ]
+        },
+        {
+          "id": "5-2",
+          "title": "理解 key 屬性重要性",
+          "description": "學習為什麼需要 key 屬性以及如何正確使用，理解虛擬 DOM diff 算法",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "理解 key 屬性在虛擬 DOM 中的作用",
+            "學會選擇適當的 key 值",
+            "避免使用 index 作為 key 的理由",
+            "實作 key 屬性的最佳實踐"
+          ]
+        },
+        {
+          "id": "5-3",
+          "title": "創建 Todo List 基礎功能",
+          "description": "實作新增、顯示、標記完成、刪除等完整 CRUD 功能",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "實作新增待辦事項功能",
+            "實作標記完成/取消完成功能",
+            "實作刪除待辦事項功能",
+            "添加輸入驗證和錯誤處理"
+          ]
+        },
+        {
+          "id": "5-4",
+          "title": "學習受控組件表單處理",
+          "description": "掌握表單輸入和驗證的處理方式，學會表單狀態管理",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "理解受控組件與非受控組件的差別",
+            "實作表單輸入的狀態管理",
+            "添加表單驗證和錯誤訊息",
+            "處理表單提交和重置功能"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "建立 Todo List 應用",
+        "description": "創建一個具有增加、完成、刪除功能的待辦事項列表",
+        "template": "// Todo List 組件\nfunction TodoList() {\n  const [todos, setTodos] = useState([\n    { id: 1, text: '學習 React', completed: false }\n  ]);\n  const [inputValue, setInputValue] = useState('');\n\n  const addTodo = () => {\n    if (inputValue.trim()) {\n      setTodos([\n        ...todos,\n        { id: Date.now(), text: inputValue, completed: false }\n      ]);\n      setInputValue('');\n    }\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(todos.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  const deleteTodo = (id) => {\n    setTodos(todos.filter(todo => todo.id !== id));\n  };\n\n  return (\n    <div>\n      <input\n        value={inputValue}\n        onChange={(e) => setInputValue(e.target.value)}\n        placeholder=\"新增待辦事項...\"\n      />\n      <button onClick={addTodo}>新增</button>\n      <ul>\n        {todos.map(todo => (\n          <li key={todo.id}>\n            <input\n              type=\"checkbox\"\n              checked={todo.completed}\n              onChange={() => toggleTodo(todo.id)}\n            />\n            {todo.text}\n            <button onClick={() => deleteTodo(todo.id)}>刪除</button>\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}",
+        "expectedOutput": "功能完整的 Todo List 應用",
+        "hints": [
+          "每個列表項目都需要唯一的 key 屬性",
+          "使用展開運算子來複製陣列",
+          "記得清空輸入框在新增項目後"
+        ],
+        "additionalChallenges": [
+          "實作 Todo 項目編輯功能",
+          "添加 Todo 分類和標籤系統",
+          "實作 Todo 項目拖放排序",
+          "添加搜尋和篩選功能",
+          "實作 Todo 項目優先級排序",
+          "添加本地儲存功能"
+        ]
+      },
+      "questions": [
+        {
+          "id": "5-1",
+          "content": "在 React 中渲染列表時，我們使用 map() 方法來遍歷陣列。每個列表項目都需要一個唯一的 key 屬性來幫助 React 優化渲染效能和正確處理組件狀態。",
+          "codeExample": "import { useState } from 'react';\n\n// Todo List 實作\nfunction TodoList() {\n  const [todos, setTodos] = useState([\n    { id: 1, text: '學習 React', completed: false }\n  ]);\n  const [inputValue, setInputValue] = useState('');\n\n  const addTodo = () => {\n    if (inputValue.trim()) {\n      setTodos([\n        ...todos,\n        { id: Date.now(), text: inputValue, completed: false }\n      ]);\n      setInputValue('');\n    }\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(todos.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  return (\n    <div>\n      <input\n        value={inputValue}\n        onChange={(e) => setInputValue(e.target.value)}\n        placeholder=\"新增待辦事項...\"\n      />\n      <button onClick={addTodo}>新增</button>\n      <ul>\n        {todos.map(todo => (\n          <li key={todo.id}>\n            <input\n              type=\"checkbox\"\n              checked={todo.completed}\n              onChange={() => toggleTodo(todo.id)}\n            />\n            {todo.text}\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "為什麼列表項目需要 key 屬性？",
+            "options": ["幫助 React 優化渲染效能", "讓 CSS 樣式正確套用", "避免 JavaScript 錯誤", "支援無障礙功能"],
+            "answer": "幫助 React 優化渲染效能"
+          },
+          "media": {
+            "image": "/assets/images/list-rendering.png",
+            "audio": "/assets/audio/lists-and-keys.mp3"
+          }
+        },
+        {
+          "id": "5-2",
+          "content": "在 React 中，受控組件的值由 React state 控制。每次輸入變更都會觸發 state 更新，這讓我們可以即時驗證輸入或動態更新 UI。",
+          "codeExample": "import { useState } from 'react';\n\nfunction ContactForm() {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    message: ''\n  });\n\n  const handleChange = (e) => {\n    const { name, value } = e.target;\n    setFormData(prev => ({\n      ...prev,\n      [name]: value\n    }));\n  };\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    console.log('提交表單:', formData);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        name=\"name\"\n        value={formData.name}\n        onChange={handleChange}\n        placeholder=\"姓名\"\n      />\n      <input\n        name=\"email\"\n        type=\"email\"\n        value={formData.email}\n        onChange={handleChange}\n        placeholder=\"電子郵件\"\n      />\n      <textarea\n        name=\"message\"\n        value={formData.message}\n        onChange={handleChange}\n        placeholder=\"訊息\"\n      />\n      <button type=\"submit\">送出</button>\n    </form>\n  );\n}",
+          "quiz": {
+            "question": "受控組件的特徵是什麼？",
+            "options": ["值由 React state 控制", "值由 DOM 控制", "不需要事件處理", "不能驗證輸入"],
+            "answer": "值由 React state 控制"
+          },
+          "media": {
+            "image": "/assets/images/controlled-components.png",
+            "audio": "/assets/audio/forms-explanation.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "weekNumber": 2,
+      "dayNumber": 5,
+      "title": "第二週 Day 5: 組件化拆分與狀態提升",
+      "description": "學習將大型組件拆分成小組件並理解狀態提升",
+      "estimatedTime": 120,
+      "difficulty": "intermediate",
+      "tags": ["組件化", "狀態提升", "架構"],
+      "dailyTasks": [
+        {
+          "id": "6-1",
+          "title": "理解組件拆分原則",
+          "description": "學習單一職責、可重複使用的組件設計原則",
+          "estimatedTime": 30,
+          "completed": false
+        },
+        {
+          "id": "6-2",
+          "title": "拆分 Todo List 組件",
+          "description": "將 Todo List 拆分成 TodoItem、AddTodoForm 等小組件",
+          "estimatedTime": 40,
+          "completed": false
+        },
+        {
+          "id": "6-3",
+          "title": "理解狀態提升概念",
+          "description": "學習將共享狀態移到公共父組件中管理",
+          "estimatedTime": 30,
+          "completed": false
+        },
+        {
+          "id": "6-4",
+          "title": "實作組件間通信",
+          "description": "使用 props 傳遞狀態和事件處理函式",
+          "estimatedTime": 20,
+          "completed": false
+        }
+      ],
+      "practicalExercise": {
+        "title": "重構 Todo List 應用",
+        "description": "將 Todo List 拆分成多個小組件並實現狀態提升",
+        "template": "// TodoItem 組件\nfunction TodoItem({ todo, onToggle, onDelete }) {\n  return (\n    <li className={todo.completed ? 'completed' : ''}>\n      <input\n        type=\"checkbox\"\n        checked={todo.completed}\n        onChange={() => onToggle(todo.id)}\n      />\n      <span>{todo.text}</span>\n      <button onClick={() => onDelete(todo.id)}>刪除</button>\n    </li>\n  );\n}\n\n// AddTodoForm 組件\nfunction AddTodoForm({ onAddTodo }) {\n  const [inputValue, setInputValue] = useState('');\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    if (inputValue.trim()) {\n      onAddTodo(inputValue);\n      setInputValue('');\n    }\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        value={inputValue}\n        onChange={(e) => setInputValue(e.target.value)}\n        placeholder=\"新增待辦事項...\"\n      />\n      <button type=\"submit\">新增</button>\n    </form>\n  );\n}\n\n// 主要的 TodoApp 組件\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n\n  const addTodo = (text) => {\n    setTodos([...todos, { id: Date.now(), text, completed: false }]);\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(todos.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  const deleteTodo = (id) => {\n    setTodos(todos.filter(todo => todo.id !== id));\n  };\n\n  return (\n    <div>\n      <AddTodoForm onAddTodo={addTodo} />\n      <ul>\n        {todos.map(todo => (\n          <TodoItem\n            key={todo.id}\n            todo={todo}\n            onToggle={toggleTodo}\n            onDelete={deleteTodo}\n          />\n        ))}\n      </ul>\n    </div>\n  );\n}",
+        "expectedOutput": "結構清晰的組件化 Todo List 應用",
+        "hints": [
+          "每個組件都應該有單一職責",
+          "通過 props 傳遞狀態和事件處理函式",
+          "父組件負責管理所有共享狀態"
+        ],
+        "additionalChallenges": [
+          "設計一個可重用的彈窗組件",
+          "實作組件間的數據同步機制",
+          "創建一個完整的購物車組件系統",
+          "實作組件的懶加載和代碼分割",
+          "設計一個模塊化的表單組件架構"
+        ]
+      },
+      "questions": [
+        {
+          "id": "6-1",
+          "content": "當組件變得複雜時，我們需要將它拆分成更小的組件。拆分的原則包括：單一職責、可重複使用、邏輯清晰。狀態提升是指將共享狀態移動到公共父組件中管理。",
+          "codeExample": "// 組件拆分範例\n// TodoItem 組件\nfunction TodoItem({ todo, onToggle, onDelete }) {\n  return (\n    <li className={todo.completed ? 'completed' : ''}>\n      <input\n        type=\"checkbox\"\n        checked={todo.completed}\n        onChange={() => onToggle(todo.id)}\n      />\n      <span>{todo.text}</span>\n      <button onClick={() => onDelete(todo.id)}>刪除</button>\n    </li>\n  );\n}\n\n// AddTodoForm 組件\nfunction AddTodoForm({ onAddTodo }) {\n  const [inputValue, setInputValue] = useState('');\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    if (inputValue.trim()) {\n      onAddTodo(inputValue);\n      setInputValue('');\n    }\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        value={inputValue}\n        onChange={(e) => setInputValue(e.target.value)}\n        placeholder=\"新增待辦事項...\"\n      />\n      <button type=\"submit\">新增</button>\n    </form>\n  );\n}\n\n// 主要的 TodoApp 組件\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n\n  const addTodo = (text) => {\n    setTodos([...todos, { id: Date.now(), text, completed: false }]);\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(todos.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  const deleteTodo = (id) => {\n    setTodos(todos.filter(todo => todo.id !== id));\n  };\n\n  return (\n    <div>\n      <AddTodoForm onAddTodo={addTodo} />\n      <ul>\n        {todos.map(todo => (\n          <TodoItem\n            key={todo.id}\n            todo={todo}\n            onToggle={toggleTodo}\n            onDelete={deleteTodo}\n          />\n        ))}\n      </ul>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "什麼是狀態提升？",
+            "options": ["將共享狀態移動到公共父組件", "增加組件的狀態", "刪除不需要的狀態", "複製狀態到子組件"],
+            "answer": "將共享狀態移動到公共父組件"
+          },
+          "media": {
+            "image": "/assets/images/components-diagram.png",
+            "audio": "/assets/audio/components-intro.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "weekNumber": 3,
+      "dayNumber": 1,
+      "title": "第三週 Day 1-2: React Router 路由系統",
+      "description": "學習使用 React Router 建立單頁應用程式的路由，掌握導航和頁面狀態管理",
+      "estimatedTime": 120,
+      "difficulty": "intermediate",
+      "tags": ["路由", "SPA", "導航", "react-router-dom"],
+      "learningObjectives": [
+        "理解 SPA 的概念和優勢",
+        "掌握 React Router 的基本使用方法",
+        "學會建立多頁面應用程式",
+        "掌握動態路由和參數傳遞",
+        "理解路由守衛和導航控制"
+      ],
+      "dailyTasks": [
+        {
+          "id": "7-1",
+          "title": "理解 SPA 概念",
+          "description": "學習單頁應用程式的概念和優勢，理解路由的運作原理",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "理解 SPA 與傳統多頁面應用的差別",
+            "學習客戶端路由的概念",
+            "理解 History API 的作用",
+            "理解 React Router 的優勢"
+          ]
+        },
+        {
+          "id": "7-2",
+          "title": "安裝和配置 React Router",
+          "description": "在專案中安裝 react-router-dom 並設定基本路由結構",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "安裝 react-router-dom 套件",
+            "學會使用 BrowserRouter 包裝應用",
+            "理解 Routes 和 Route 組件",
+            "實作基本的導航連結"
+          ]
+        },
+        {
+          "id": "7-3",
+          "title": "創建多頁面 Todo 應用",
+          "description": "為 Todo List 添加 /all、/active、/completed 路由，實作築選功能",
+          "estimatedTime": 50,
+          "completed": false,
+          "checkpoints": [
+            "建立不同的頁面組件",
+            "實作路由切換和導航",
+            "添加活動狀態的導航連結",
+            "實作按狀態築選待辦事項"
+          ]
+        },
+        {
+          "id": "7-4",
+          "title": "學習動態路由參數",
+          "description": "使用 useParams 處理動態路由參數，實作詳情頁面",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "學會使用 useParams Hook",
+            "實作動態路由參數传递",
+            "處理頁面參數驗證",
+            "實作面包屑導航功能"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "建立多頁面 Todo 應用",
+        "description": "為 Todo List 應用添加路由功能，支援不同的過濾檢視",
+        "template": "import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';\n\n// 頁面組件\nfunction AllTodos() {\n  return <h2>所有待辦事項</h2>;\n}\n\nfunction ActiveTodos() {\n  return <h2>進行中的待辦事項</h2>;\n}\n\nfunction CompletedTodos() {\n  return <h2>已完成的待辦事項</h2>;\n}\n\n// 主要應用程式\nfunction App() {\n  return (\n    <Router>\n      <nav>\n        <Link to=\"/\">全部</Link>\n        <Link to=\"/active\">進行中</Link>\n        <Link to=\"/completed\">已完成</Link>\n      </nav>\n      \n      <Routes>\n        <Route path=\"/\" element={<AllTodos />} />\n        <Route path=\"/active\" element={<ActiveTodos />} />\n        <Route path=\"/completed\" element={<CompletedTodos />} />\n      </Routes>\n    </Router>\n  );\n}",
+        "expectedOutput": "具有多頁面導航的 Todo List 應用",
+        "hints": [
+          "使用 BrowserRouter 包裹整個應用",
+          "Link 組件用於導航，Route 組件定義路由",
+          "useParams 可以取得動態路由參數",
+          "使用 NavLink 可以顯示活動狀態的導航連結",
+          "useNavigate 可以用於程式化導航"
+        ],
+        "additionalChallenges": [
+          "為 Todo 應用添加 /todo/:id 路由顯示單個待辦事項詳情",
+          "實作 404 頁面和 * 路由捕獲未匹配的路徑",
+          "使用 NavLink 實作帶有活動狀態的導航選單",
+          "添加面包屑導航顯示當前頁面位置",
+          "實作「返回上一頁」功能使用 useNavigate(-1)"
+        ]
+      },
+      "questions": [
+        {
+          "id": "7-1",
+          "title": "單頁應用程式 (SPA) 與 React Router 基礎",
+          "content": "單頁應用程式 (SPA) 是指在一個頁面中動態載入不同內容的網頁應用程式，而不是傳統的多頁面跳轉。React Router 是 React 生態系統中最受歡迎的路由解決方案，讓我們可以建立多個路由，每個路由對應不同的組件，實現頁面切換的效果。SPA 的主要優勢包括：更快的頁面切換、更好的用戶體驗、減少伺服器負載。React Router 使用 HTML5 History API 來實現客戶端路由，無需重新載入整個頁面。",
+          "codeExample": "import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';\n\n// 頁面組件\nfunction Home() {\n  return (\n    <div>\n      <h1>首頁</h1>\n      <p>歡迎來到我們的 SPA 應用程式</p>\n    </div>\n  );\n}\n\nfunction About() {\n  return (\n    <div>\n      <h1>關於我們</h1>\n      <p>這是一個使用 React Router 的單頁應用程式</p>\n    </div>\n  );\n}\n\nfunction UserProfile() {\n  const { userId } = useParams();\n  return (\n    <div>\n      <h1>使用者資料</h1>\n      <p>使用者 ID: {userId}</p>\n      <p>這是動態路由的範例</p>\n    </div>\n  );\n}\n\n// 主要應用程式\nfunction App() {\n  return (\n    <Router>\n      <nav style={{ marginBottom: '20px' }}>\n        <Link to=\"/\" style={{ marginRight: '10px' }}>首頁</Link>\n        <Link to=\"/about\" style={{ marginRight: '10px' }}>關於</Link>\n        <Link to=\"/user/123\">使用者資料</Link>\n      </nav>\n      \n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/about\" element={<About />} />\n        <Route path=\"/user/:userId\" element={<UserProfile />} />\n      </Routes>\n    </Router>\n  );\n}",
+          "quiz": {
+            "question": "單頁應用程式 (SPA) 的主要優勢是什麼？",
+            "options": ["更快的頁面切換和更好的用戶體驗", "更簡單的程式碼結構", "更低的開發成本", "更好的 SEO 效果"],
+            "answer": "更快的頁面切換和更好的用戶體驗",
+            "explanation": "SPA 通過避免整頁重新載入，提供更快的頁面切換和更流暢的用戶體驗，這是其主要優勢。"
+          },
+          "media": {
+            "image": "/assets/images/react-router-spa.png",
+            "audio": "/assets/audio/spa-explanation.mp3"
+          }
+        },
+        {
+          "id": "7-2",
+          "title": "React Router 核心組件詳解",
+          "content": "React Router 提供了幾個核心組件來構建路由系統：BrowserRouter 作為路由容器，使用 HTML5 History API；Routes 用於定義路由規則的容器；Route 定義單個路由規則；Link 用於導航連結；useParams 用於獲取動態路由參數。理解這些組件的作用和使用方式是掌握 React Router 的關鍵。BrowserRouter 通常包裹整個應用，Routes 包含多個 Route 組件，每個 Route 定義一個路徑和對應的組件。",
+          "codeExample": "import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';\n\n// 使用 useNavigate 進行程式化導航\nfunction NavigationExample() {\n  const navigate = useNavigate();\n  \n  const handleClick = () => {\n    navigate('/about');\n  };\n  \n  return (\n    <div>\n      <h2>程式化導航範例</h2>\n      <button onClick={handleClick}>前往關於頁面</button>\n    </div>\n  );\n}\n\n// 嵌套路由範例\nfunction Products() {\n  return (\n    <div>\n      <h2>產品列表</h2>\n      <nav>\n        <Link to=\"/products/1\">產品 1</Link>\n        <Link to=\"/products/2\">產品 2</Link>\n      </nav>\n      <Routes>\n        <Route path=\":productId\" element={<ProductDetail />} />\n      </Routes>\n    </div>\n  );\n}\n\nfunction ProductDetail() {\n  const { productId } = useParams();\n  return <h3>產品詳情：{productId}</h3>;\n}\n\n// 路由守衛範例\nfunction ProtectedRoute({ children }) {\n  const isAuthenticated = true; // 實際應用中從狀態或 Context 獲取\n  \n  return isAuthenticated ? children : <Navigate to=\"/login\" />;\n}\n\nfunction App() {\n  return (\n    <Router>\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/products/*\" element={<Products />} />\n        <Route path=\"/admin\" element={\n          <ProtectedRoute>\n            <AdminPanel />\n          </ProtectedRoute>\n        } />\n      </Routes>\n    </Router>\n  );\n}",
+          "quiz": {
+            "question": "在 React Router 中，哪個組件用於定義路由規則？",
+            "options": ["Route", "Link", "Router", "Navigate"],
+            "answer": "Route",
+            "explanation": "Route 組件用於定義單個路由規則，指定路徑和對應的組件。"
+          },
+          "media": {
+            "image": "/assets/images/react-router-components.png",
+            "audio": "/assets/audio/router-components.mp3"
+          }
+        },
+        {
+          "id": "7-3",
+          "title": "動態路由與參數處理",
+          "content": "動態路由允許我們在路由路徑中定義可變的部分，使用冒號(:)作為參數標識符。例如 /user/:userId 可以匹配 /user/123、/user/456 等。useParams Hook 讓我們能夠在組件中獲取這些動態參數。動態路由在構建詳情頁面、用戶資料頁面等場景中非常有用。我們還可以使用 useSearchParams 處理查詢參數，使用 useLocation 獲取當前位置信息。",
+          "codeExample": "import { useParams, useSearchParams, useLocation } from 'react-router-dom';\n\n// 動態路由參數範例\nfunction UserProfile() {\n  const { userId } = useParams();\n  const [searchParams] = useSearchParams();\n  const location = useLocation();\n  \n  const tab = searchParams.get('tab') || 'profile';\n  \n  return (\n    <div>\n      <h2>使用者資料</h2>\n      <p>使用者 ID: {userId}</p>\n      <p>當前標籤: {tab}</p>\n      <p>完整路徑: {location.pathname}</p>\n      \n      <nav>\n        <Link to={`/user/${userId}?tab=profile`}>個人資料</Link>\n        <Link to={`/user/${userId}?tab=settings`}>設定</Link>\n      </nav>\n      \n      {tab === 'profile' && <ProfileContent />}\n      {tab === 'settings' && <SettingsContent />}\n    </div>\n  );\n}\n\n// 多層動態路由\nfunction BlogPost() {\n  const { category, postId } = useParams();\n  \n  return (\n    <div>\n      <h2>部落格文章</h2>\n      <p>分類: {category}</p>\n      <p>文章 ID: {postId}</p>\n    </div>\n  );\n}\n\n// 路由配置\nfunction App() {\n  return (\n    <Router>\n      <Routes>\n        <Route path=\"/user/:userId\" element={<UserProfile />} />\n        <Route path=\"/blog/:category/:postId\" element={<BlogPost />} />\n        <Route path=\"/search\" element={<SearchResults />} />\n      </Routes>\n    </Router>\n  );\n}",
+          "quiz": {
+            "question": "在動態路由 /user/:userId 中，如何在組件中獲取 userId 參數？",
+            "options": ["useParams()", "useSearchParams()", "useLocation()", "useNavigate()"],
+            "answer": "useParams()",
+            "explanation": "useParams() Hook 用於獲取動態路由參數，返回一個包含所有路由參數的物件。"
+          },
+          "media": {
+            "image": "/assets/images/dynamic-routing.png",
+            "audio": "/assets/audio/dynamic-routing.mp3"
+          }
+        },
+        {
+          "id": "7-4",
+          "title": "路由導航與狀態管理",
+          "content": "React Router 提供了多種導航方式：Link 組件用於聲明式導航、useNavigate Hook 用於程式化導航、NavLink 用於帶有活動狀態的導航連結。在 SPA 中，路由狀態的管理非常重要，我們需要考慮如何保持 URL 與應用狀態的同步。useLocation 可以讓我們監聽路由變化，useNavigate 可以讓我們根據條件進行導航。導航守衛則可以幫助我們控制路由的存取權限。",
+          "codeExample": "import { useNavigate, useLocation, NavLink } from 'react-router-dom';\n\n// 活動狀態導航\nfunction Navigation() {\n  return (\n    <nav>\n      <NavLink \n        to=\"/\" \n        className={({ isActive }) => isActive ? 'active' : ''}\n      >\n        首頁\n      </NavLink>\n      <NavLink \n        to=\"/about\" \n        className={({ isActive }) => isActive ? 'active' : ''}\n      >\n        關於\n      </NavLink>\n    </nav>\n  );\n}\n\n// 程式化導航與條件導航\nfunction LoginForm() {\n  const navigate = useNavigate();\n  const location = useLocation();\n  \n  const handleSubmit = (e) => {\n    e.preventDefault();\n    // 登入邏輯\n    const isLoginSuccessful = true;\n    \n    if (isLoginSuccessful) {\n      // 登入成功後導航到之前的頁面或首頁\n      const from = location.state?.from?.pathname || '/';\n      navigate(from, { replace: true });\n    }\n  };\n  \n  return (\n    <form onSubmit={handleSubmit}>\n      <input type=\"text\" placeholder=\"使用者名稱\" />\n      <input type=\"password\" placeholder=\"密碼\" />\n      <button type=\"submit\">登入</button>\n    </form>\n  );\n}\n\n// 路由守衛\nfunction RequireAuth({ children }) {\n  const location = useLocation();\n  const isAuthenticated = false; // 從狀態或 Context 獲取\n  \n  if (!isAuthenticated) {\n    return <Navigate to=\"/login\" state={{ from: location }} replace />;\n  }\n  \n  return children;\n}\n\n// 面包屑導航\nfunction Breadcrumbs() {\n  const location = useLocation();\n  const pathnames = location.pathname.split('/').filter(x => x);\n  \n  return (\n    <nav>\n      <Link to=\"/\">首頁</Link>\n      {pathnames.map((name, index) => {\n        const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;\n        const isLast = index === pathnames.length - 1;\n        \n        return isLast ? (\n          <span key={name}> / {name}</span>\n        ) : (\n          <span key={name}> / <Link to={routeTo}>{name}</Link></span>\n        );\n      })}\n    </nav>\n  );\n}",
+          "quiz": {
+            "question": "NavLink 組件與 Link 組件的主要差別是什麼？",
+            "options": ["NavLink 可以顯示活動狀態", "NavLink 載入速度更快", "NavLink 支援動態路由", "NavLink 可以傳遞參數"],
+            "answer": "NavLink 可以顯示活動狀態",
+            "explanation": "NavLink 提供了 isActive 屬性，可以根據當前路由狀態來顯示不同的樣式，這是與 Link 的主要差別。"
+          },
+          "media": {
+            "image": "/assets/images/navigation-patterns.png",
+            "audio": "/assets/audio/navigation-patterns.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "weekNumber": 3,
+      "dayNumber": 3,
+      "title": "第三週 Day 3: Context API 全域狀態管理",
+      "description": "學習使用 Context API 解決 Prop Drilling 問題",
+      "estimatedTime": 120,
+      "difficulty": "intermediate",
+      "tags": ["Context API", "全域狀態", "狀態管理"],
+      "learningObjectives": [
+        "理解 Prop Drilling 問題及其解決方案",
+        "掌握 Context API 的基本使用方法",
+        "學會創建和使用 Context Provider",
+        "能夠設計自定義 Hook 封裝 Context 邏輯",
+        "理解 Context 的效能考量和最佳實踐"
+      ],
+      "dailyTasks": [
+        {
+          "id": "8-1",
+          "title": "理解 Prop Drilling 問題",
+          "description": "學習什麼是 Prop Drilling 以及它帶來的問題",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "理解 Prop Drilling 的定義和產生原因",
+            "識別 Prop Drilling 在實際應用中的表現",
+            "分析 Prop Drilling 帶來的維護問題",
+            "了解解決 Prop Drilling 的不同方案"
+          ]
+        },
+        {
+          "id": "8-2",
+          "title": "創建 Context 和 Provider",
+          "description": "使用 createContext 建立全域狀態管理",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "使用 createContext 創建新的 Context",
+            "設計 Context Provider 組件",
+            "定義 Context 的 value 結構",
+            "使用 Provider 包裹組件樹"
+          ]
+        },
+        {
+          "id": "8-3",
+          "title": "使用 Context API 重構 Todo 應用",
+          "description": "將 Todo List 改為使用 Context 管理狀態",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "將 Todo 狀態遷移到 Context 中",
+            "使用 useContext 消費 Context 資料",
+            "重構組件以使用 Context 狀態",
+            "測試重構後的應用功能"
+          ]
+        },
+        {
+          "id": "8-4",
+          "title": "創建自定義 Hook",
+          "description": "建立 useTodos Hook 封裝 Context 邏輯",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "設計 useTodos Hook 的 API 介面",
+            "實作 Hook 中的錯誤處理",
+            "在組件中使用自定義 Hook",
+            "驗證 Hook 的復用性和可維護性"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "使用 Context API 重構 Todo 應用",
+        "description": "將 Todo List 應用改為使用 Context API 管理狀態",
+        "template": "import { createContext, useContext, useState } from 'react';\n\n// 創建 Context\nconst TodoContext = createContext();\n\n// Context Provider 組件\nfunction TodoProvider({ children }) {\n  const [todos, setTodos] = useState([]);\n\n  const addTodo = (text) => {\n    setTodos(prev => [...prev, { id: Date.now(), text, completed: false }]);\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  const deleteTodo = (id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  };\n\n  const value = { todos, addTodo, toggleTodo, deleteTodo };\n\n  return (\n    <TodoContext.Provider value={value}>\n      {children}\n    </TodoContext.Provider>\n  );\n}\n\n// 自定義 Hook\nfunction useTodos() {\n  const context = useContext(TodoContext);\n  if (!context) {\n    throw new Error('useTodos must be used within a TodoProvider');\n  }\n  return context;\n}\n\n// 使用 Context 的組件\nfunction TodoList() {\n  const { todos, toggleTodo, deleteTodo } = useTodos();\n\n  return (\n    <ul>\n      {todos.map(todo => (\n        <li key={todo.id}>\n          <input\n            type=\"checkbox\"\n            checked={todo.completed}\n            onChange={() => toggleTodo(todo.id)}\n          />\n          {todo.text}\n          <button onClick={() => deleteTodo(todo.id)}>刪除</button>\n        </li>\n      ))}\n    </ul>\n  );\n}\n\n// 主應用程式\nfunction App() {\n  return (\n    <TodoProvider>\n      <div>\n        <h1>Todo App</h1>\n        <TodoList />\n      </div>\n    </TodoProvider>\n  );\n}",
+        "expectedOutput": "使用 Context API 的 Todo List 應用",
+        "hints": [
+          "createContext 用於創建 Context",
+          "useContext Hook 用於消費 Context",
+          "自定義 Hook 可以封裝 Context 邏輯",
+          "Context Provider 應該包裝需要存取狀態的組件",
+          "自定義 Hook 中要加入錯誤處理"
+        ],
+        "additionalChallenges": [
+          "創建多個 Context 分別管理不同的狀態領域",
+          "實作 Context 的 useReducer 版本替代 useState",
+          "添加本地儲存功能，讓 Todo 資料持久化",
+          "設計 Context 分割機制避免不必要的重新渲染",
+          "實作 Context 的 debug 功能，追蹤狀態變化"
+        ]
+      },
+      "questions": [
+        {
+          "id": "8-1",
+          "title": "Prop Drilling 問題與解決方案",
+          "content": "Prop Drilling 是指需要將 props 層層傳遞到深層組件的問題，這在大型應用中會導致維護困難。Context API 提供了一種在組件樹中傳遞資料的方式，避免 props 的層層傳遞。Prop Drilling 的主要問題包括：中間組件被迫接收和傳遞不需要的 props、程式碼維護困難、重構時需要修改多個組件。Context API 通過建立一個全域的狀態容器，讓深層組件可以直接存取所需的資料。",
+          "codeExample": "// Prop Drilling 問題範例\nfunction App() {\n  const [user, setUser] = useState({ name: 'Alice', theme: 'dark' });\n  \n  return <Header user={user} />;\n}\n\nfunction Header({ user }) {\n  return (\n    <nav>\n      <UserProfile user={user} />\n    </nav>\n  );\n}\n\nfunction UserProfile({ user }) {\n  return (\n    <div>\n      <UserAvatar user={user} />\n      <UserName user={user} />\n    </div>\n  );\n}\n\nfunction UserAvatar({ user }) {\n  return <img src={user.avatar} alt={user.name} />;\n}\n\n// Context API 解決方案\nconst UserContext = createContext();\n\nfunction App() {\n  const [user, setUser] = useState({ name: 'Alice', theme: 'dark' });\n  \n  return (\n    <UserContext.Provider value={user}>\n      <Header />\n    </UserContext.Provider>\n  );\n}\n\nfunction Header() {\n  return (\n    <nav>\n      <UserProfile />\n    </nav>\n  );\n}\n\nfunction UserProfile() {\n  return (\n    <div>\n      <UserAvatar />\n      <UserName />\n    </div>\n  );\n}\n\nfunction UserAvatar() {\n  const user = useContext(UserContext);\n  return <img src={user.avatar} alt={user.name} />;\n}\n\nfunction UserName() {\n  const user = useContext(UserContext);\n  return <span>{user.name}</span>;\n}",
+          "quiz": {
+            "question": "Context API 主要解決什麼問題？",
+            "options": ["Prop Drilling", "性能優化", "代碼重複", "錯誤處理"],
+            "answer": "Prop Drilling",
+            "explanation": "Context API 的主要目的是解決 Prop Drilling 問題，讓深層組件可以直接存取需要的資料，無需透過中間組件傳遞。"
+          },
+          "media": {
+            "image": "/assets/images/prop-drilling-context.png",
+            "audio": "/assets/audio/context-explanation.mp3"
+          }
+        },
+        {
+          "id": "8-2",
+          "title": "Context API 核心概念與使用",
+          "content": "Context API 由三個核心部分組成：createContext 用於創建 Context、Provider 用於提供數據、useContext 用於消費數據。Context 允許我們在組件樹中的任何位置分享數據，而無需透過 props 層層傳遞。Provider 組件包裝需要存取共享狀態的組件子樹，而 useContext Hook 讓組件可以直接讀取 Context 中的值。設計良好的 Context 應該有清晰的職責分離，避免包含過多不相關的狀態。",
+          "codeExample": "import { createContext, useContext, useState, useReducer } from 'react';\n\n// 創建 Context\nconst TodoContext = createContext();\n\n// 使用 useReducer 管理複雜狀態\nfunction todoReducer(state, action) {\n  switch (action.type) {\n    case 'ADD_TODO':\n      return [...state, { id: Date.now(), text: action.payload, completed: false }];\n    case 'TOGGLE_TODO':\n      return state.map(todo =>\n        todo.id === action.payload\n          ? { ...todo, completed: !todo.completed }\n          : todo\n      );\n    case 'DELETE_TODO':\n      return state.filter(todo => todo.id !== action.payload);\n    default:\n      return state;\n  }\n}\n\n// Context Provider 組件\nfunction TodoProvider({ children }) {\n  const [todos, dispatch] = useReducer(todoReducer, []);\n\n  const addTodo = (text) => {\n    dispatch({ type: 'ADD_TODO', payload: text });\n  };\n\n  const toggleTodo = (id) => {\n    dispatch({ type: 'TOGGLE_TODO', payload: id });\n  };\n\n  const deleteTodo = (id) => {\n    dispatch({ type: 'DELETE_TODO', payload: id });\n  };\n\n  const value = {\n    todos,\n    addTodo,\n    toggleTodo,\n    deleteTodo\n  };\n\n  return (\n    <TodoContext.Provider value={value}>\n      {children}\n    </TodoContext.Provider>\n  );\n}\n\n// 自定義 Hook\nfunction useTodos() {\n  const context = useContext(TodoContext);\n  if (!context) {\n    throw new Error('useTodos must be used within a TodoProvider');\n  }\n  return context;\n}\n\n// 使用 Context 的組件\nfunction TodoList() {\n  const { todos, toggleTodo, deleteTodo } = useTodos();\n\n  return (\n    <ul>\n      {todos.map(todo => (\n        <li key={todo.id}>\n          <input\n            type=\"checkbox\"\n            checked={todo.completed}\n            onChange={() => toggleTodo(todo.id)}\n          />\n          <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>\n            {todo.text}\n          </span>\n          <button onClick={() => deleteTodo(todo.id)}>刪除</button>\n        </li>\n      ))}\n    </ul>\n  );\n}\n\nfunction AddTodoForm() {\n  const [text, setText] = useState('');\n  const { addTodo } = useTodos();\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    if (text.trim()) {\n      addTodo(text);\n      setText('');\n    }\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        value={text}\n        onChange={(e) => setText(e.target.value)}\n        placeholder=\"新增待辦事項...\"\n      />\n      <button type=\"submit\">新增</button>\n    </form>\n  );\n}",
+          "quiz": {
+            "question": "使用 Context API 時，哪個 Hook 用於消費 Context 資料？",
+            "options": ["useContext", "useProvider", "useConsumer", "useState"],
+            "answer": "useContext",
+            "explanation": "useContext Hook 用於在組件中消費 Context 資料，它接收一個 Context 物件並返回該 Context 的當前值。"
+          },
+          "media": {
+            "image": "/assets/images/context-api-flow.png",
+            "audio": "/assets/audio/context-usage.mp3"
+          }
+        },
+        {
+          "id": "8-3",
+          "title": "自定義 Hook 與 Context 封裝",
+          "content": "自定義 Hook 是封裝 Context 邏輯的最佳實踐，它可以提供更簡潔的 API 並包含錯誤處理。自定義 Hook 應該檢查 Context 是否在正確的 Provider 內使用，並提供有意義的錯誤訊息。良好的自定義 Hook 設計包括：清晰的命名、完整的錯誤處理、適當的類型定義、文檔說明。自定義 Hook 也可以包含派生狀態的計算，如過濾、排序等邏輯。",
+          "codeExample": "import { createContext, useContext, useState, useMemo } from 'react';\n\n// 創建 Context\nconst TodoContext = createContext();\n\n// TodoProvider 組件\nfunction TodoProvider({ children }) {\n  const [todos, setTodos] = useState([]);\n\n  const addTodo = (text) => {\n    setTodos(prev => [...prev, { id: Date.now(), text, completed: false }]);\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  const deleteTodo = (id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  };\n\n  const value = {\n    todos,\n    addTodo,\n    toggleTodo,\n    deleteTodo\n  };\n\n  return (\n    <TodoContext.Provider value={value}>\n      {children}\n    </TodoContext.Provider>\n  );\n}\n\n// 自定義 Hook 包含錯誤處理和派生狀態\nfunction useTodos() {\n  const context = useContext(TodoContext);\n  \n  if (!context) {\n    throw new Error('useTodos must be used within a TodoProvider');\n  }\n  \n  const { todos, addTodo, toggleTodo, deleteTodo } = context;\n  \n  // 計算派生狀態\n  const stats = useMemo(() => {\n    const total = todos.length;\n    const completed = todos.filter(todo => todo.completed).length;\n    const active = total - completed;\n    \n    return { total, completed, active };\n  }, [todos]);\n  \n  // 提供過濾功能\n  const getFilteredTodos = (filter) => {\n    switch (filter) {\n      case 'active':\n        return todos.filter(todo => !todo.completed);\n      case 'completed':\n        return todos.filter(todo => todo.completed);\n      default:\n        return todos;\n    }\n  };\n  \n  return {\n    todos,\n    stats,\n    addTodo,\n    toggleTodo,\n    deleteTodo,\n    getFilteredTodos\n  };\n}\n\n// 使用自定義 Hook 的組件\nfunction TodoStats() {\n  const { stats } = useTodos();\n  \n  return (\n    <div>\n      <p>總計: {stats.total}</p>\n      <p>已完成: {stats.completed}</p>\n      <p>待完成: {stats.active}</p>\n    </div>\n  );\n}\n\nfunction FilteredTodoList({ filter }) {\n  const { getFilteredTodos, toggleTodo, deleteTodo } = useTodos();\n  const filteredTodos = getFilteredTodos(filter);\n  \n  return (\n    <ul>\n      {filteredTodos.map(todo => (\n        <li key={todo.id}>\n          <input\n            type=\"checkbox\"\n            checked={todo.completed}\n            onChange={() => toggleTodo(todo.id)}\n          />\n          {todo.text}\n          <button onClick={() => deleteTodo(todo.id)}>刪除</button>\n        </li>\n      ))}\n    </ul>\n  );\n}",
+          "quiz": {
+            "question": "自定義 Hook 的命名約定是什麼？",
+            "options": ["必須以 'use' 開頭", "必須以 'hook' 開頭", "必須以 'custom' 開頭", "沒有命名約定"],
+            "answer": "必須以 'use' 開頭",
+            "explanation": "根據 React 的規則，自定義 Hook 必須以 'use' 開頭，這樣 React 才能正確地應用 Hook 的規則。"
+          },
+          "media": {
+            "image": "/assets/images/custom-hooks.png",
+            "audio": "/assets/audio/custom-hooks.mp3"
+          }
+        },
+        {
+          "id": "8-4",
+          "title": "Context 效能優化與最佳實踐",
+          "content": "Context 的效能問題主要來自於當 Context 值改變時，所有消費該 Context 的組件都會重新渲染。優化策略包括：分割 Context 避免不必要的重新渲染、使用 useMemo 和 useCallback 優化 Context 值、將頻繁變化的狀態與穩定的狀態分開。此外，Context 適合用於相對穩定的全域狀態，如主題、語言、用戶資訊等，對於頻繁變化的狀態，可能需要考慮其他狀態管理解決方案。",
+          "codeExample": "import { createContext, useContext, useState, useMemo, useCallback } from 'react';\n\n// 分割 Context 避免不必要的重新渲染\nconst TodoStateContext = createContext();\nconst TodoActionsContext = createContext();\n\nfunction TodoProvider({ children }) {\n  const [todos, setTodos] = useState([]);\n  \n  // 使用 useCallback 避免每次渲染都創建新的函數\n  const addTodo = useCallback((text) => {\n    setTodos(prev => [...prev, { id: Date.now(), text, completed: false }]);\n  }, []);\n  \n  const toggleTodo = useCallback((id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  }, []);\n  \n  const deleteTodo = useCallback((id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  }, []);\n  \n  // 使用 useMemo 避免每次渲染都計算派生狀態\n  const stats = useMemo(() => {\n    const total = todos.length;\n    const completed = todos.filter(todo => todo.completed).length;\n    const active = total - completed;\n    return { total, completed, active };\n  }, [todos]);\n  \n  const state = useMemo(() => ({ todos, stats }), [todos, stats]);\n  const actions = useMemo(() => ({ addTodo, toggleTodo, deleteTodo }), [addTodo, toggleTodo, deleteTodo]);\n  \n  return (\n    <TodoStateContext.Provider value={state}>\n      <TodoActionsContext.Provider value={actions}>\n        {children}\n      </TodoActionsContext.Provider>\n    </TodoStateContext.Provider>\n  );\n}\n\n// 分離的自定義 Hook\nfunction useTodoState() {\n  const context = useContext(TodoStateContext);\n  if (!context) {\n    throw new Error('useTodoState must be used within a TodoProvider');\n  }\n  return context;\n}\n\nfunction useTodoActions() {\n  const context = useContext(TodoActionsContext);\n  if (!context) {\n    throw new Error('useTodoActions must be used within a TodoProvider');\n  }\n  return context;\n}\n\n// 使用優化後的 Context\nfunction TodoList() {\n  const { todos } = useTodoState();\n  const { toggleTodo, deleteTodo } = useTodoActions();\n  \n  return (\n    <ul>\n      {todos.map(todo => (\n        <TodoItem\n          key={todo.id}\n          todo={todo}\n          onToggle={toggleTodo}\n          onDelete={deleteTodo}\n        />\n      ))}\n    </ul>\n  );\n}\n\n// 使用 React.memo 避免不必要的重新渲染\nconst TodoItem = React.memo(({ todo, onToggle, onDelete }) => {\n  return (\n    <li>\n      <input\n        type=\"checkbox\"\n        checked={todo.completed}\n        onChange={() => onToggle(todo.id)}\n      />\n      {todo.text}\n      <button onClick={() => onDelete(todo.id)}>刪除</button>\n    </li>\n  );\n});\n\nfunction TodoStats() {\n  const { stats } = useTodoState(); // 只會訂閱狀態變化\n  \n  return (\n    <div>\n      <p>總計: {stats.total}</p>\n      <p>已完成: {stats.completed}</p>\n      <p>待完成: {stats.active}</p>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "下列哪個是 Context 效能優化的最佳實踐？",
+            "options": ["分割 Context 避免不必要的重新渲染", "將所有狀態放在一個 Context 中", "避免使用 useMemo 和 useCallback", "頻繁更新 Context 值"],
+            "answer": "分割 Context 避免不必要的重新渲染",
+            "explanation": "分割 Context 可以讓組件只訂閱它們需要的狀態，避免因不相關狀態的改變而引起的不必要重新渲染。"
+          },
+          "media": {
+            "image": "/assets/images/context-optimization.png",
+            "audio": "/assets/audio/context-performance.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "weekNumber": 3,
+      "dayNumber": 4,
+      "title": "第三週 Day 4-5: UI 組件庫與 API 封裝",
+      "description": "學習整合 UI 組件庫和封裝 API 請求",
+      "estimatedTime": 120,
+      "difficulty": "intermediate",
+      "tags": ["UI 組件庫", "API 封裝", "第三方庫"],
+      "learningObjectives": [
+        "了解主流 UI 組件庫的特色和選擇標準",
+        "掌握 Ant Design 的基本使用方法",
+        "學會整合 UI 組件庫到現有專案中",
+        "理解 API 封裝的重要性和最佳實踐",
+        "能夠使用 axios 進行 HTTP 請求管理"
+      ],
+      "dailyTasks": [
+        {
+          "id": "9-1",
+          "title": "了解主流 UI 組件庫",
+          "description": "認識 Ant Design、Material-UI、Chakra UI 等",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "比較不同 UI 組件庫的特色和優缺點",
+            "了解 Ant Design 的設計理念和組件體系",
+            "學習選擇 UI 組件庫的考量因素",
+            "查看各組件庫的官方文檔和範例"
+          ]
+        },
+        {
+          "id": "9-2",
+          "title": "安裝和配置 Ant Design",
+          "description": "在專案中安裝 Ant Design 並設定基本配置",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "使用 npm 安裝 antd 套件",
+            "設定 Ant Design 的主題和樣式",
+            "配置按需載入以優化打包大小",
+            "測試基本組件的正常運作"
+          ]
+        },
+        {
+          "id": "9-3",
+          "title": "使用 Ant Design 美化 Todo 應用",
+          "description": "使用 Ant Design 組件替換原有的 HTML 元素",
+          "estimatedTime": 50,
+          "completed": false,
+          "checkpoints": [
+            "使用 Input 和 Button 組件替換表單元素",
+            "使用 List 組件優化待辦事項顯示",
+            "使用 Checkbox 和 Icon 組件增強互動",
+            "應用 Ant Design 的主題和樣式系統"
+          ]
+        },
+        {
+          "id": "9-4",
+          "title": "封裝 API 請求",
+          "description": "使用 axios 封裝 API 請求函式",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "安裝並配置 axios 套件",
+            "設計 API 服務的基本結構",
+            "實作請求攔截器和響應攔截器",
+            "創建可重用的 API 請求函式"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "使用 Ant Design 美化 Todo 應用",
+        "description": "將 Todo List 應用改為使用 Ant Design 組件",
+        "template": "import { Button, Input, List, Checkbox, Space } from 'antd';\nimport { PlusOutlined, DeleteOutlined } from '@ant-design/icons';\n\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [inputValue, setInputValue] = useState('');\n\n  const addTodo = () => {\n    if (inputValue.trim()) {\n      setTodos(prev => [...prev, { id: Date.now(), text: inputValue, completed: false }]);\n      setInputValue('');\n    }\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  const deleteTodo = (id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  };\n\n  return (\n    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>\n      <Space.Compact style={{ width: '100%', marginBottom: '20px' }}>\n        <Input\n          value={inputValue}\n          onChange={(e) => setInputValue(e.target.value)}\n          placeholder=\"輸入新的待辦事項...\"\n          onPressEnter={addTodo}\n        />\n        <Button type=\"primary\" icon={<PlusOutlined />} onClick={addTodo}>\n          新增\n        </Button>\n      </Space.Compact>\n\n      <List\n        bordered\n        dataSource={todos}\n        renderItem={todo => (\n          <List.Item\n            actions={[\n              <Button \n                type=\"text\" \n                danger \n                icon={<DeleteOutlined />}\n                onClick={() => deleteTodo(todo.id)}\n              />\n            ]}\n          >\n            <Checkbox\n              checked={todo.completed}\n              onChange={() => toggleTodo(todo.id)}\n            >\n              {todo.text}\n            </Checkbox>\n          </List.Item>\n        )}\n      />\n    </div>\n  );\n}",
+        "expectedOutput": "具有專業 UI 設計的 Todo List 應用",
+        "hints": [
+          "需要先安裝 antd 套件",
+          "記得導入 Ant Design 的 CSS 樣式",
+          "可以使用 Ant Design 的圖標組件",
+          "使用 Space 組件管理間距和佈局",
+          "善用 Ant Design 的主題定制功能"
+        ],
+        "additionalChallenges": [
+          "使用 Ant Design 的 DatePicker 為待辦事項添加截止日期",
+          "實作 Tag 組件為待辦事項添加分類標籤",
+          "使用 Modal 組件創建待辦事項編輯功能",
+          "應用 Ant Design 的主題定制功能更改配色方案",
+          "使用 Notification 組件顯示操作成功/失敗訊息"
+        ]
+      },
+      "questions": [
+        {
+          "id": "9-1",
+          "title": "UI 組件庫概述與選擇標準",
+          "content": "UI 組件庫提供了預先設計好的組件，可以快速建立專業的使用者界面。主流的 React UI 庫包括 Ant Design、Material-UI、Chakra UI 等。選擇 UI 組件庫時需要考慮：設計風格是否符合專案需求、組件的豐富程度、文檔完整性、社群活躍度、包大小、客製化彈性等。Ant Design 以企業級應用為主，Material-UI 遵循 Google Material Design，Chakra UI 則強調簡潔和易用性。",
+          "codeExample": "// 比較不同 UI 組件庫的基本使用\n\n// Ant Design\nimport { Button, Input, List } from 'antd';\nfunction AntDesignExample() {\n  return (\n    <div>\n      <Input placeholder=\"Ant Design 輸入框\" />\n      <Button type=\"primary\">主要按鈕</Button>\n      <List\n        dataSource={['項目1', '項目2']}\n        renderItem={item => <List.Item>{item}</List.Item>}\n      />\n    </div>\n  );\n}\n\n// Material-UI (MUI)\nimport { Button, TextField, List, ListItem } from '@mui/material';\nfunction MUIExample() {\n  return (\n    <div>\n      <TextField label=\"MUI 輸入框\" variant=\"outlined\" />\n      <Button variant=\"contained\" color=\"primary\">主要按鈕</Button>\n      <List>\n        <ListItem>項目1</ListItem>\n        <ListItem>項目2</ListItem>\n      </List>\n    </div>\n  );\n}\n\n// Chakra UI\nimport { Button, Input, List, ListItem } from '@chakra-ui/react';\nfunction ChakraExample() {\n  return (\n    <div>\n      <Input placeholder=\"Chakra UI 輸入框\" />\n      <Button colorScheme=\"blue\">主要按鈕</Button>\n      <List>\n        <ListItem>項目1</ListItem>\n        <ListItem>項目2</ListItem>\n      </List>\n    </div>\n  );\n}\n\n// 組件庫比較表\nconst libraryComparison = {\n  'Ant Design': {\n    pros: ['企業級設計', '組件豐富', '中文文檔完整'],\n    cons: ['包較大', '客製化相對困難'],\n    useCase: '企業級應用、後台管理系統'\n  },\n  'Material-UI': {\n    pros: ['Google 設計規範', '高度客製化', '活躍社群'],\n    cons: ['學習曲線較陡', '初始配置複雜'],\n    useCase: '遵循 Material Design 的應用'\n  },\n  'Chakra UI': {\n    pros: ['簡潔易用', '優秀的 TypeScript 支援', '高效能'],\n    cons: ['組件相對較少', '企業級組件不足'],\n    useCase: '現代 Web 應用、個人專案'\n  }\n};",
+          "quiz": {
+            "question": "選擇 UI 組件庫時，下列哪個不是主要考量因素？",
+            "options": ["設計風格是否符合專案需求", "組件的豐富程度", "開發者的個人喜好", "文檔完整性"],
+            "answer": "開發者的個人喜好",
+            "explanation": "雖然個人喜好很重要，但選擇 UI 組件庫應該以專案需求、技術適合度、維護性等客觀因素為主。"
+          },
+          "media": {
+            "image": "/assets/images/ui-library-comparison.png",
+            "audio": "/assets/audio/ui-libraries.mp3"
+          }
+        },
+        {
+          "id": "9-2",
+          "title": "Ant Design 安裝與配置",
+          "content": "Ant Design 是一個企業級 UI 設計語言和 React 組件庫，提供了豐富的組件和完整的設計規範。安裝 Ant Design 後需要引入樣式文件，可以選擇完整引入或按需引入。按需引入可以減少最終打包的文件大小，提高應用性能。Ant Design 還支援主題定制，可以通過修改 Less 變數或使用 ConfigProvider 來定制組件的外觀。",
+          "codeExample": "// 安裝 Ant Design\n// npm install antd\n\n// 完整引入\nimport { Button, Input, List } from 'antd';\nimport 'antd/dist/antd.css';\n\n// 按需引入配置 (使用 babel-plugin-import)\n// .babelrc 或 babel.config.js\n{\n  \"plugins\": [\n    [\"import\", {\n      \"libraryName\": \"antd\",\n      \"libraryDirectory\": \"es\",\n      \"style\": \"css\"\n    }]\n  ]\n}\n\n// 主題定制\nimport { ConfigProvider } from 'antd';\nimport zhCN from 'antd/locale/zh_CN';\n\nfunction App() {\n  return (\n    <ConfigProvider\n      locale={zhCN}\n      theme={{\n        token: {\n          colorPrimary: '#1890ff',\n          colorSuccess: '#52c41a',\n          colorWarning: '#faad14',\n          colorError: '#ff4d4f',\n          fontSize: 14,\n          borderRadius: 6,\n        },\n      }}\n    >\n      <div className=\"App\">\n        <Button type=\"primary\">主要按鈕</Button>\n        <Input placeholder=\"請輸入內容\" />\n      </div>\n    </ConfigProvider>\n  );\n}\n\n// 使用 Ant Design 圖標\nimport {\n  PlusOutlined,\n  DeleteOutlined,\n  EditOutlined,\n  CheckOutlined\n} from '@ant-design/icons';\n\nfunction IconExample() {\n  return (\n    <div>\n      <Button icon={<PlusOutlined />} type=\"primary\">新增</Button>\n      <Button icon={<EditOutlined />}>編輯</Button>\n      <Button icon={<DeleteOutlined />} danger>刪除</Button>\n      <Button icon={<CheckOutlined />} type=\"dashed\">完成</Button>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "Ant Design 中的 ConfigProvider 主要用於什麼？",
+            "options": ["全域配置和主題定制", "組件懶加載", "狀態管理", "API 請求"],
+            "answer": "全域配置和主題定制",
+            "explanation": "ConfigProvider 用於為整個應用提供全域配置，包括主題、語言、組件預設屬性等。"
+          },
+          "media": {
+            "image": "/assets/images/antd-config.png",
+            "audio": "/assets/audio/antd-setup.mp3"
+          }
+        },
+        {
+          "id": "9-3",
+          "title": "Ant Design 組件實際應用",
+          "content": "Ant Design 提供了豐富的組件，包括基礎組件（Button、Input）、佈局組件（Layout、Grid）、導航組件（Menu、Breadcrumb）、數據展示組件（Table、List、Card）、回饋組件（Message、Notification）等。在實際應用中，需要根據業務需求選擇合適的組件，並注意組件間的配合使用。良好的組件使用包括：遵循設計規範、保持界面一致性、合理使用組件屬性、適當的間距和佈局。",
+          "codeExample": "import React, { useState } from 'react';\nimport {\n  Button,\n  Input,\n  List,\n  Checkbox,\n  Space,\n  Card,\n  Typography,\n  Divider,\n  Tag,\n  Modal,\n  Form,\n  message\n} from 'antd';\nimport {\n  PlusOutlined,\n  DeleteOutlined,\n  EditOutlined,\n  CheckCircleOutlined\n} from '@ant-design/icons';\n\nconst { Title, Text } = Typography;\n\nfunction AdvancedTodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [isModalVisible, setIsModalVisible] = useState(false);\n  const [editingTodo, setEditingTodo] = useState(null);\n  const [form] = Form.useForm();\n\n  const addTodo = (values) => {\n    const newTodo = {\n      id: Date.now(),\n      text: values.text,\n      completed: false,\n      priority: values.priority || 'medium',\n      createdAt: new Date().toISOString()\n    };\n    setTodos(prev => [...prev, newTodo]);\n    message.success('待辦事項添加成功！');\n    form.resetFields();\n    setIsModalVisible(false);\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  };\n\n  const deleteTodo = (id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n    message.success('待辦事項刪除成功！');\n  };\n\n  const getPriorityColor = (priority) => {\n    switch (priority) {\n      case 'high': return 'red';\n      case 'medium': return 'orange';\n      case 'low': return 'green';\n      default: return 'blue';\n    }\n  };\n\n  const completedCount = todos.filter(todo => todo.completed).length;\n  const totalCount = todos.length;\n\n  return (\n    <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>\n      <Card>\n        <Title level={2}>我的待辦事項</Title>\n        <Space direction=\"vertical\" size=\"large\" style={{ width: '100%' }}>\n          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>\n            <Text>\n              已完成 {completedCount} / {totalCount} 項任務\n            </Text>\n            <Button\n              type=\"primary\"\n              icon={<PlusOutlined />}\n              onClick={() => setIsModalVisible(true)}\n            >\n              新增待辦事項\n            </Button>\n          </div>\n          \n          <Divider />\n          \n          <List\n            dataSource={todos}\n            renderItem={todo => (\n              <List.Item\n                actions={[\n                  <Button\n                    type=\"text\"\n                    icon={<EditOutlined />}\n                    onClick={() => {\n                      setEditingTodo(todo);\n                      form.setFieldsValue(todo);\n                      setIsModalVisible(true);\n                    }}\n                  />,\n                  <Button\n                    type=\"text\"\n                    danger\n                    icon={<DeleteOutlined />}\n                    onClick={() => deleteTodo(todo.id)}\n                  />\n                ]}\n              >\n                <List.Item.Meta\n                  avatar={\n                    <Checkbox\n                      checked={todo.completed}\n                      onChange={() => toggleTodo(todo.id)}\n                    />\n                  }\n                  title={\n                    <span style={{\n                      textDecoration: todo.completed ? 'line-through' : 'none',\n                      color: todo.completed ? '#999' : '#000'\n                    }}>\n                      {todo.text}\n                    </span>\n                  }\n                  description={\n                    <Space>\n                      <Tag color={getPriorityColor(todo.priority)}>\n                        {todo.priority}\n                      </Tag>\n                      <Text type=\"secondary\">\n                        {new Date(todo.createdAt).toLocaleDateString()}\n                      </Text>\n                    </Space>\n                  }\n                />\n              </List.Item>\n            )}\n          />\n        </Space>\n      </Card>\n\n      <Modal\n        title={editingTodo ? '編輯待辦事項' : '新增待辦事項'}\n        visible={isModalVisible}\n        onCancel={() => {\n          setIsModalVisible(false);\n          setEditingTodo(null);\n          form.resetFields();\n        }}\n        footer={null}\n      >\n        <Form form={form} onFinish={addTodo} layout=\"vertical\">\n          <Form.Item\n            name=\"text\"\n            label=\"待辦事項\"\n            rules={[{ required: true, message: '請輸入待辦事項！' }]}\n          >\n            <Input placeholder=\"請輸入待辦事項內容\" />\n          </Form.Item>\n          <Form.Item name=\"priority\" label=\"優先級\" initialValue=\"medium\">\n            <Select>\n              <Select.Option value=\"high\">高</Select.Option>\n              <Select.Option value=\"medium\">中</Select.Option>\n              <Select.Option value=\"low\">低</Select.Option>\n            </Select>\n          </Form.Item>\n          <Form.Item>\n            <Space>\n              <Button type=\"primary\" htmlType=\"submit\">\n                {editingTodo ? '更新' : '新增'}\n              </Button>\n              <Button onClick={() => setIsModalVisible(false)}>\n                取消\n              </Button>\n            </Space>\n          </Form.Item>\n        </Form>\n      </Modal>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "Ant Design 的 Message 組件主要用於什麼？",
+            "options": ["顯示全域提示訊息", "處理表單驗證", "管理組件狀態", "路由導航"],
+            "answer": "顯示全域提示訊息",
+            "explanation": "Message 組件用於顯示全域的回饋訊息，如成功、警告、錯誤等提示。"
+          },
+          "media": {
+            "image": "/assets/images/antd-components.png",
+            "audio": "/assets/audio/antd-usage.mp3"
+          }
+        },
+        {
+          "id": "9-4",
+          "title": "API 封裝與 HTTP 請求管理",
+          "content": "API 封裝是前端開發中的重要實踐，它可以統一管理 HTTP 請求、處理錯誤、添加攔截器等。axios 是最受歡迎的 HTTP 請求庫，提供了豐富的功能和靈活的配置選項。良好的 API 封裝包括：統一的請求/響應格式、錯誤處理、請求攔截器、響應攔截器、請求重試機制等。這樣可以提高代碼的可維護性和開發效率。",
+          "codeExample": "import axios from 'axios';\n\n// 創建 axios 實例\nconst api = axios.create({\n  baseURL: 'https://api.example.com',\n  timeout: 10000,\n  headers: {\n    'Content-Type': 'application/json',\n  },\n});\n\n// 請求攔截器\napi.interceptors.request.use(\n  (config) => {\n    // 在發送請求之前做些什麼\n    const token = localStorage.getItem('token');\n    if (token) {\n      config.headers.Authorization = `Bearer ${token}`;\n    }\n    \n    // 顯示載入狀態\n    console.log('開始請求:', config.url);\n    return config;\n  },\n  (error) => {\n    // 對請求錯誤做些什麼\n    return Promise.reject(error);\n  }\n);\n\n// 響應攔截器\napi.interceptors.response.use(\n  (response) => {\n    // 對響應數據做點什麼\n    console.log('請求成功:', response.config.url);\n    return response.data;\n  },\n  (error) => {\n    // 對響應錯誤做點什麼\n    if (error.response) {\n      const { status, data } = error.response;\n      switch (status) {\n        case 401:\n          // 未授權，跳轉到登入頁面\n          localStorage.removeItem('token');\n          window.location.href = '/login';\n          break;\n        case 403:\n          console.error('權限不足');\n          break;\n        case 404:\n          console.error('資源不存在');\n          break;\n        case 500:\n          console.error('伺服器錯誤');\n          break;\n        default:\n          console.error('請求失敗:', data.message);\n      }\n    } else if (error.request) {\n      console.error('網路錯誤');\n    } else {\n      console.error('請求配置錯誤');\n    }\n    return Promise.reject(error);\n  }\n);\n\n// API 服務函式\nconst todoService = {\n  // 獲取待辦事項列表\n  getTodos: () => api.get('/todos'),\n  \n  // 創建待辦事項\n  createTodo: (todo) => api.post('/todos', todo),\n  \n  // 更新待辦事項\n  updateTodo: (id, todo) => api.put(`/todos/${id}`, todo),\n  \n  // 刪除待辦事項\n  deleteTodo: (id) => api.delete(`/todos/${id}`),\n  \n  // 切換待辦事項狀態\n  toggleTodo: (id) => api.patch(`/todos/${id}/toggle`),\n};\n\n// 在組件中使用 API 服務\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [loading, setLoading] = useState(false);\n\n  // 載入待辦事項\n  const loadTodos = async () => {\n    try {\n      setLoading(true);\n      const data = await todoService.getTodos();\n      setTodos(data);\n    } catch (error) {\n      console.error('載入失敗:', error);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  // 新增待辦事項\n  const addTodo = async (text) => {\n    try {\n      const newTodo = await todoService.createTodo({ text });\n      setTodos(prev => [...prev, newTodo]);\n    } catch (error) {\n      console.error('新增失敗:', error);\n    }\n  };\n\n  // 切換待辦事項狀態\n  const toggleTodo = async (id) => {\n    try {\n      await todoService.toggleTodo(id);\n      setTodos(prev => prev.map(todo =>\n        todo.id === id ? { ...todo, completed: !todo.completed } : todo\n      ));\n    } catch (error) {\n      console.error('更新失敗:', error);\n    }\n  };\n\n  useEffect(() => {\n    loadTodos();\n  }, []);\n\n  return (\n    <div>\n      {loading ? (\n        <div>載入中...</div>\n      ) : (\n        <TodoList todos={todos} onToggle={toggleTodo} onAdd={addTodo} />\n      )}\n    </div>\n  );\n}\n\nexport default api;\nexport { todoService };",
+          "quiz": {
+            "question": "axios 攔截器的主要作用是什麼？",
+            "options": ["在請求/響應前後執行通用邏輯", "提高請求速度", "減少代碼體積", "簡化 API 調用"],
+            "answer": "在請求/響應前後執行通用邏輯",
+            "explanation": "攔截器允許在請求發送前和響應返回後執行通用邏輯，如添加認證標頭、錯誤處理等。"
+          },
+          "media": {
+            "image": "/assets/images/axios-interceptors.png",
+            "audio": "/assets/audio/api-encapsulation.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "weekNumber": 4,
+      "dayNumber": 1,
+      "title": "第四週 Day 1-3: 實戰專案開發",
+      "description": "綜合運用所學知識開發完整的 React 應用",
+      "estimatedTime": 180,
+      "difficulty": "advanced",
+      "tags": ["實戰", "專案開發", "綜合應用"],
+      "learningObjectives": [
+        "能夠獨立規劃和設計一個完整的 React 應用",
+        "掌握專案架構設計和目錄結構組織",
+        "綜合運用前三週所學的所有技術",
+        "學會創建可重用的自定義 Hook",
+        "具備獨立開發 React 應用的能力"
+      ],
+      "dailyTasks": [
+        {
+          "id": "10-1",
+          "title": "專案規劃與設計",
+          "description": "規劃個人專案的功能和架構設計",
+          "estimatedTime": 60,
+          "completed": false,
+          "checkpoints": [
+            "選擇專案主題和核心功能",
+            "繪製應用的頁面結構和流程圖",
+            "設計組件層次結構和狀態管理策略",
+            "制定開發計劃和時程安排"
+          ]
+        },
+        {
+          "id": "10-2",
+          "title": "建立專案基礎架構",
+          "description": "搭建專案目錄結構和基本組件",
+          "estimatedTime": 60,
+          "completed": false,
+          "checkpoints": [
+            "建立清晰的資料夾結構",
+            "配置路由系統和基本頁面",
+            "設定 Context API 和狀態管理",
+            "創建通用組件和工具函式"
+          ]
+        },
+        {
+          "id": "10-3",
+          "title": "實作核心功能",
+          "description": "開發專案的主要功能模組",
+          "estimatedTime": 90,
+          "completed": false,
+          "checkpoints": [
+            "實作主要業務邏輯功能",
+            "整合 API 服務和資料處理",
+            "實現用戶互動和表單處理",
+            "添加錯誤處理和載入狀態"
+          ]
+        },
+        {
+          "id": "10-4",
+          "title": "創建自定義 Hook",
+          "description": "將可重複使用的邏輯提取到自定義 Hook 中",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "識別可重複使用的邏輯模式",
+            "設計 Hook 的 API 接口",
+            "實作自定義 Hook 並加入錯誤處理",
+            "在多個組件中測試 Hook 的可重用性"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "開發個人 React 專案",
+        "description": "綜合運用前三週所學知識，開發一個完整的 React 應用",
+        "template": "// 專案結構建議\n/*\nsrc/\n├── components/          # 可重複使用的組件\n│   ├── common/         # 通用組件\n│   └── ui/             # UI 組件\n├── hooks/              # 自定義 Hook\n├── contexts/           # React Context\n├── pages/              # 頁面組件\n├── services/           # API 服務\n├── utils/              # 工具函式\n└── styles/             # 樣式檔案\n*/\n\n// 自定義 Hook 範例\nfunction useTodos() {\n  const [todos, setTodos] = useState([]);\n  const [loading, setLoading] = useState(false);\n\n  const addTodo = useCallback((text) => {\n    setTodos(prev => [...prev, { id: Date.now(), text, completed: false }]);\n  }, []);\n\n  const toggleTodo = useCallback((id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  }, []);\n\n  const deleteTodo = useCallback((id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  }, []);\n\n  return {\n    todos,\n    loading,\n    addTodo,\n    toggleTodo,\n    deleteTodo\n  };\n}",
+        "expectedOutput": "功能完整的個人 React 專案",
+        "hints": [
+          "專案應該包含至少 5 個不同的頁面",
+          "使用 Context API 管理全域狀態",
+          "整合 UI 組件庫提升用戶體驗",
+          "添加載入狀態和錯誤處理機制",
+          "使用 React Router 實現多頁面導航"
+        ],
+        "additionalChallenges": [
+          "添加深色/淺色主題切換功能",
+          "實作本地儲存保存用戶偏好設定",
+          "添加搜索和篩選功能",
+          "實作拖拽排序功能",
+          "添加簡單的資料視覺化圖表"
+        ]
+      },
+      "questions": [
+        {
+          "id": "10-1",
+          "title": "React 專案架構設計",
+          "content": "在實戰專案中，我們需要綜合運用前三週所學的知識，包括組件設計、狀態管理、路由系統、API 整合等。專案應該具有清晰的架構和良好的用戶體驗。良好的專案架構包括：清晰的目錄結構、合理的組件分層、統一的狀態管理、高效的 API 封裝等。",
+          "codeExample": "// 完整的 React 項目結構\n/*\nsrc/\n├── components/          # 可重複使用的組件\n│   ├── common/         # 通用組件\n│   └── ui/             # UI 組件\n├── hooks/              # 自定義 Hook\n├── contexts/           # React Context\n├── pages/              # 頁面組件\n├── services/           # API 服務\n├── utils/              # 工具函式\n└── styles/             # 樣式檔案\n*/\n\n// 自定義 Hook 範例\nfunction useTodos() {\n  const [todos, setTodos] = useState([]);\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(null);\n\n  const addTodo = useCallback(async (text) => {\n    try {\n      setLoading(true);\n      const newTodo = { id: Date.now(), text, completed: false };\n      setTodos(prev => [...prev, newTodo]);\n    } catch (err) {\n      setError(err.message);\n    } finally {\n      setLoading(false);\n    }\n  }, []);\n\n  const toggleTodo = useCallback((id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  }, []);\n\n  const deleteTodo = useCallback((id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  }, []);\n\n  return {\n    todos,\n    loading,\n    error,\n    addTodo,\n    toggleTodo,\n    deleteTodo\n  };\n}",
+          "quiz": {
+            "question": "自定義 Hook 的命名規範是什麼？",
+            "options": ["必須以 'use' 開頭", "必須以 'hook' 開頭", "必須以 'custom' 開頭", "沒有特殊規範"],
+            "answer": "必須以 'use' 開頭",
+            "explanation": "根據 React 的規則，自定義 Hook 必須以 'use' 開頭，這樣 React 才能正確地應用 Hook 的規則。"
+          },
+          "media": {
+            "image": "/assets/images/react-project-structure.png",
+            "audio": "/assets/audio/project-architecture.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "weekNumber": 4,
+      "dayNumber": 4,
+      "title": "第四週 Day 4: 代碼質量與性能優化",
+      "description": "學習配置開發工具和性能優化技巧",
+      "estimatedTime": 120,
+      "difficulty": "advanced",
+      "tags": ["代碼質量", "性能優化", "開發工具"],
+      "learningObjectives": [
+        "掌握 ESLint 和 Prettier 的配置和使用",
+        "理解 React 性能優化的核心概念",
+        "學會使用 React.memo、useMemo、useCallback",
+        "能夠分析和優化應用性能",
+        "建立代碼品質保證流程"
+      ],
+      "dailyTasks": [
+        {
+          "id": "11-1",
+          "title": "配置 ESLint 和 Prettier",
+          "description": "設定代碼檢查和格式化工具",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "安裝和配置 ESLint 規則",
+            "設定 Prettier 格式化配置",
+            "整合 ESLint 和 Prettier 到 VS Code",
+            "配置 package.json 腳本自動化"
+          ]
+        },
+        {
+          "id": "11-2",
+          "title": "學習性能優化技巧",
+          "description": "掌握 React.memo、useMemo、useCallback 的使用",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "理解 React 重新渲染機制",
+            "學習使用 React.memo 避免不必要渲染",
+            "掌握 useMemo 記憶化計算結果",
+            "使用 useCallback 記憶化函式"
+          ]
+        },
+        {
+          "id": "11-3",
+          "title": "優化專案性能",
+          "description": "對實戰專案進行性能優化",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "使用 React DevTools 分析性能",
+            "識別性能瓶頸和優化點",
+            "應用優化技巧到實際專案",
+            "測試優化效果和性能提升"
+          ]
+        },
+        {
+          "id": "11-4",
+          "title": "設定 Git Hooks",
+          "description": "配置 pre-commit hook 自動檢查代碼",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "安裝 husky 和 lint-staged",
+            "配置 pre-commit hook 自動檢查",
+            "設定 commit message 格式規範",
+            "測試 Git hooks 的正常運作"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "優化專案代碼質量和性能",
+        "description": "使用 React.memo、useMemo 和 useCallback 優化應用性能",
+        "template": "import { memo, useMemo, useCallback } from 'react';\n\n// 使用 React.memo 優化子組件\nconst TodoItem = memo(function TodoItem({ todo, onToggle, onDelete }) {\n  return (\n    <li>\n      <input\n        type=\"checkbox\"\n        checked={todo.completed}\n        onChange={() => onToggle(todo.id)}\n      />\n      <span>{todo.text}</span>\n      <button onClick={() => onDelete(todo.id)}>刪除</button>\n    </li>\n  );\n});\n\n// 使用 useMemo 和 useCallback 優化父組件\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [filter, setFilter] = useState('all');\n\n  // 使用 useMemo 記憶化計算結果\n  const filteredTodos = useMemo(() => {\n    return todos.filter(todo => {\n      if (filter === 'active') return !todo.completed;\n      if (filter === 'completed') return todo.completed;\n      return true;\n    });\n  }, [todos, filter]);\n\n  // 使用 useCallback 記憶化函式\n  const handleToggle = useCallback((id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  }, []);\n\n  const handleDelete = useCallback((id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  }, []);\n\n  return (\n    <div>\n      <ul>\n        {filteredTodos.map(todo => (\n          <TodoItem\n            key={todo.id}\n            todo={todo}\n            onToggle={handleToggle}\n            onDelete={handleDelete}\n          />\n        ))}\n      </ul>\n    </div>\n  );\n}",
+        "expectedOutput": "性能優化的 React 應用",
+        "hints": [
+          "React.memo 用於避免不必要的重新渲染",
+          "useMemo 用於記憶化計算結果",
+          "useCallback 用於記憶化函式",
+          "使用 React DevTools 分析性能",
+          "適當使用優化工具，避免過度優化"
+        ],
+        "additionalChallenges": [
+          "配置 TypeScript 提升代碼類型安全",
+          "使用 React DevTools Profiler 分析性能",
+          "實作虛擬化長列表優化",
+          "設定 GitHub Actions CI/CD 流程",
+          "建立完整的代碼審查流程"
+        ]
+      },
+      "questions": [
+        {
+          "id": "11-1",
+          "title": "React 性能優化核心概念",
+          "content": "React 性能優化的核心是避免不必要的重新渲染。React.memo 可以防止函式組件的不必要重新渲染，useMemo 和 useCallback 可以記憶化計算結果和函式。代碼品質工具如 ESLint 和 Prettier 可以幫助維護一致的代碼風格和避免常見錯誤。",
+          "codeExample": "import { memo, useMemo, useCallback } from 'react';\n\n// 使用 React.memo 優化子組件\nconst TodoItem = memo(function TodoItem({ todo, onToggle, onDelete }) {\n  console.log('TodoItem rendered:', todo.id);\n  return (\n    <li>\n      <input\n        type=\"checkbox\"\n        checked={todo.completed}\n        onChange={() => onToggle(todo.id)}\n      />\n      <span>{todo.text}</span>\n      <button onClick={() => onDelete(todo.id)}>刪除</button>\n    </li>\n  );\n});\n\n// 使用 useMemo 和 useCallback 優化父組件\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [filter, setFilter] = useState('all');\n\n  // 使用 useMemo 記憶化計算結果\n  const filteredTodos = useMemo(() => {\n    console.log('Computing filtered todos');\n    return todos.filter(todo => {\n      if (filter === 'active') return !todo.completed;\n      if (filter === 'completed') return todo.completed;\n      return true;\n    });\n  }, [todos, filter]);\n\n  // 使用 useCallback 記憶化函式\n  const handleToggle = useCallback((id) => {\n    setTodos(prev => prev.map(todo =>\n      todo.id === id ? { ...todo, completed: !todo.completed } : todo\n    ));\n  }, []);\n\n  const handleDelete = useCallback((id) => {\n    setTodos(prev => prev.filter(todo => todo.id !== id));\n  }, []);\n\n  return (\n    <div>\n      <ul>\n        {filteredTodos.map(todo => (\n          <TodoItem\n            key={todo.id}\n            todo={todo}\n            onToggle={handleToggle}\n            onDelete={handleDelete}\n          />\n        ))}\n      </ul>\n    </div>\n  );\n}",
+          "quiz": {
+            "question": "React.memo 的主要作用是什麼？",
+            "options": ["防止不必要的重新渲染", "加速計算", "管理記憶體", "處理錯誤"],
+            "answer": "防止不必要的重新渲染",
+            "explanation": "React.memo 會比較組件的 props，只有在 props 發生變化時才重新渲染組件，從而避免不必要的重新渲染。"
+          },
+          "media": {
+            "image": "/assets/images/react-performance.png",
+            "audio": "/assets/audio/performance-optimization.mp3"
+          }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "weekNumber": 4,
+      "dayNumber": 5,
+      "title": "第四週 Day 5: 部署與項目總結",
+      "description": "學習將 React 應用部署到生產環境並總結學習成果，完成実習生培訓的最後階段",
+      "estimatedTime": 120,
+      "difficulty": "advanced",
+      "tags": ["部署", "項目總結", "最佳實踐", "CI/CD"],
+      "learningObjectives": [
+        "掌握 React 應用的部署流程",
+        "理解生產環境和開發環境的差別",
+        "學會使用現代部署平台",
+        "能夠總結學習成果和技能進步",
+        "規劃後續的學習方向和發展路徑"
+      ],
+      "dailyTasks": [
+        {
+          "id": "12-1",
+          "title": "配置環境變數",
+          "description": "設定生產環境和開發環境的不同配置，學習環境管理",
+          "estimatedTime": 20,
+          "completed": false,
+          "checkpoints": [
+            "理解環境變數的作用和管理",
+            "建立 .env 檔案和環境配置",
+            "學習如何在不同環境中使用不同配置",
+            "理解安全性和機密資料管理"
+          ]
+        },
+        {
+          "id": "12-2",
+          "title": "打包和優化專案",
+          "description": "使用 build 指令打包專案並優化檔案大小，學習性能優化技巧",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "學習使用 npm run build 打包專案",
+            "理解打包結果和檔案結構",
+            "學習分析打包大小和優化策略",
+            "實作代碼分割和懶加載優化"
+          ]
+        },
+        {
+          "id": "12-3",
+          "title": "部署到 Vercel",
+          "description": "將專案部署到 Vercel 平台，學習現代部署流程",
+          "estimatedTime": 30,
+          "completed": false,
+          "checkpoints": [
+            "學習使用 Vercel 平台部署應用",
+            "配置自動部署和 Git 整合",
+            "設定自定義域名和 HTTPS",
+            "學習部署日誌和問題排查"
+          ]
+        },
+        {
+          "id": "12-4",
+          "title": "撰寫學習總結",
+          "description": "回顧四週學習過程並撰寫總結報告，規劃後續發展",
+          "estimatedTime": 40,
+          "completed": false,
+          "checkpoints": [
+            "總結四週學習的技能和成果",
+            "列出完成的專案和作品集",
+            "分析學習過程中的挑戰和解決方案",
+            "規劃後續的學習方向和技能提升"
+          ]
+        }
+      ],
+      "practicalExercise": {
+        "title": "部署完整的 React 應用",
+        "description": "將完整的 React 專案部署到生產環境",
+        "template": "// package.json 部署腳本\n{\n  \"scripts\": {\n    \"build\": \"vite build\",\n    \"preview\": \"vite preview\",\n    \"deploy\": \"npm run build && vercel --prod\"\n  }\n}\n\n// 環境變數配置\n// .env.production\nVITE_APP_API_URL=https://api.production.com\n\n// vercel.json 配置\n{\n  \"framework\": \"vite\",\n  \"buildCommand\": \"npm run build\",\n  \"outputDirectory\": \"dist\",\n  \"rewrites\": [\n    {\n      \"source\": \"/(.*)\",\n      \"destination\": \"/index.html\"\n    }\n  ]\n}\n\n// React 開發最佳實踐總結\n// 1. 組件設計原則 - 單一職責、可重複使用\n// 2. 狀態管理 - 適當使用 local state 和 global state\n// 3. 性能優化 - 使用 memo、useMemo、useCallback\n// 4. 代碼品質 - ESLint、Prettier、TypeScript\n// 5. 測試 - 單元測試、集成測試\n// 6. 部署 - 自動化部署、環境管理",
+        "expectedOutput": "成功部署的線上 React 應用",
+        "hints": [
+          "部署前要先執行 npm run build",
+          "確保環境變數設定正確",
+          "測試線上版本的所有功能"
+        ],
+        "additionalChallenges": [
+          "設定 CI/CD 自動部署流程",
+          "配置多環境部署（開發、測試、生產）",
+          "實作錯誤監控和日誌分析",
+          "添加部署前的自動化測試",
+          "優化打包大小和載入速度",
+          "設定 CDN 和緩存策略"
+        ]
+      },
+      "questions": [
+        {
+          "id": "12-1",
+          "content": "React 應用程式需要打包成靜態檔案才能部署到生產環境。我們可以使用 Vercel、Netlify 等平台進行部署。部署前需要配置環境變數和優化打包設置。",
+          "codeExample": "// package.json 部署腳本\n{\n  \"scripts\": {\n    \"build\": \"vite build\",\n    \"preview\": \"vite preview\",\n    \"deploy\": \"npm run build && vercel --prod\"\n  }\n}\n\n// 環境變數配置\n// .env.production\nVITE_APP_API_URL=https://api.production.com\n\n// vercel.json 配置\n{\n  \"framework\": \"vite\",\n  \"buildCommand\": \"npm run build\",\n  \"outputDirectory\": \"dist\",\n  \"rewrites\": [\n    {\n      \"source\": \"/(.*)\",\n      \"destination\": \"/index.html\"\n    }\n  ]\n}\n\n// React 開發最佳實踐總結\n// 1. 組件設計原則 - 單一職責、可重複使用\n// 2. 狀態管理 - 適當使用 local state 和 global state\n// 3. 性能優化 - 使用 memo、useMemo、useCallback\n// 4. 代碼品質 - ESLint、Prettier、TypeScript\n// 5. 測試 - 單元測試、集成測試\n// 6. 部署 - 自動化部署、環境管理",
+          "quiz": {
+            "question": "部署 React 應用前需要執行什麼命令？",
+            "options": ["npm run build", "npm run start", "npm run test", "npm run dev"],
+            "answer": "npm run build"
+          },
+          "media": {
+            "image": "/assets/images/list-rendering.png",
+            "audio": "/assets/audio/lists-and-keys.mp3"
+          }
+        }
+      ]
+    }
+  ]
+}
